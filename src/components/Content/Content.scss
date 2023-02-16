@@ -1,0 +1,26 @@
+$bg: url('../../assets/background.jpeg');
+$information_size: 70px;
+.content {
+    background-image: $bg;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 70vh;
+}
+
+.content-dark {
+    background-color: rgba($color: #353641, $alpha: 0.45);
+    height: 100%;
+    min-height: 70vh;
+}
+
+.content-dark__information{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+    height: 30vh;
+    font-size: $information_size;
+    color: white;
+    font-weight: 800;
+}
+

@@ -1,0 +1,29 @@
+$default_margin: 15px;
+$logo_size: 30px;
+$items_size: 18px;
+
+.header {
+  border-bottom: 0.01em solid rgba($color: #818181, $alpha: 0.75);
+  color: rgb(226, 226, 226);
+  width: 100%;
+  min-height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: $logo_size;
+}
+
+.items {
+  display: flex;
+  font-size: $items_size;
+}
+
+.item {
+  margin: $default_margin;
+}
