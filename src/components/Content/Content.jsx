@@ -1,17 +1,18 @@
 import React from "react";
-import Header from "../Header/Header";
-import './Content.scss'
+import Navbar from "../Navbar/Navbar";
+import { ContendData, ContentContainer, ContentTitle} from "./Content.style";
+import JobForm from "./JobForm";
 
 const Content = () => {
-    return (
-    <div className="content">
-        <div className="content-dark">
-            <Header/>
-            <div className="content-dark__information">
-                Find your job today!
-            </div>
+  return (
+    <ContentContainer>
+      <Navbar />
+      <ContendData>
+        <ContentTitle>FIND YOUR JOB TODAY!</ContentTitle>
+        <JobForm />
+      </ContendData>
 
-        </div>
-    </div>)
-}
-export default Content
+    </ContentContainer>
+  );
+};
+export default Content;
