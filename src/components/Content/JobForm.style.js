@@ -1,8 +1,5 @@
 import styled from "styled-components";
 
-//770 - 825px fix responsive
-//993 - 1088 fix responsive
-
 export const JobFormContainer = styled.div`
   color: white;
   width: 100%;
@@ -11,9 +8,8 @@ export const JobFormContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: auto;
-  margin: 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 830px) {
     flex-direction: column;
   }
 `;
@@ -32,7 +28,7 @@ export const JobFieldContainer = styled.div`
     padding: 15px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 830px) {
     width: 50vw;
   }
 `;
@@ -49,7 +45,7 @@ export const JobField = styled.input`
     outline: none;
   }
 
-  @media (max-width: 992px) {
+  @media (max-width: 1100px) {
     width: 180px;
   }
 `;

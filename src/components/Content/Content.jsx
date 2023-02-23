@@ -11,7 +11,6 @@ const Content = () => {
         <ContentTitle>FIND YOUR JOB TODAY!</ContentTitle>
         <JobForm />
       </ContendData>
-
     </ContentContainer>
   );
 };

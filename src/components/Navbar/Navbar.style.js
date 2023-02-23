@@ -7,8 +7,6 @@ export const NavContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
 
   @media (max-width: 768px) {
     padding-top: 1rem;
