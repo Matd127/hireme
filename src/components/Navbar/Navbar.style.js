@@ -42,6 +42,7 @@ export const MenuLink = styled.a`
 
   &:hover {
     font-weight: bold;
+    scale: calc(1.2);
   }
 `;
 
