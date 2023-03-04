@@ -43,15 +43,18 @@ export const LatestJobsItemContent = styled.div`
   flex-wrap: wrap;
 `;
 
-export const LatestJobsItemInfo = styled.div`
+export const LatestJobsJob = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
-export const LatestJobsItemBtns = styled.div`
+
+export const LatestJobsBtns = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const LatestJobsItemKeywords = styled.div`
+export const Keywords = styled.div`
   padding: 20px;
   background-color: #222631;
 `;
