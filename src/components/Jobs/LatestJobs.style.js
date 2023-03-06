@@ -32,15 +32,23 @@ export const LatestJobsItem = styled.div`
   width: 100%;
   background-color: #1a1e27;
   border: 1px solid rgba(129, 129, 129, 0.35);
+
+  &:hover{
+    border: 1px solid rgb(236, 53, 67);
+    transition: all 1000ms ease-out;
+  }
 `;
 
 export const LatestJobsItemContent = styled.div`
-  margin-left: 2rem;
-  margin-right: 2rem;
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; 
+
+  @media (max-width: 900px) {
+    padding: 1rem;
+    text-align: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 `;
 
 export const LatestJobsJob = styled.div`
@@ -50,8 +58,9 @@ export const LatestJobsJob = styled.div`
 
 export const LatestJobsBtns = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 export const Keywords = styled.div`

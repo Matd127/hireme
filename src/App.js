@@ -1,5 +1,6 @@
 import Content from "./components/Content/Content";
 import LatestJobs from "./components/Jobs/LatestJobs.jsx"
+import Tips from "./components/Tips/Tips";
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <Content />
       <LatestJobs/>
+      <Tips/>
     </>
   );
 }
