@@ -7,6 +7,7 @@ import {
 import { Hr } from "../UI/Hr";
 import LatestJob from "./LatestJob";
 
+
 const LastestJobs = () => {
   return (
     <LatestContainer>

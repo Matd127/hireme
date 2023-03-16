@@ -15,8 +15,6 @@ export const LatestJobContainer = styled.div`
 `;
 export const LatestTitle = styled.div`
   color: white;
-  display: flex;
-  align-items: flex-start;
   font-size: 1.5rem;
   font-weight: 400;
   text-align: left;
@@ -31,10 +29,11 @@ export const LatestJobsItem = styled.div`
   color: white;
   width: 100%;
   background-color: #1a1e27;
-  border: 1px solid rgba(129, 129, 129, 0.35);
+  border: 1px solid rgba(129, 129, 129, 0.25);
+  border-radius: 1px;
 
   &:hover{
-    border: 1px solid rgb(236, 53, 67);
+    border: 1px solid rgba(236, 53, 67, 0.50);
     transition: all 1000ms ease-out;
   }
 `;
