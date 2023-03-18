@@ -4,6 +4,7 @@ import Tips from "./components/Tips/Tips";
 import { useDispatch } from "react-redux";
 import { jobsActions } from "./redux/jobs-slice";
 import { useEffect } from "react";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function App() {
       <Content />
       <LatestJobs />
       <Tips />
-      
+      <Footer/>
     </>
   );
 }
