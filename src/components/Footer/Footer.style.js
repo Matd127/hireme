@@ -23,11 +23,16 @@ export const FooterLogo = styled.div`
 export const FooterContent = styled.div`
   border-top: 1px solid rgba(129, 129, 129, 0.35);
   border-bottom: 1px solid rgba(129, 129, 129, 0.35);
-  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 1%;
+  grid-gap: 5%;
   padding: 2rem;
+
+
+  @media screen and (max-width: 700px){
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+  }
 `;
 
 export const FooterItem = styled.div`

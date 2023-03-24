@@ -26,17 +26,30 @@ export const CategoriesItemsCotainer = styled.div`
 
 export const CategoriesItems = styled.div`
   width: 75%;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  @media screen and (max-width: 1400px){
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: 920px){
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 500px){
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const CategoriesItem = styled.div`
   color: white;
   text-align: center;
   height: 100%;
-  width: 220px;
+  /* width: 220px; */
   height: 170px;
   border-right: 0.1px solid rgba(255, 255, 255, 0.14);
   display: flex;

@@ -50,6 +50,30 @@ export const JobField = styled.input`
   }
 `;
 
+export const JobSelect = styled.select`
+  margin-top: 10px;
+  background-color: transparent;
+  color: white;
+  font-size: 15px;
+  border: none;
+  width: 250px;
+
+  &&:focus {
+    outline: none;
+  }
+
+  &&:not(:-internal-list-box) {
+    color: red !important;
+  }
+
+  option {
+    background-color: rgba(0, 0, 0, 0.78);
+    border: 0;
+    outline: none;
+    scroll-behavior: smooth;
+  }
+`;
+
 export const JobButton = styled.button`
   border: none;
   font-weight: bold;
@@ -57,6 +81,6 @@ export const JobButton = styled.button`
   background-color: rgb(236, 53, 67);
   color: white;
   border-radius: 8px;
-  padding: 35px;
+  padding: 37px;
   cursor: pointer;
 `;

@@ -65,7 +65,6 @@ const FeaturedCategories = () => {
               <div>
                 <TbBriefcase style={{ fontSize: "40px" }} />
               </div>
-
               <div>Category</div>
               <div>(24 jobs)</div>
             </CategoriesItem>

@@ -26,6 +26,10 @@ export const TipsItems = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1%;
+
+  @media screen and (max-width: 650px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const TipCard = styled.div`
