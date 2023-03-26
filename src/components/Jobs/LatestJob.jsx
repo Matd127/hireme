@@ -13,26 +13,26 @@ import { ApplyBtn, FavBtn } from "../UI/Buttons";
 import { useSelector } from "react-redux";
 
 const LatestJob = () => {
-  const showBestJobs = useSelector((state) => state.jobs.items);
+  const showBestJobs = useSelector((state) => state.jobs.latestJobs);
 
   return (
     <>
-      {showBestJobs.map((bestJob) => (
-        <LatestJobsItem key={bestJob.id}>
+      {showBestJobs.map((latestJob) => (
+        <LatestJobsItem key={latestJob.id}>
           <LatestJobsItemContent>
             <LatestJobsJob>
-              <div className={classes["job-name"]}>{bestJob.position}</div>
+              <div className={classes["job-name"]}>{latestJob.position}</div>
               <div className={classes["job-company"]}>
-                Comapny: {bestJob.company}
+                Comapny: {latestJob.company}
               </div>
               <div className={classes["job-salary"]}>
-                Salary: {bestJob.salary}
+                Salary: {latestJob.salary}
               </div>
             </LatestJobsJob>
 
             <div className={classes["job-location"]}>
               <VscLocation style={{ fontSize: "40px" }} />
-              Location: {bestJob.location}
+              Location: {latestJob.location}
             </div>
             <LatestJobsBtns>
               <ApplyBtn>
@@ -47,7 +47,7 @@ const LatestJob = () => {
           </LatestJobsItemContent>
           <Keywords>
             Keywords:{" "}
-            {bestJob.keywords.map((keyword) => (
+            {latestJob.keywords.map((keyword) => (
               <span key={keyword}>{keyword}, </span>
             ))}
           </Keywords>

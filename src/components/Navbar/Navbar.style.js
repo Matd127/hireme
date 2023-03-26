@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const NavContainer = styled.div`
@@ -13,7 +14,7 @@ export const NavContainer = styled.div`
   }
 `;
 
-export const Logo = styled.a`
+export const Logo = styled(Link)`
   text-decoration: none;
   color: rgb(226, 226, 226);
   font-size: 40px;
@@ -34,7 +35,7 @@ export const Menu = styled.div`
   }
 `;
 
-export const MenuLink = styled.a`
+export const MenuLink = styled(Link)`
   text-decoration: none;
   color: rgb(226, 226, 226);
   margin: 15px;

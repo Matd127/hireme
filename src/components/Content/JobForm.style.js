@@ -62,7 +62,7 @@ export const JobSelect = styled.select`
     outline: none;
   }
 
-  &&:not(:-internal-list-box) {
+  &:first-child{
     color: red !important;
   }
 
@@ -72,6 +72,7 @@ export const JobSelect = styled.select`
     outline: none;
     scroll-behavior: smooth;
   }
+
 `;
 
 export const JobButton = styled.button`

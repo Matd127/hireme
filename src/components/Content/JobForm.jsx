@@ -8,15 +8,22 @@ import {
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { jobsActions } from "../../redux/jobs-slice";
+import { useSelector } from "react-redux";
 
 const JobForm = () => {
   const dispatch = useDispatch();
+  
+  const jobs = useSelector((state) => state.jobs.foundJobs);
+  const categories = useSelector((state) => state.jobs.jobsCategories);
+
   const [position, setPosition] = useState(null);
   const [location, setLocation] = useState(null);
   const [category, setCategory] = useState(null);
+  
 
   const submitHandler = () => {
-    dispatch(jobsActions.findJob({position, location, category}));
+    dispatch(jobsActions.findJob({ position, location, category }));
+    console.log(jobs)
   };
 
   return (
@@ -39,14 +46,13 @@ const JobForm = () => {
       </JobFieldContainer>
       <JobFieldContainer>
         <label>Categories?</label>
-        {/* <JobField type="text"></JobField> */}
-        <JobSelect onChange={(e) => setCategory(e.target.value)}>
-          <option value="" disabled hidden>
+        <JobSelect defaultValue={"DEFAULT"} onChange={(e) => setCategory(e.target.value)}>
+          <option value="DEFAULT" disabled={true} hidden={true}>
             Select category
           </option>
-          <option>AA</option>
-          <option>AA</option>
-          <option>AA</option>
+          {categories.map((category) => (
+            <option value={category} key={category}>{category}</option>
+          ))}
         </JobSelect>
       </JobFieldContainer>
       <JobButton onClick={submitHandler}>→</JobButton>

@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.div`
   margin-top: 2rem;
-  width: 100%;
-  min-height: 50vh;
   display: flex;
   justify-content: center;
 `;
@@ -48,7 +46,6 @@ export const FooterItem = styled.div`
 `;
 
 export const FooterBottomContent = styled.div`
-width: 100%;
 padding: 2rem;
 display: flex;
 justify-content: space-around;

@@ -1,25 +1,37 @@
-import Content from "./components/Content/Content";
-import LatestJobs from "./components/Jobs/LatestJobs.jsx";
-import Tips from "./components/Tips/Tips";
 import { useDispatch } from "react-redux";
 import { jobsActions } from "./redux/jobs-slice";
 import { useEffect } from "react";
-import Footer from "./components/Footer/Footer";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import Jobs from "./pages/Jobs";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(jobsActions.findTopThreeJobs());
+    dispatch(jobsActions.loadLatestJobs());
+    dispatch(jobsActions.loadAllCategories());
+    dispatch(jobsActions.loadFeaturedCategories());
   }, [dispatch]);
 
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Home/>
+    },
+    {
+      path: 'contact',
+      element: <Contact/>
+    },
+    {
+      path: 'jobs',
+      element: <Jobs/>
+    }
+  ])
+
   return (
-    <>
-      <Content />
-      <LatestJobs />
-      <Tips />
-      <Footer/>
-    </>
+    <RouterProvider router={router}/> 
   );
 }
 

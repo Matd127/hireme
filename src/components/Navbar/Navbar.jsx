@@ -6,16 +6,18 @@ const Navbar = () => {
 
   return (
     <NavContainer>
-      <Logo href="/">HireMe</Logo>
+      <Logo to="/">HireMe</Logo>
+      
       <Hamburger onClick={() => setIsOpen(!isOpen)}>
         <span />
         <span />
         <span />
       </Hamburger>
+
       <Menu isOpen={isOpen}>
-        <MenuLink href="/">Home</MenuLink>
-        <MenuLink href="/">Jobs</MenuLink>
-        <MenuLink href="/">Contact</MenuLink>
+        <MenuLink to="/">Home</MenuLink>
+        <MenuLink to="/jobs">Jobs</MenuLink>
+        <MenuLink to="/contact">Contact</MenuLink>
       </Menu>
     </NavContainer>
   );

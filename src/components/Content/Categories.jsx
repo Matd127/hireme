@@ -9,9 +9,13 @@ import {
   CategoriesItem,
   CategoriesIcon,
 } from "./Categories.style";
+import { useSelector } from "react-redux";
 
 const FeaturedCategories = () => {
+  // eslint-disable-next-line
   const [isFirst, setIsFirst] = useState(true);
+  const categroies = useSelector((state) => state.jobs.jobsCategories);
+
   return (
     <>
       <CategoriesContainer>
