@@ -32,8 +32,8 @@ export const LatestJobsItem = styled.div`
   border: 1px solid rgba(129, 129, 129, 0.25);
   border-radius: 1px;
 
-  &:hover{
-    border: 1px solid rgba(236, 53, 67, 0.50);
+  &:hover {
+    border: 1px solid rgba(236, 53, 67, 0.5);
     transition: all 1000ms ease-out;
   }
 `;
@@ -41,7 +41,7 @@ export const LatestJobsItem = styled.div`
 export const LatestJobsItemContent = styled.div`
   padding: 3rem;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr; 
+  grid-template-columns: 1fr 2fr 1fr;
 
   @media (max-width: 900px) {
     padding: 1rem;
@@ -53,6 +53,31 @@ export const LatestJobsItemContent = styled.div`
 export const LatestJobsJob = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: left;
+
+  .job-name {
+    font-size: 24px;
+  }
+
+  .job-company {
+    margin-top: 8px;
+    font-size: 20px;
+    color: rgb(236, 53, 67);
+  }
+
+  .job-salary {
+    margin-top: 5px;
+    font-size: 18px;
+  }
+
+  .job-location {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+  }
 `;
 
 export const LatestJobsBtns = styled.div`

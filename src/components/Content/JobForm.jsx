@@ -9,21 +9,22 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { jobsActions } from "../../redux/jobs-slice";
 import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 const JobForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  
-  const jobs = useSelector((state) => state.jobs.foundJobs);
+
+
   const categories = useSelector((state) => state.jobs.jobsCategories);
 
   const [position, setPosition] = useState(null);
   const [location, setLocation] = useState(null);
   const [category, setCategory] = useState(null);
-  
 
   const submitHandler = () => {
     dispatch(jobsActions.findJob({ position, location, category }));
-    console.log(jobs)
+    navigate(`/jobs/${position ? position : ''}`)
   };
 
   return (
@@ -46,12 +47,17 @@ const JobForm = () => {
       </JobFieldContainer>
       <JobFieldContainer>
         <label>Categories?</label>
-        <JobSelect defaultValue={"DEFAULT"} onChange={(e) => setCategory(e.target.value)}>
+        <JobSelect
+          defaultValue={"DEFAULT"}
+          onChange={(e) => setCategory(e.target.value)}
+        >
           <option value="DEFAULT" disabled={true} hidden={true}>
             Select category
           </option>
           {categories.map((category) => (
-            <option value={category} key={category}>{category}</option>
+            <option value={category} key={category}>
+              {category}
+            </option>
           ))}
         </JobSelect>
       </JobFieldContainer>

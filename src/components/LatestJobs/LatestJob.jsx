@@ -5,7 +5,6 @@ import {
   Keywords,
   LatestJobsJob,
 } from "./LatestJobs.style";
-import classes from "./LatestJob.module.css";
 import { VscLocation } from "react-icons/vsc";
 import { BsBookmarkHeart } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
@@ -21,16 +20,16 @@ const LatestJob = () => {
         <LatestJobsItem key={latestJob.id}>
           <LatestJobsItemContent>
             <LatestJobsJob>
-              <div className={classes["job-name"]}>{latestJob.position}</div>
-              <div className={classes["job-company"]}>
+              <div className="job-name">{latestJob.position}</div>
+              <div className="job-company">
                 Comapny: {latestJob.company}
               </div>
-              <div className={classes["job-salary"]}>
+              <div className="job-salary">
                 Salary: {latestJob.salary}
               </div>
             </LatestJobsJob>
 
-            <div className={classes["job-location"]}>
+            <div className="job-location">
               <VscLocation style={{ fontSize: "40px" }} />
               Location: {latestJob.location}
             </div>

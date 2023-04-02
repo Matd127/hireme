@@ -2,9 +2,9 @@ import { useDispatch } from "react-redux";
 import { jobsActions } from "./redux/jobs-slice";
 import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import Jobs from "./pages/Jobs";
+import Home from "./pages/HomePage";
+import Contact from "./pages/ContactPage";
+import Jobs from "./pages/JobsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function App() {
       element: <Contact/>
     },
     {
-      path: 'jobs',
+      path: 'jobs/:position?',
       element: <Jobs/>
     }
   ])

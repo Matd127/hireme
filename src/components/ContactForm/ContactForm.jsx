@@ -1,33 +1,47 @@
-import { FormContainer, Form, SubmitButton, FormTitle, FormField, FormItem, FormLabel, FormMessage } from "./ContactForm.style";
+import {
+  FormContainer,
+  Form,
+  FormTitle,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "./ContactForm.style";
+import { SubmitButton } from "./ContactBaseStyles";
 
-const ContactForm = () => {
+const ContactForm = ({ setIsSent }) => {
   return (
     <>
       <FormContainer>
         <Form>
-            <FormTitle>Contact US</FormTitle>
+          <FormTitle>Contact US</FormTitle>
 
-            <FormItem>
-              <FormLabel>Your name</FormLabel>
-              <FormField type="text"></FormField>
-            </FormItem>
+          <FormItem>
+            <FormLabel>Your name</FormLabel>
+            <FormField type="text"></FormField>
+          </FormItem>
 
-            <FormItem>
-              <FormLabel>Your email</FormLabel>
-              <FormField type="text"></FormField>
-            </FormItem>
+          <FormItem>
+            <FormLabel>Your email</FormLabel>
+            <FormField type="text"></FormField>
+          </FormItem>
 
-            <FormItem>
-              <FormLabel>Your phone</FormLabel>
-              <FormField type="text"></FormField>
-            </FormItem>
+          <FormItem>
+            <FormLabel>Your phone</FormLabel>
+            <FormField type="text"></FormField>
+          </FormItem>
 
-            <FormItem>
-              <FormLabel>Message</FormLabel>
-              <FormMessage rows={6}/>
-            </FormItem>
+          <FormItem>
+            <FormLabel>Message</FormLabel>
+            <FormMessage rows={6} />
+          </FormItem>
 
-          <SubmitButton onClick={(e) => e.preventDefault()}>Submit</SubmitButton>
+          <SubmitButton onClick={(e) => {
+            e.preventDefault()
+            setIsSent(true);
+          }}>
+            Submit
+          </SubmitButton>
         </Form>
       </FormContainer>
     </>

@@ -3,7 +3,7 @@ import { DUMMY_JOBS } from "./DUMMY_JOBS";
 
 const initialJobsState = {
   jobsData: DUMMY_JOBS,
-  foundJobs: [],
+  foundJobs: DUMMY_JOBS,
   jobsCategories: [],
   featuredCategories: [],
   latestJobs: [],
@@ -39,7 +39,6 @@ const jobsSlice = createSlice({
         category,
         amount,
       }));
-      console.log(Array.from(state.featuredCategories));
     },
 
     findJob(state, action) {
