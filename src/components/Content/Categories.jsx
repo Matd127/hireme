@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 const FeaturedCategories = () => {
   // eslint-disable-next-line
   const [isFirst, setIsFirst] = useState(true);
+  // eslint-disable-next-line
   const categroies = useSelector((state) => state.jobs.jobsCategories);
 
   return (

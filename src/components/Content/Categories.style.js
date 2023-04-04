@@ -26,9 +26,6 @@ export const CategoriesItemsCotainer = styled.div`
 
 export const CategoriesItems = styled.div`
   width: 75%;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 
@@ -49,7 +46,6 @@ export const CategoriesItem = styled.div`
   color: white;
   text-align: center;
   height: 100%;
-  /* width: 220px; */
   height: 170px;
   border-right: 0.1px solid rgba(255, 255, 255, 0.14);
   display: flex;

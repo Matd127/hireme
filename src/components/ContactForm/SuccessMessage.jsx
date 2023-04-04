@@ -14,9 +14,11 @@ const SuccessMessage = () => {
       <MessageContainer>
         <Message>
           <MessageTitle>Success!</MessageTitle>
-          <MessageContent>Thank you for your message! We will contact you soon.</MessageContent>
+          <MessageContent>
+            Thank you for your message! We will contact you soon.
+          </MessageContent>
           <ActionsContainer>
-            <Link to={'/'}>
+            <Link to={"/"}>
               <SubmitButton>Back to homepage</SubmitButton>
             </Link>
           </ActionsContainer>

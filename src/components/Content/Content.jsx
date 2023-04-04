@@ -11,7 +11,6 @@ const Content = () => {
       <ContendData>
         <ContentTitle>Browse Jobs!</ContentTitle>
         <ContendDescription>Find Jobs, Employment & Career Opportunities</ContendDescription>
-
         <JobForm />
       </ContendData>
       <FeaturedCategories/>

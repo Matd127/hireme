@@ -1,24 +1,24 @@
 import {
-  LatestContainer,
-  LatestJobContainer,
-  LatestJobsItems,
-  LatestTitle,
+  LatestJobsContainer,
+  LatestJobsInnerContainer,
+  LatestJobsTitle,
 } from "./LatestJobs.style";
 import { Hr } from "../UI/Hr";
-import LatestJob from "./LatestJob";
-
+import { useSelector } from "react-redux";
+import JobList from "../UI/JobList";
 
 const LastestJobs = () => {
+  const showBestJobs = useSelector((state) => state.jobs.latestJobs);
+
   return (
-    <LatestContainer>
-      <LatestJobContainer>
-        <LatestTitle>Latest Jobs Listing</LatestTitle>
+    <LatestJobsContainer>
+      <LatestJobsInnerContainer>
+        <LatestJobsTitle>Latest Jobs Listing</LatestJobsTitle>
         <Hr />
-        <LatestJobsItems>
-          <LatestJob/>
-        </LatestJobsItems>
-      </LatestJobContainer>
-    </LatestContainer>
+
+        <JobList jobs = {showBestJobs}></JobList>
+      </LatestJobsInnerContainer>
+    </LatestJobsContainer>
   );
 };
 

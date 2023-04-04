@@ -72,7 +72,6 @@ export const JobSelect = styled.select`
     outline: none;
     scroll-behavior: smooth;
   }
-
 `;
 
 export const JobButton = styled.button`

@@ -6,25 +6,22 @@ import {
   JobSelect,
 } from "./JobForm.style";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { jobsActions } from "../../redux/jobs-slice";
-import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 
 const JobForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
-  const categories = useSelector((state) => state.jobs.jobsCategories);
-
   const [position, setPosition] = useState(null);
   const [location, setLocation] = useState(null);
   const [category, setCategory] = useState(null);
+  const categories = useSelector((state) => state.jobs.jobsCategories);
 
   const submitHandler = () => {
     dispatch(jobsActions.findJob({ position, location, category }));
-    navigate(`/jobs/${position ? position : ''}`)
+    navigate(`/jobs/${position ? position : ''}/${location ? location : ''}`)
   };
 
   return (

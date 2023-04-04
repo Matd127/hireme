@@ -46,8 +46,4 @@ export const SearchFormItems = styled.div`
   margin-bottom: 5px;
 `;
 
-export const JobsList = styled.div`
-  margin-top: 10px;
-`;
-
 export const JobsPagination = styled.div``;
