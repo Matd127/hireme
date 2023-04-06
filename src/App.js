@@ -25,7 +25,7 @@ function App() {
       element: <Contact/>
     },
     {
-      path: 'jobs/:position?/:location?',
+      path: 'jobs/:page?/:position?/:location?/',
       element: <Jobs/>
     }
   ])

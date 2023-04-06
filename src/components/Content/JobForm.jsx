@@ -21,7 +21,7 @@ const JobForm = () => {
 
   const submitHandler = () => {
     dispatch(jobsActions.findJob({ position, location, category }));
-    navigate(`/jobs/${position ? position : ''}/${location ? location : ''}`)
+    navigate(`/jobs/1${position ? `/${position}` : ''}${location ? `/${location}` : ''}`)
   };
 
   return (

@@ -13,7 +13,6 @@ export const JobsInnerContainer = styled.div`
   color: white;
   text-align: center;
   display: grid;
-  
 `;
 
 export const SearchForm = styled.div`
@@ -46,4 +45,26 @@ export const SearchFormItems = styled.div`
   margin-bottom: 5px;
 `;
 
-export const JobsPagination = styled.div``;
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  a{
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+
+    &:visited{
+      text-decoration: none;
+    }
+  }
+`;
