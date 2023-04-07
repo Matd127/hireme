@@ -4,6 +4,8 @@ import { DUMMY_JOBS } from "./DUMMY_JOBS";
 const initialJobsState = {
   jobsData: DUMMY_JOBS,
   foundJobs: DUMMY_JOBS,
+  //Test below
+  searchData: {},
   jobsCategories: [],
   featuredCategories: [],
   latestJobs: [],
@@ -43,6 +45,7 @@ const jobsSlice = createSlice({
 
     findJob(state, action) {
       const { position, location, category } = action.payload;
+      state.searchData = {...action.payload}
 
       if (position) {
         state.foundJobs = state.jobsData.filter((job) =>
@@ -62,6 +65,11 @@ const jobsSlice = createSlice({
       );
       }
     },
+
+    passParameters(state, action) {
+      const { position, location, category } = action.payload;
+      state.searchData = {...action.payload}
+    }
   },
 });
 

@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/HomePage";
 import Contact from "./pages/ContactPage";
 import Jobs from "./pages/JobsPage";
+import JobDetails from "./pages/JobDetailsPage"
 
 function App() {
   const dispatch = useDispatch();
@@ -25,8 +26,12 @@ function App() {
       element: <Contact/>
     },
     {
-      path: 'jobs/:page?/:position?/:location?/',
+      path: 'jobs',
       element: <Jobs/>
+    },
+    {
+      path: 'job/:id/:position',
+      element: <JobDetails/>
     }
   ])
 

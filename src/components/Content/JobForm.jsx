@@ -20,8 +20,11 @@ const JobForm = () => {
   const categories = useSelector((state) => state.jobs.jobsCategories);
 
   const submitHandler = () => {
-    dispatch(jobsActions.findJob({ position, location, category }));
-    navigate(`/jobs/1${position ? `/${position}` : ''}${location ? `/${location}` : ''}`)
+    // dispatch(jobsActions.findJob({ position, location, category }));
+
+    //FOR TEST CHANGE IT LATER 
+    dispatch(jobsActions.passParameters({ position, location, category}))
+    navigate(`/jobs`)
   };
 
   return (
