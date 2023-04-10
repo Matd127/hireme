@@ -5,7 +5,6 @@ export const InputCss = css`
   background-color: #1a1e27;
   border-radius: 10px;
 
-
   outline: 0;
   color: white;
   padding-left: 20px;

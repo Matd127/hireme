@@ -23,7 +23,7 @@ const FeaturedCategories = () => {
       <CategoriesItemsCotainer>
         <CategoriesItems>
           {featuredCategories.slice(0, 6).map((category) => (
-            <CategoriesItem isFirst={isFirst}>
+            <CategoriesItem key={category.category} isFirst={isFirst}>
               <div>
                 <TbBriefcase style={{ fontSize: "40px" }} />
               </div>

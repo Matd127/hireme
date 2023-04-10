@@ -4,6 +4,8 @@ import { DUMMY_JOBS } from "./DUMMY_JOBS";
 const initialJobsState = {
   jobsData: DUMMY_JOBS,
   foundJobs: DUMMY_JOBS,
+  fonudJob: {},
+  randomJobs: [],
   jobsCategories: [],
   featuredCategories: [],
   latestJobs: [],
@@ -16,6 +18,16 @@ const jobsSlice = createSlice({
     loadLatestJobs(state) {
       const filteredJobs = state.jobsData.slice(0, 3);
       state.latestJobs = filteredJobs;
+    },
+
+    getRandomJobs(state) {
+      const generateJobs = state.jobsData
+        .map((item) => ({ item, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .slice(0, 3);
+
+      const generatedJobs = generateJobs.map(({ item }) => item);
+      state.randomJobs = generatedJobs;
     },
 
     loadFeaturedCategories(state) {
@@ -50,15 +62,28 @@ const jobsSlice = createSlice({
       let filteredJobs = state.foundJobs;
 
       filteredJobs = state.jobsData
-        .filter((job) => job.position.toLowerCase().includes(position ? position.toLowerCase() : ''))
-        .filter((job) => job.location.toLowerCase().includes(location ? location.toLowerCase() : ''))
+        .filter((job) =>
+          job.position
+            .toLowerCase()
+            .includes(position ? position.toLowerCase() : "")
+        )
+        .filter((job) =>
+          job.location
+            .toLowerCase()
+            .includes(location ? location.toLowerCase() : "")
+        )
         .filter((job) => job.keywords.includes(category));
 
       if (!position && !location && !category)
         filteredJobs = initialJobsState.foundJobs;
 
-        console.log(position, location, filteredJobs)
       state.foundJobs = filteredJobs;
+    },
+
+    getDetailAboutJob(state, action) {
+      const { id } = action.payload;
+
+      state.fonudJob = state.jobsData.find((job) => job.id === id);
     },
   },
 });

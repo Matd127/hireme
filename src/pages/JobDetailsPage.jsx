@@ -1,17 +1,19 @@
-import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
+import { useEffect } from "react";
+import Footer from "../components/Footer/Footer";
+import JobDetails from "../components/JobDetails/JobDetails";
 
 const JobDetailsPage = () => {
-  const params = useParams();
 
+
+  useEffect(() => {
+  })
   return (
     <>
       <Navbar />
-      <div>
-        It works!
-        {params.id}
-        {params.position}
-      </div>
+      <JobDetails/>
+
+      <Footer></Footer>
     </>
   );
 };
