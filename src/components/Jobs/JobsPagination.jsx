@@ -2,56 +2,47 @@ import { useSelector } from "react-redux";
 import { PaginationContainer } from "./Jobs.style";
 import { useSearchParams } from "react-router-dom";
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
 const JobsPagination = (props) => {
-  const data = useSelector((state) => state.jobs.searchData);
-
-  const [searchParams, setSearchParams] = useSearchParams({
-    ...data,
+  const [, setSearchParams] = useSearchParams({
     page: props.currentPage,
   });
 
   const pageNumbers = [...Array(props.noOfPages + 1).keys()].slice(1);
 
   const nextPage = () => {
-    if (props.currentPage !== props.noOfPages)
+    if (props.currentPage !== props.noOfPages && props.noOfPages > 0) {
       props.setCurrentPage(props.currentPage + 1);
-      
-    setSearchParams({
-      ...data,
-      page: props.currentPage,
-    });
+      setSearchParams({ page: props.currentPage + 1 });
+    }
   };
   const prevPage = () => {
-    if (props.currentPage !== 1) props.setCurrentPage(props.currentPage - 1);
-    setSearchParams({ ...data, page: props.currentPage });
+    if (props.currentPage !== 1 && props.noOfPages > 0) {
+      props.setCurrentPage(props.currentPage - 1);
+      setSearchParams({ page: props.currentPage - 1 });
+    }
   };
 
   return (
     <PaginationContainer>
       <ul>
         <li>
-          <a onClick={prevPage} href="#">
-            Previous
-          </a>
+          <span onClick={prevPage}>Previous</span>
         </li>
         {pageNumbers.map((pgNumber) => (
           <li key={pgNumber}>
-            <a
+            <span
               onClick={() => {
                 props.setCurrentPage(pgNumber);
-                setSearchParams({ ...searchParams, page: pgNumber });
+                setSearchParams({ page: pgNumber });
               }}
               href="#"
             >
               {pgNumber}
-            </a>
+            </span>
           </li>
         ))}
         <li>
-          <a onClick={nextPage} href="#">
-            Next
-          </a>
+          <span onClick={nextPage}>Next</span>
         </li>
       </ul>
     </PaginationContainer>

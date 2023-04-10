@@ -9,7 +9,7 @@ export const JobFormContainer = styled.div`
   align-items: center;
   height: auto;
 
-  @media (max-width: 830px) {
+  @media (max-width: 900px) {
     flex-direction: column;
   }
 `;
@@ -28,8 +28,8 @@ export const JobFieldContainer = styled.div`
     padding: 15px;
   }
 
-  @media (max-width: 830px) {
-    width: 50vw;
+  @media (max-width: 900px) {
+    width: 60vw;
   }
 `;
 
@@ -56,7 +56,6 @@ export const JobSelect = styled.select`
   color: white;
   font-size: 15px;
   border: none;
-  width: 250px;
 
   &&:focus {
     outline: none;

@@ -5,43 +5,43 @@ import {
   SearchFormItems,
 } from "./Jobs.style";
 
-import { useParams } from "react-router-dom";
 import { Hr } from "../UI/Hr";
 import { SubmitButton } from "../ContactForm/ContactBaseStyles";
 import { useDispatch, useSelector } from "react-redux";
 import JobList from "../UI/JobList";
 import JobsPagination from "./JobsPagination";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { jobsActions } from "../../redux/jobs-slice";
+import React from "react";
+import { useLocation } from "react-router-dom";
 
 const Jobs = () => {
   const dispatch = useDispatch();
-  const params = useParams();
-
-  const parameters = useSelector((state) => state.jobs.searchData);
+  const [urlParams] = useSearchParams();
+  const locationHook = useLocation();
   const jobs = useSelector((state) => state.jobs.foundJobs);
+  const categories = useSelector((state) => state.jobs.jobsCategories);
 
-  // Data from form
+  const searchParams = locationHook.state || Object.fromEntries([...urlParams]);
   const [position, setPosition] = useState(
-    parameters.position ? parameters.position : ""
+    searchParams.position ? searchParams.position : ""
   );
   const [location, setLocation] = useState(
-    parameters.location ? parameters.location : ""
+    searchParams.location ? searchParams.location : ""
   );
   const [category, setCategory] = useState(
-    parameters.category ? parameters.category : ""
+    searchParams.category ? searchParams.category : ""
   );
 
-  // console.log(parameters);
-  useEffect(() => {
-    dispatch(jobsActions.findJob({ position, location, category }));
-  }, [dispatch, category, position, location]);
-
-  //Pagination
   const [currentPage, setCurrentPage] = useState(
-    params.page ? +params.page : 1
+    searchParams.page ? +searchParams.page : 1
   );
+
+  const submitHandler = () => {
+    dispatch(jobsActions.findJob({ position, location, category }));
+  };
+
   const [recordsPerPage] = useState(10);
 
   const indexOfLastJob = currentPage * recordsPerPage;
@@ -71,15 +71,25 @@ const Jobs = () => {
               defaultValue={location}
               onChange={(e) => setLocation(e.target.value)}
             ></input>
-            <input
-              type="text"
-              placeholder="Category"
-              defaultValue={category}
-            ></input>
-            <SubmitButton style={{ width: "100%" }}>Search</SubmitButton>
+            <select
+              defaultValue={category || "DEFAULT"}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="DEFAULT" disabled={true} hidden={true}>
+                Select category
+              </option>
+              {categories.map((category) => (
+                <option value={category} key={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+
+            <SubmitButton style={{ width: "100%" }} onClick={submitHandler}>
+              Search
+            </SubmitButton>
           </SearchFormItems>
         </SearchForm>
-        <div style={{ textAlign: "left" }}>Advanced search options </div>
         <JobList jobs={currentRecords}></JobList>
         <JobsPagination
           noOfPages={noOfPages}

@@ -32,7 +32,7 @@ export const JobContent = styled.div`
 
   @media (max-width: 900px) {
     padding: 1rem;
-    text-align: center;
+    text-align: center !important;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 `;
@@ -56,6 +56,11 @@ export const JobInformation = styled.div`
     margin-top: 5px;
     font-size: 18px;
   }
+
+  @media screen and(max-width: 830px) {
+    text-align: center !important;
+    justify-content: center;
+  }
 `;
 
 export const JobActions = styled.div`
@@ -70,4 +75,3 @@ export const JobKeywords = styled.div`
   background-color: #222631;
   text-align: left;
 `;
-//Koniec

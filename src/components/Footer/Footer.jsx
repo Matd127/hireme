@@ -5,18 +5,18 @@ import {
   FooterLogo,
   FooterItem,
   FooterBottomContent,
+  FooterLink,
 } from "./Footer.style";
 import { Hr } from "../UI/Hr";
 import { IoIosArrowDropup } from "react-icons/io";
 import { AiFillCaretRight } from "react-icons/ai";
+import { AiFillGithub } from "react-icons/ai";
 
 const Footer = () => {
-
   return (
     <>
       <FooterContainer>
         <FooterInnerCotainer>
-
           <FooterLogo>
             <h3>HireMe</h3>
           </FooterLogo>
@@ -24,7 +24,7 @@ const Footer = () => {
           <FooterContent>
             <FooterItem>
               Who we are?
-              <Hr width="15%"/>
+              <Hr width="15%" />
               <div className="info">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Temporibus laborum consequatur aliquam tempore recusandae ab
@@ -34,56 +34,57 @@ const Footer = () => {
               </div>
             </FooterItem>
 
-            {/* candidates */}
             <FooterItem>
               For candidates
               <Hr width="15%" />
               <div className="info">
-                <div>
+                <FooterLink to={"/jobs"}>
                   <AiFillCaretRight />
                   Find a job
-                </div>
+                </FooterLink>
               </div>
             </FooterItem>
 
-            {/* employers */}
             <FooterItem>
               For employers
               <Hr width="15%" />
               <div className="info">
-              <div>
+                <FooterLink to={"/contact"}>
                   <AiFillCaretRight />
-                  Post a job
-                </div>
+                  Ask to post a job
+                </FooterLink>
               </div>
             </FooterItem>
 
-            {/* info */}
             <FooterItem>
               Information
               <Hr width="15%" />
               <div className="info">
-                <div>
+                <FooterLink>
                   <AiFillCaretRight />
                   About Us
-                </div>
-                <div>
+                </FooterLink>
+                <FooterLink to={"/contact"}>
                   <AiFillCaretRight />
                   Contact Us
-                </div>
-                <div>
-                  <AiFillCaretRight />
-                  FAQs
-                </div>
+                </FooterLink>
               </div>
             </FooterItem>
           </FooterContent>
+
           <FooterBottomContent>
-            <div>Copyright ...</div>
+            <div>Copyright 2023</div>
             <div>
-              <IoIosArrowDropup onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} style={{ fontSize: "40px" }} />
+              <IoIosArrowDropup
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                style={{ fontSize: "40px" }}
+              />
             </div>
-            <div>Github and other icons</div>
+            <div>
+              <FooterLink to={`https://github.com/Matd127`}>
+                <AiFillGithub style={{ fontSize: "30px" }}></AiFillGithub>
+              </FooterLink>
+            </div>
           </FooterBottomContent>
         </FooterInnerCotainer>
       </FooterContainer>

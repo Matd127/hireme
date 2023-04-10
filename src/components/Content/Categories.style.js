@@ -51,6 +51,7 @@ export const CategoriesItem = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  transition: 0.5s;
   border-left: ${({ isFirst }) =>
     isFirst ? "0.1px solid rgba(255, 255, 255, 0.14)" : "none"};
 

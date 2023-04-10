@@ -3,8 +3,10 @@ import { VscLocation } from "react-icons/vsc";
 import { BsBookmarkHeart } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import { ApplyBtn, FavBtn } from "../UI/Buttons";
+import { useNavigate } from 'react-router-dom';
 
 const JobList = ({jobs}) => {
+  const navigate = useNavigate();
   return (
     <>
       {jobs.map((job) => (
@@ -21,7 +23,9 @@ const JobList = ({jobs}) => {
               Location: {job.location}
             </div>
             <JobActions>
-              <ApplyBtn>
+              <ApplyBtn onClick={() => {
+                navigate(`/job/${job.id}/${job.position}`)
+              }}>
                 <AiFillEdit />
                 Apply
               </ApplyBtn>

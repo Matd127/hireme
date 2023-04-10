@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const FooterContainer = styled.div`
@@ -26,8 +27,7 @@ export const FooterContent = styled.div`
   grid-gap: 5%;
   padding: 2rem;
 
-
-  @media screen and (max-width: 700px){
+  @media screen and (max-width: 700px) {
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
   }
@@ -39,14 +39,27 @@ export const FooterItem = styled.div`
     border-bottom-width: 10px;
   }
 
-  .info{
+  .info {
+    display: flex;
+    flex-direction: column;
     margin-top: 1rem;
     text-align: justify;
   }
 `;
 
+export const FooterLink = styled(Link)`
+  margin-top: 5px;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.5s;
+
+  &:hover {
+    color: rgb(236, 53, 67);
+  }
+`;
+
 export const FooterBottomContent = styled.div`
-padding: 2rem;
-display: flex;
-justify-content: space-around;
-`
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+`;

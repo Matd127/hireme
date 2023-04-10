@@ -1,4 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+export const InputCss = css`
+  border: 1px solid #1a1e27;
+  background-color: #1a1e27;
+  border-radius: 10px;
+
+
+  outline: 0;
+  color: white;
+  padding-left: 20px;
+
+  &:focus {
+    outline: 0;
+    border: 1px solid rgb(236, 53, 67);
+  }
+`;
 
 export const JobsContainer = styled.div`
   width: 100%;
@@ -27,19 +43,14 @@ export const SearchFormItems = styled.div`
   justify-items: center;
 
   input[type="text"] {
-    border: 1px solid #1a1e27;
-    background-color: #1a1e27;
-    border-radius: 10px;
-    height: 50px;
+    ${InputCss}
     width: 95%;
-    outline: 0;
-    color: white;
-    padding-left: 20px;
+    height: 50px;
+  }
 
-    &:focus {
-      outline: 0;
-      border: 1px solid rgb(236, 53, 67);
-    }
+  select {
+    ${InputCss}
+    width: 100%;
   }
 
   margin-bottom: 5px;
@@ -58,12 +69,12 @@ export const PaginationContainer = styled.div`
     color: white;
   }
 
-  a{
+  span {
     text-decoration: none;
     color: white;
     padding: 15px;
 
-    &:visited{
+    &:visited {
       text-decoration: none;
     }
   }

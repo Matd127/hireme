@@ -4,8 +4,6 @@ import { DUMMY_JOBS } from "./DUMMY_JOBS";
 const initialJobsState = {
   jobsData: DUMMY_JOBS,
   foundJobs: DUMMY_JOBS,
-  //Test below
-  searchData: {},
   jobsCategories: [],
   featuredCategories: [],
   latestJobs: [],
@@ -37,39 +35,31 @@ const jobsSlice = createSlice({
             : categories.set(keyword, 1)
         )
       );
-      state.featuredCategories = Array.from(categories, ([category, amount]) => ({
-        category,
-        amount,
-      }));
+      state.featuredCategories = Array.from(
+        categories,
+        ([category, amount]) => ({
+          category,
+          amount,
+        })
+      ).sort((a, b) => b.amount - a.amount);
     },
 
     findJob(state, action) {
       const { position, location, category } = action.payload;
-      state.searchData = {...action.payload}
 
-      if (position) {
-        state.foundJobs = state.jobsData.filter((job) =>
-          job.position.toLowerCase().includes(position.toLowerCase())
-        );
-      }
+      let filteredJobs = state.foundJobs;
 
-      if (location) {
-        state.foundJobs = state.jobsData.filter((job) =>
-          job.location.toLowerCase().includes(location.toLowerCase())
-        );
-      }
+      filteredJobs = state.jobsData
+        .filter((job) => job.position.toLowerCase().includes(position ? position.toLowerCase() : ''))
+        .filter((job) => job.location.toLowerCase().includes(location ? location.toLowerCase() : ''))
+        .filter((job) => job.keywords.includes(category));
 
-      if (category) {
-        state.foundJobs = state.jobsData.filter((job) =>
-        job.keywords.includes(category)
-      );
-      }
+      if (!position && !location && !category)
+        filteredJobs = initialJobsState.foundJobs;
+
+        console.log(position, location, filteredJobs)
+      state.foundJobs = filteredJobs;
     },
-
-    passParameters(state, action) {
-      const { position, location, category } = action.payload;
-      state.searchData = {...action.payload}
-    }
   },
 });
 
