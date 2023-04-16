@@ -1,27 +1,6 @@
-import { useSelector } from "react-redux";
 import { PaginationContainer } from "./Jobs.style";
-import { useSearchParams } from "react-router-dom";
 
-const JobsPagination = (props) => {
-  const [, setSearchParams] = useSearchParams({
-    page: props.currentPage,
-  });
-
-  const pageNumbers = [...Array(props.noOfPages + 1).keys()].slice(1);
-
-  const nextPage = () => {
-    if (props.currentPage !== props.noOfPages && props.noOfPages > 0) {
-      props.setCurrentPage(props.currentPage + 1);
-      setSearchParams({ page: props.currentPage + 1 });
-    }
-  };
-  const prevPage = () => {
-    if (props.currentPage !== 1 && props.noOfPages > 0) {
-      props.setCurrentPage(props.currentPage - 1);
-      setSearchParams({ page: props.currentPage - 1 });
-    }
-  };
-
+const JobsPagination = ({ prevPage, pageNumbers, setPage, nextPage }) => {
   return (
     <PaginationContainer>
       <ul>
@@ -32,8 +11,7 @@ const JobsPagination = (props) => {
           <li key={pgNumber}>
             <span
               onClick={() => {
-                props.setCurrentPage(pgNumber);
-                setSearchParams({ page: pgNumber });
+                setPage(pgNumber);
               }}
               href="#"
             >

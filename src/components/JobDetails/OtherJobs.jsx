@@ -19,7 +19,10 @@ const OtherJobs = () => {
 
   const randomJobs = useSelector((state) => state.jobs.randomJobs);
 
-  const redirectHandler = (id, position) => navigate(`/job/${id}/${position}`)
+  const redirectHandler = (id, position) => {
+    dispatch(jobsActions.getRandomJobs());
+    navigate(`/job/${id}/${position}`)
+  }
 
   return (
     <OtherJobsContainer>

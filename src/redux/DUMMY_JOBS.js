@@ -38,5 +38,63 @@ export const DUMMY_JOBS = [
     salary: "$100,000 - $130,000 per year",
     location: "Seattle, Washington",
     keywords: ["Employee Relations", "Talent Acquisition", "Performance Management", "HR Compliance"]
-  }
+  },
+  {
+    id: 6,
+    position: "Human Resources Manager",
+    company: "Amazon",
+    salary: "$100,000 - $130,000 per year",
+    location: "Seattle, Washington",
+    keywords: ["Employee Relations", "Talent Acquisition", "Performance Management", "HR Compliance"]
+  },
+  {
+    id: 7,
+    position: "Human Resources Manager",
+    company: "Amazon",
+    salary: "$100,000 - $130,000 per year",
+    location: "Seattle, Washington",
+    keywords: ["Employee Relations", "Talent Acquisition", "Performance Management", "HR Compliance"]
+  },
+  {
+    id: 8,
+    position: "Human Resources Manager",
+    company: "Amazon",
+    salary: "$100,000 - $130,000 per year",
+    location: "Seattle, Washington",
+    keywords: ["Employee Relations", "Talent Acquisition", "Performance Management", "HR Compliance"]
+  },
+  {
+    id: 9,
+    position: "Human Resources Manager",
+    company: "Amazon",
+    salary: "$100,000 - $130,000 per year",
+    location: "Seattle, Washington",
+    keywords: ["Employee Relations", "Talent Acquisition", "Performance Management", "HR Compliance"]
+  },
+  
+  {
+    id: 10,
+    position: "Human Resources Manager",
+    company: "Amazon",
+    salary: "$100,000 - $130,000 per year",
+    location: "Seattle, Washington",
+    keywords: ["Employee Relations", "Talent Acquisition", "Performance Management", "HR Compliance"]
+  },
+  {
+    id: 11,
+    position: "Human Resources Manager",
+    company: "Amazon",
+    salary: "$100,000 - $130,000 per year",
+    location: "Seattle, Washington",
+    keywords: ["Employee Relations", "Talent Acquisition", "Performance Management", "HR Compliance"]
+  },
+  {
+    id: 12,
+    position: "Human Resources Manager",
+    company: "Amazon",
+    salary: "$100,000 - $130,000 per year",
+    location: "Seattle, Washington",
+    keywords: ["Employee Relations", "Talent Acquisition", "Performance Management", "HR Compliance"]
+  },
+  
 ]

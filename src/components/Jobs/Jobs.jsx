@@ -15,13 +15,15 @@ import { useSearchParams } from "react-router-dom";
 import { jobsActions } from "../../redux/jobs-slice";
 import React from "react";
 import { useLocation } from "react-router-dom";
+import usePagination from "../../hooks/usePagination";
 
 const Jobs = () => {
   const dispatch = useDispatch();
   const [urlParams] = useSearchParams();
   const locationHook = useLocation();
-  const jobs = useSelector((state) => state.jobs.foundJobs);
+
   const categories = useSelector((state) => state.jobs.jobsCategories);
+  const jobs = useSelector((state) => state.jobs.foundJobs);
 
   const searchParams = locationHook.state || Object.fromEntries([...urlParams]);
   const [position, setPosition] = useState(
@@ -34,21 +36,14 @@ const Jobs = () => {
     searchParams.category ? searchParams.category : ""
   );
 
-  const [currentPage, setCurrentPage] = useState(
-    searchParams.page ? +searchParams.page : 1
-  );
-
   const submitHandler = () => {
     dispatch(jobsActions.findJob({ position, location, category }));
   };
 
-  const [recordsPerPage] = useState(10);
-
-  const indexOfLastJob = currentPage * recordsPerPage;
-  const indexOfFirstJob = indexOfLastJob - recordsPerPage;
-
-  const currentRecords = jobs.slice(indexOfFirstJob, indexOfLastJob);
-  const noOfPages = Math.ceil(jobs.length / 10);
+  const { nextPage, prevPage, setPage, pageNumbers, records } = usePagination(
+    1,
+    jobs
+  );
 
   return (
     <JobsContainer>
@@ -90,14 +85,13 @@ const Jobs = () => {
             </SubmitButton>
           </SearchFormItems>
         </SearchForm>
-        <JobList jobs={currentRecords}></JobList>
+        <JobList jobs={records}></JobList>
         <JobsPagination
-          noOfPages={noOfPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          position={position}
-          location={location}
-          category={category}
+          jobs={jobs}
+          prevPage={prevPage}
+          pageNumbers={pageNumbers}
+          setPage={setPage}
+          nextPage={nextPage}
         />
       </JobsInnerContainer>
     </JobsContainer>
