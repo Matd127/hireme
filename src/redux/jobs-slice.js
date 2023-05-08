@@ -72,12 +72,11 @@ const jobsSlice = createSlice({
             .toLowerCase()
             .includes(location ? location.toLowerCase() : "")
         )
-        // .filter((job) => job.keywords.includes(category)); // FIX IT!
+        .filter((job) => job.keywords.includes(category));
 
       if (!position && !location && !category)
         filteredJobs = initialJobsState.foundJobs;
 
-        console.log(action.payload)
       state.foundJobs = filteredJobs;
     },
 
