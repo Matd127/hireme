@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/HomePage";
 import Contact from "./pages/ContactPage";
-import Jobs from "./pages/JobsPage";
 import JobDetails from "./pages/JobDetailsPage"
 
 function App() {
@@ -25,10 +24,10 @@ function App() {
       path: 'contact',
       element: <Contact/>
     },
-    {
-      path: 'jobs',
-      element: <Jobs/>
-    },
+    // {
+    //   path: 'jobs',
+    //   element: <Jobs/>
+    // },
     {
       path: 'job/:id/:position',
       element: <JobDetails/>

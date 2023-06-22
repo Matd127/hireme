@@ -7,7 +7,6 @@ export const baseContainer = css`
   color: white;
   text-align: center;
 `
-
 export const baseContent = css`
   margin: 1rem;
   padding: 1rem;
