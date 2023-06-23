@@ -3,7 +3,7 @@ import { IconWrapper, JobsStatsInnerWrapper, Type } from "./JobsStatsStyle";
 import { BsFillBriefcaseFill } from "react-icons/bs";
 import { BsGrid } from "react-icons/bs";
 import { BsFileText } from "react-icons/bs";
-import { Count } from "./JobsStatsStyle";
+import CountAnimation from "./CountAnimation";
 
 const JobsStats = () => {
   return (
@@ -11,18 +11,18 @@ const JobsStats = () => {
       <JobsStatsInnerWrapper>
         <IconWrapper>
           <BsFileText color="#4398d4" size={100} />
-          <Count>125 </Count>
+          <CountAnimation targetCount={125} />
           <Type>Jobs posted</Type>
         </IconWrapper>
 
         <IconWrapper>
           <BsFillBriefcaseFill color="#4398d4" size={100} />
-          <Count>666 </Count>
+          <CountAnimation targetCount={666} />
           <Type>Companies</Type>
         </IconWrapper>
         <IconWrapper>
           <BsGrid color="#4398d4" size={100} />
-          <Count>999 </Count>
+          <CountAnimation targetCount={999} />
           <Type>Categories</Type>
         </IconWrapper>
       </JobsStatsInnerWrapper>

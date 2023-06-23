@@ -1,5 +1,17 @@
-import styled from "styled-components";
 import { media } from "../UI/mediaQueries";
+import styled, { keyframes, css } from "styled-components";
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 
 export const FeaturedCategoriesTitle = styled.h2`
   color: #2f2f2f;
@@ -23,6 +35,14 @@ export const FeaturedCardGrid = styled.div`
 
   ${media.xsmall`
     grid-template-columns: repeat(1, 250px);
+  `}
+
+  ${(props) =>
+    props.animate &&
+    css`
+      opacity: 0.5;
+      transform: translateY(50px);
+      animation: ${fadeIn} 1s ease-in-out forwards;
   `}
 `;
 
