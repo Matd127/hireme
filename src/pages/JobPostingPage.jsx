@@ -1,7 +1,13 @@
 import JobPostingHero from "../components/JobPosting/JobPostingHero/JobPostingHero";
+import PostingForm from "../components/JobPosting/PostingForm/PostingForm";
 
 const JobPostingPage = () => {
-  return <JobPostingHero />;
+  return (
+    <>
+      <JobPostingHero />
+      <PostingForm />
+    </>
+  );
 };
 
 export default JobPostingPage;

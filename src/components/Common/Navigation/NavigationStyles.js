@@ -12,10 +12,12 @@ export const NavWrapper = styled(InnerWrapper)`
   align-items: center;
 `;
 
-export const NavBrand = styled.div`
+export const NavBrand = styled(Link)`
   text-decoration: none;
   font-size: 40px;
   font-weight: bold;
+  text-decoration: none;
+  color: #ddd;
 `;
 
 const menuAniamtion = keyframes`
