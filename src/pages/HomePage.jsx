@@ -1,11 +1,11 @@
-import FeaturedCategories from "../components/FeaturedCategories/FeaturedCategories";
-import FeatruedJobs from "../components/FeaturedJobs/FeatutredJobs";
-import BigFooter from "../components/BigFooter/BigFooter";
-import Hero from "../components/Hero/Hero";
-import JobPosting from "../components/JobPosting/JobPosting";
-import JobsStats from "../components/JobsStats/JobsStats";
-import QuickTips from "../components/QuickTips/QuickTips";
-import SmallFooter from "../components/SmallFooter/SmallFooter";
+import FeaturedCategories from "../components/Home/FeaturedCategories/FeaturedCategories";
+import FeatruedJobs from "../components/Home/FeaturedJobs/FeatutredJobs";
+import Hero from "../components/Home/Hero/Hero";
+import JobPosting from "../components/Home/JobPosting/JobPosting";
+import JobsStats from '../components/Home/JobsStats/JobsStats'
+import QuickTips from "../components/Home/QuickTips/QuickTips"
+import BigFooter from "../components/Common/BigFooter/BigFooter"
+import SmallFooter from "../components/Common/SmallFooter/SmallFooter";
 
 const HomePage = () => {
   return (
