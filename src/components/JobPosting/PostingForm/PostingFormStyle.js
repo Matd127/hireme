@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { media } from "../../UI/mediaQueries";
 import { DefaultButton } from "../../UI/ButtonStyle";
+import { InputStyle } from "../../UI/InputStyle";
 
 export const PostingFormWrapper = styled.div`
   margin-top: 2rem;
@@ -44,35 +45,11 @@ export const PostingFormLabel = styled.label`
 `;
 
 export const FormInput = styled.input`
-  border: 1px solid #ddd;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  background-color: #fff;
-  background-clip: padding-box;
-  border-radius: 5px;
-  padding: 10px 20px;
-  color: rgb(51, 51, 51);
-
-  &:focus {
-    outline: none;
-  }
+  ${InputStyle};
 `;
 
 export const FormSelect = styled.select`
-  border: 1px solid #ddd;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  background-color: #fff;
-  background-clip: padding-box;
-  border-radius: 5px;
-  padding: 10px 20px;
-  color: rgb(51, 51, 51);
-
-  &:focus {
-    outline: none;
-  }
+  ${InputStyle};
 `;
 
 export const FormAction = styled.div`
@@ -83,4 +60,9 @@ export const FormAction = styled.div`
 
 export const SubmitButton = styled(DefaultButton)`
   padding: 10px 25px;
+`;
+
+export const DescriptionArea = styled.textarea`
+  ${InputStyle};
+  resize: vertical;
 `;

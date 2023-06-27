@@ -4,7 +4,14 @@ import QuickTips from "./QuickTips";
 
 describe("Quick Tips test", () => {
   test("renders QucikTips items correctly", () => {
-    
+    const mockIntersectionObserver = jest.fn();
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    });
+    window.IntersectionObserver = mockIntersectionObserver;
+
     const tip = {
       id: 1,
       title: "Practice your answers to common interview questions",
