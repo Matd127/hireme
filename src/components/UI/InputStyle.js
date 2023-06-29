@@ -1,4 +1,5 @@
 import { css } from "styled-components";
+import { media } from "./mediaQueries";
 
 export const InputStyle = css`
   border: 1px solid #ddd;
@@ -14,4 +15,8 @@ export const InputStyle = css`
   &:focus {
     outline: none;
   }
+
+  ${media.medium`
+    width: auto;
+  `}
 `;

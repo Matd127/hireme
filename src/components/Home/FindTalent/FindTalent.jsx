@@ -1,7 +1,7 @@
 import { Wrapper } from "../../UI/WrapperStyle";
-import { JobPostingAction, JobPostingInnerWrapper, JobPostingText, JobPostingTitle } from "./JobPostingStyle";
+import { JobPostingAction, JobPostingInnerWrapper, JobPostingText, JobPostingTitle } from "./FindTalentStyle";
 
-const JobPosting = () => {
+const FindTalent = () => {
   return (
     <Wrapper theme="light">
       <JobPostingInnerWrapper>
@@ -20,4 +20,4 @@ const JobPosting = () => {
   );
 };
 
-export default JobPosting;
+export default FindTalent;

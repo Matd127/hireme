@@ -5,15 +5,13 @@ import {
   FooterItem,
   FooterLinks,
   FooterTitle,
-  FooterListItem
+  FooterListItem,
 } from "./BigFooterStyle";
 
 const Footer = () => {
   return (
-    <>
     <Wrapper theme="dark">
       <FooterInnerWrapper>
-
         <FooterItem>
           <FooterTitle>HireMe</FooterTitle>
           <FooterDescription>
@@ -25,7 +23,7 @@ const Footer = () => {
         </FooterItem>
 
         <FooterItem>
-        <FooterTitle>Job Board</FooterTitle>
+          <FooterTitle>Job Board</FooterTitle>
           <FooterLinks>
             <FooterListItem>Job List</FooterListItem>
             <FooterListItem>Browse Categories</FooterListItem>
@@ -34,7 +32,7 @@ const Footer = () => {
         </FooterItem>
 
         <FooterItem>
-        <FooterTitle>Quick Links</FooterTitle>
+          <FooterTitle>Quick Links</FooterTitle>
           <FooterLinks>
             <FooterListItem>Home</FooterListItem>
             <FooterListItem>About us</FooterListItem>
@@ -43,17 +41,17 @@ const Footer = () => {
         </FooterItem>
 
         <FooterItem>
-        <FooterTitle>Information</FooterTitle>
+          <FooterTitle>Information</FooterTitle>
           <FooterLinks>
             <FooterListItem>Phone +00 000 000 000</FooterListItem>
             <FooterListItem>Email: email@email.com</FooterListItem>
-            <FooterListItem>Address: Random Street 93, Location, Country</FooterListItem>
+            <FooterListItem>
+              Address: Random Street 93, Location, Country
+            </FooterListItem>
           </FooterLinks>
         </FooterItem>
-
       </FooterInnerWrapper>
     </Wrapper>
-    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import FeaturedCategories from "../components/Home/FeaturedCategories/FeaturedCategories";
 import FeatruedJobs from "../components/Home/FeaturedJobs/FeatutredJobs";
 import Hero from "../components/Home/Hero/Hero";
-import JobPosting from "../components/Home/JobPosting/JobPosting";
+import FindTalent from "../components/Home/FindTalent/FindTalent";
 import JobsStats from '../components/Home/JobsStats/JobsStats'
 import QuickTips from "../components/Home/QuickTips/QuickTips"
 import BigFooter from "../components/Common/BigFooter/BigFooter"
@@ -13,7 +13,7 @@ const HomePage = () => {
       <Hero />
       <FeaturedCategories />
       <FeatruedJobs />
-      <JobPosting />
+      <FindTalent />
       <JobsStats />
       <QuickTips />
       <BigFooter />

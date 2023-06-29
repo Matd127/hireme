@@ -1,10 +1,13 @@
-import Hero from "../components/Home/Hero/Hero";
+import JobSearchForm from "../components/Jobs/JobSearchForm/JobSearchForm";
+import JobsHero from "../components/Jobs/JobsHero/JobsHero";
+import FeatruedJobs from '../components/Home/FeaturedJobs/FeatutredJobs'
+
 const JobsPage = () => {
   return (
     <>
-      <Hero>
-
-      </Hero>
+      <JobsHero/>
+      <JobSearchForm />
+      <FeatruedJobs />
     </>
   );
 };

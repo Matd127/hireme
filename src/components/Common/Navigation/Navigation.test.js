@@ -7,7 +7,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 describe("Navigation", () => {
   test("renders navigation items correctly", () => {
-
     render(
       <Router>
         <Navigation />
@@ -17,9 +16,11 @@ describe("Navigation", () => {
     const homeNavItem = screen.getByText("Home");
     const jobsNavItem = screen.getByText("Jobs");
     const contactNavItem = screen.getByText("Contact");
+    const postAJobItem = screen.getByText("Post a job");
 
     expect(homeNavItem).toBeInTheDocument();
     expect(jobsNavItem).toBeInTheDocument();
     expect(contactNavItem).toBeInTheDocument();
+    expect(postAJobItem).toBeInTheDocument();
   });
 });

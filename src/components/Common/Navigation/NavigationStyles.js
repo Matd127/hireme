@@ -18,6 +18,7 @@ const mobileMenu = css`
   background-color: rgb(19, 23, 30);
   margin: 0;
   overflow: hidden;
+  z-index: 1;
 `;
 
 export const NavWrapper = styled(InnerWrapper)`
@@ -40,7 +41,7 @@ export const NavMenu = styled.div`
   display: flex;
   ${(props) =>
     props.isOpen &&
-    media.medium`
+    media.large`
     ${mobileMenu}
     animation-name: ${menuAniamtion};
     animation-duration: 1s;
@@ -49,9 +50,9 @@ export const NavMenu = styled.div`
 
   ${(props) =>
     !props.isOpen &&
-    media.medium`
+    media.large`
     ${mobileMenu}
-    left: ${props.firstOpen ? 0 : "768px"};
+    left: ${props.firstOpen ? 0 : "992px"};
     animation-name: ${props.firstOpen ? closeAnimation : ""};
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -77,7 +78,7 @@ export const Hamburger = styled.div`
   padding: 10px;
   cursor: pointer;
 
-  ${media.medium`
+  ${media.large`
     display: flex;
   `}
 `;

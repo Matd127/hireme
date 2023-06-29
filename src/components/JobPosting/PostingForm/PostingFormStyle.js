@@ -65,4 +65,6 @@ export const SubmitButton = styled(DefaultButton)`
 export const DescriptionArea = styled.textarea`
   ${InputStyle};
   resize: vertical;
+  font-family: inherit;
+  font-size: inherit;
 `;
