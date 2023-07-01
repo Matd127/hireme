@@ -1,25 +1,17 @@
 import React from "react";
-import Navigation from "../../Common/Navigation/Navigation";
-import { HeroSubTitle, HeroTitle, HeroWrapper } from "./HeroStyles";
-import { InnerWrapper } from "../../UI/WrapperStyle";
+import { HeroSubTitle } from "./HeroStyles";
 import HeroSearchForm from "./HeroSearchForm";
 import TrendingRanking from "./TrendingRanking";
+import bg from "../../../assets/background.jpeg";
+import HeroSection from "../../Common/HeroSection/HeroSection";
 
 const Hero = () => {
   return (
-    <>
-      <HeroWrapper>
-        <Navigation />
-        <InnerWrapper>
-          <HeroTitle>Browse Jobs!</HeroTitle>
-          <HeroSubTitle>
-            Find Jobs, Employment & Career Opportunities
-          </HeroSubTitle>
-          <HeroSearchForm />
-          <TrendingRanking/>
-        </InnerWrapper>
-      </HeroWrapper>
-    </>
+    <HeroSection title='Browse Jobs!' bg={bg}>
+      <HeroSubTitle>Find Jobs, Employment & Career Opportunities</HeroSubTitle>
+      <HeroSearchForm />
+      <TrendingRanking />
+    </HeroSection>
   );
 };
 export default Hero;
