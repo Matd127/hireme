@@ -1,9 +1,10 @@
-import { Wrapper, InnerWrapper } from "../../UI/WrapperStyle";
-import { FeaturedCardGrid, FeaturedCategoriesTitle} from "./FeaturedCategoriesStyle";
+import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
+import { FeaturedCardGrid } from "./FeaturedCategoriesStyle";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { lazy, Suspense } from "react";
 import Loader from "../../UI/Loader/Loader";
+import { SectionTitle } from "../../Common/SectionWrapper/SectionWrapperStyle";
 
 const LazyFeaturedCard = lazy(() => import("./FeaturedCardLazy"));
 //Replace it real data
@@ -28,24 +29,22 @@ const FeaturedCategories = () => {
   }, [featuredCategoriesAreVisible, animate]);
 
   return (
-    <Wrapper>
-      <InnerWrapper>
-        <FeaturedCategoriesTitle ref={categoriesRef}>
-          Browse Some Featured Categories
-        </FeaturedCategoriesTitle>
-        <Suspense fallback={<Loader />}>
-          <FeaturedCardGrid animate={animate}>
-            {categoriesList.map((category, index) => (
-              <LazyFeaturedCard
-                category={category}
-                index={index}
-                key={index}
-              ></LazyFeaturedCard>
-            ))}
-          </FeaturedCardGrid>
-        </Suspense>
-      </InnerWrapper>
-    </Wrapper>
+    <SectionWrapper>
+      <SectionTitle ref={categoriesRef}>
+        Browse Some Featured Categories
+      </SectionTitle>
+      <Suspense fallback={<Loader />}>
+        <FeaturedCardGrid animate={animate}>
+          {categoriesList.map((category, index) => (
+            <LazyFeaturedCard
+              category={category}
+              index={index}
+              key={index}
+            ></LazyFeaturedCard>
+          ))}
+        </FeaturedCardGrid>
+      </Suspense>
+    </SectionWrapper>
   );
 };
 

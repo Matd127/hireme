@@ -1,13 +1,7 @@
 import styled from "styled-components";
 import { media } from "../../UI/mediaQueries";
 
-export const QuickTipsTitle = styled.h2`
-  color: rgb(47, 47, 47);
-  font-size: 40px;
-  text-align: center;
-`;
-
-export const TipsCardWrapper = styled.div`
+export const TipsCardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2rem;

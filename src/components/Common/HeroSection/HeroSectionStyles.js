@@ -5,7 +5,7 @@ import { Wrapper } from "../../UI/WrapperStyle";
 export const HeroSectionWrapper = styled(Wrapper)`
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-image: linear-gradient(
       rgba(12, 14, 21, 0.68),
       rgba(12, 14, 21, 0.68)
@@ -26,4 +26,4 @@ export const HeroSectionTitle = styled.div`
   ${media.small`
     margin-top: 0;
   `}
-`
+`;

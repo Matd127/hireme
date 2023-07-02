@@ -8,8 +8,9 @@ export const SmallFooterWrapper = styled(Wrapper)`
 `
 
 export const SmallFotterInnerWrapper = styled(InnerWrapper)`
-padding: 10px;
+
 `
 
 export const SmallFooterTitle = styled.p`
+padding: 10px;
 `

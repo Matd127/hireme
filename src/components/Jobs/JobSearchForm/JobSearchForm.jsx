@@ -24,40 +24,38 @@ const JobSearchForm = () => {
         <SearchFormWrapper>
           <JobSearchGrid>
             <PostingFormGroup>
-              <PostingFormLabel>Company Name</PostingFormLabel>
-              <FormInput type="text" placeholder="Company name" />
+              <PostingFormLabel>Job Title</PostingFormLabel>
+              <FormInput type="text" placeholder="Enter job title, position or keyword" />
             </PostingFormGroup>
 
             <PostingFormGroup>
-              <PostingFormLabel>Company Name</PostingFormLabel>
-              <FormInput type="text" placeholder="Company name" />
+              <PostingFormLabel>Location</PostingFormLabel>
+              <FormInput type="text" placeholder="Enter job location" />
             </PostingFormGroup>
 
             <PostingFormGroup>
-              <PostingFormLabel>Company Name</PostingFormLabel>
+              <PostingFormLabel>Categories</PostingFormLabel>
               <FormInput type="text" placeholder="Company name" />
             </PostingFormGroup>
 
-            
-          {showAdvancedMenu && (
-            <>
-              <PostingFormGroup>
-                <PostingFormLabel>Company Name</PostingFormLabel>
-                <FormInput type="text" placeholder="Company name" />
-              </PostingFormGroup>
+            {showAdvancedMenu && (
+              <>
+                <PostingFormGroup>
+                  <PostingFormLabel>Company Name</PostingFormLabel>
+                  <FormInput type="text" placeholder="Company name" />
+                </PostingFormGroup>
 
-              <PostingFormGroup>
-                <PostingFormLabel>Company Name</PostingFormLabel>
-                <FormInput type="text" placeholder="Company name" />
-              </PostingFormGroup>
+                <PostingFormGroup>
+                  <PostingFormLabel>Company Name</PostingFormLabel>
+                  <FormInput type="text" placeholder="Company name" />
+                </PostingFormGroup>
 
-              <PostingFormGroup>
-                <PostingFormLabel>Company Name</PostingFormLabel>
-                <FormInput type="text" placeholder="Company name" />
-              </PostingFormGroup>
-            </>
-          )}
-
+                <PostingFormGroup>
+                  <PostingFormLabel>Company Name</PostingFormLabel>
+                  <FormInput type="text" placeholder="Company name" />
+                </PostingFormGroup>
+              </>
+            )}
           </JobSearchGrid>
 
           <AdvancedMenu>

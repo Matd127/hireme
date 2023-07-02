@@ -1,20 +1,11 @@
 import { InnerWrapper } from "../../UI/WrapperStyle";
 import styled from "styled-components";
-import { media } from "../../UI/mediaQueries";
 
 export const FooterInnerWrapper = styled(InnerWrapper)`
   padding-top: 50px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1.5rem;
-
-  ${media.large`
-  grid-template-columns: repeat(2, 1fr);
-  `}
-
-  ${media.xsmall`
-  grid-template-columns: repeat(1, 1fr);
-  `}
 `;
 
 export const FooterItem = styled.div`
@@ -27,6 +18,7 @@ export const FooterTitle = styled.h3`
 
 export const FooterDescription = styled.p`
   color: rgba(221, 221, 221, 0.85);
+  line-height: 1.7;
   font-size: 15px;
 `;
 

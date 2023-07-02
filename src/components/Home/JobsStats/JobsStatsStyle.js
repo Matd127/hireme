@@ -1,16 +1,15 @@
-import { InnerWrapper } from "../../UI/WrapperStyle";
 import styled from "styled-components";
 import { media } from "../../UI/mediaQueries";
 
-export const JobsStatsInnerWrapper = styled(InnerWrapper)`
+export const JobsStatsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 0.5fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.5rem;
   justify-content: center;
   text-align: center;
   padding: 35px 5rem 0 5rem;
 
-  ${media.small`
+  ${media.medium`
   grid-template-columns: repeat(1, 1fr);
   `}
 `;
@@ -30,4 +29,3 @@ export const Count = styled.p`
 export const Type = styled.p`
   margin: 0;
 `;
-

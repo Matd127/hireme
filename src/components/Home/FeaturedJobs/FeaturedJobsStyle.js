@@ -7,12 +7,6 @@ export const FeaturedJobsInnerWrapper = styled(InnerWrapper)`
   margin-bottom: 30px;
 `;
 
-export const FeaturedJobsTile = styled.h2`
-  color: #dddddd;
-  font-size: 40px;
-  text-align: center;
-`;
-
 export const JobItem = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;

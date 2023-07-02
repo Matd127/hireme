@@ -12,4 +12,3 @@ export const Wrapper = styled.div`
 export const InnerWrapper = styled.div`
   width: 75%;
 `;
-

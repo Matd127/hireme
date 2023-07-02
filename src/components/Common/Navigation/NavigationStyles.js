@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { InnerWrapper } from "../../UI/WrapperStyle";
+import { InnerWrapper, Wrapper } from "../../UI/WrapperStyle";
 import styled, { css } from "styled-components";
 import { media } from "../../UI/mediaQueries";
 import { menuAniamtion, closeAnimation } from "./NavigationAnimations";
@@ -22,6 +22,7 @@ const mobileMenu = css`
 `;
 
 export const NavWrapper = styled(InnerWrapper)`
+  background-color: transparent;
   padding: 2rem 2rem;
   display: flex;
   flex-wrap: wrap;

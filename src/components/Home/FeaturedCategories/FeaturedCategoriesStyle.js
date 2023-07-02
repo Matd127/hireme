@@ -12,12 +12,6 @@ const fadeIn = keyframes`
   }
 `;
 
-export const FeaturedCategoriesTitle = styled.h2`
-  color: #2f2f2f;
-  font-size: 40px;
-  text-align: center;
-`;
-
 export const FeaturedCardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(250px, 300px));
