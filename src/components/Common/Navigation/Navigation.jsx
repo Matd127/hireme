@@ -31,7 +31,7 @@ const Navigation = () => {
         <NavItem to="/">Home</NavItem>
         <NavItem to="/jobs">Jobs</NavItem>
         <NavItem to="/post">Post a job</NavItem>
-        <NavItem to="./">Contact</NavItem>
+        <NavItem to="/contact">Contact</NavItem>
       </NavMenu>
     </NavWrapper>
   );
