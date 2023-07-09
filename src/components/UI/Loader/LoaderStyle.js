@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 
 const ballSize = "10px";
 const ballColor = "rgb(51,51,51)";
+
 const animationDuration = "1s";
 
 export const beatAnimation = keyframes`

@@ -7,7 +7,7 @@ export const JobsStatsGrid = styled.div`
   grid-gap: 1.5rem;
   justify-content: center;
   text-align: center;
-  padding: 35px 5rem 0 5rem;
+  padding: 3.5rem 0 0 0;
 
   ${media.medium`
   grid-template-columns: repeat(1, 1fr);
@@ -21,11 +21,12 @@ export const IconWrapper = styled.div`
 `;
 
 export const Count = styled.p`
-  font-size: 40px;
+  font-size: 4rem;
   font-weight: bold;
-  margin: 0.6rem;
+  margin: 1.5rem;
 `;
 
 export const Type = styled.p`
   margin: 0;
+  font-size: 1.8rem;
 `;

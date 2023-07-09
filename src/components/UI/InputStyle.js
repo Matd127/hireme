@@ -3,7 +3,7 @@ import { media } from "./mediaQueries";
 
 export const InputStyle = css`
   border: 1px solid #ddd;
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.5;
   background-color: #fff;

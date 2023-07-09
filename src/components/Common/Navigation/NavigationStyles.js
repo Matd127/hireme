@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { InnerWrapper, Wrapper } from "../../UI/WrapperStyle";
+import { InnerWrapper } from "../../UI/WrapperStyle";
 import styled, { css } from "styled-components";
 import { media } from "../../UI/mediaQueries";
 import { menuAniamtion, closeAnimation } from "./NavigationAnimations";
 
-const mobileMenu = css`
+const MobileMenu = css`
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@ const mobileMenu = css`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2.4rem;
   background-color: rgb(19, 23, 30);
   margin: 0;
   overflow: hidden;
@@ -23,16 +23,20 @@ const mobileMenu = css`
 
 export const NavWrapper = styled(InnerWrapper)`
   background-color: transparent;
-  padding: 2rem 2rem;
+  padding: 3.2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+
+  ${media.xsmall`
+    padding: 2rem;
+  `}
 `;
 
 export const NavBrand = styled(Link)`
   text-decoration: none;
-  font-size: 40px;
+  font-size: 4rem;
   font-weight: bold;
   text-decoration: none;
   color: #ddd;
@@ -43,7 +47,7 @@ export const NavMenu = styled.div`
   ${(props) =>
     props.isOpen &&
     media.large`
-    ${mobileMenu}
+    ${MobileMenu}
     animation-name: ${menuAniamtion};
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -52,7 +56,7 @@ export const NavMenu = styled.div`
   ${(props) =>
     !props.isOpen &&
     media.large`
-    ${mobileMenu}
+    ${MobileMenu}
     left: ${props.firstOpen ? 0 : "992px"};
     animation-name: ${props.firstOpen ? closeAnimation : ""};
     animation-duration: 1s;
@@ -65,8 +69,8 @@ export const NavItem = styled(Link)`
   text-decoration: none;
   font-weight: 600;
   color: #dddddd;
-  margin: 15px;
-  font-size: 24px;
+  margin: 1.5rem;
+  font-size: 2.4rem;
 
   &:hover {
     transition: 1s ease-in;
@@ -76,8 +80,9 @@ export const NavItem = styled(Link)`
 
 export const Hamburger = styled.div`
   display: none;
-  padding: 10px;
+  padding: 1rem;
   cursor: pointer;
+  color: #ddd;
 
   ${media.large`
     display: flex;

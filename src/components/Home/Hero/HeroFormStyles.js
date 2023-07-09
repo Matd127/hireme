@@ -4,7 +4,7 @@ import { DefaultButton } from "../../UI/ButtonStyle";
 
 
 export const HeroFormWrapper = styled.div`
-  margin-top: 2rem;
+  margin-top: 3.2rem;
   display: grid;
   grid-template-columns: 1fr 150px;
 
@@ -18,7 +18,7 @@ export const HeroForm = styled.div`
 `;
 
 export const InputsWrapper = styled.form`
-  padding: 1rem;
+  padding: 1.6rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   text-align: left;
@@ -30,15 +30,15 @@ export const InputsWrapper = styled.form`
 `;
 
 export const JobInput = styled.input`
-  padding: 1rem 2rem;
-  font-size: 16px;
+  padding: 1.6rem 3.2rem;
+  font-size: 1.6rem;
   background: transparent;
   border: none;
   outline: none;
   color: #ddd;
 
   ${media.large`
-    padding: 1.5rem;
+    padding: 2.4rem;
   `}
 
 `
@@ -51,9 +51,8 @@ export const LocationInput = styled(JobInput)`
   `}
 `
 
-
 export const HeroButton = styled(DefaultButton)`
   ${media.large`
-    padding: 1rem;
+    padding: 1.6rem;
   `}
 `

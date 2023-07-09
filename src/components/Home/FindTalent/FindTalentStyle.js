@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { DefaultButton } from "../../UI/ButtonStyle";
 
 export const FindTalentText = styled.p`
-  color: #333333;
-  padding: 0 2rem 0 2rem;
+  padding: 0 3.5rem 1rem 3.5rem;
+  font-size: 1.6rem;
   text-align: center;
 `;
 
@@ -13,6 +13,6 @@ export const FindTalentActions = styled.div`
 `;
 
 export const GetStartedButton  = styled(DefaultButton)`
-  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  padding: 0.8rem 2.4rem 0.8rem 2.4rem;
   text-align: center;
 `;

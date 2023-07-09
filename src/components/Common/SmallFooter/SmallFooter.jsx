@@ -1,10 +1,11 @@
-import { SmallFooterTitle, SmallFooterWrapper, SmallFotterInnerWrapper } from "./SmallFooterStyle";
+import { SmallFooterTitle, SmallFooterWrapper } from "./SmallFooterStyle";
+import { InnerWrapper } from "../../UI/WrapperStyle";
 const SmallFooter = () => {
   return (
     <SmallFooterWrapper theme="dark">
-      <SmallFotterInnerWrapper>
+      <InnerWrapper>
         <SmallFooterTitle>© HireMe 2023</SmallFooterTitle>
-      </SmallFotterInnerWrapper>
+      </InnerWrapper>
     </SmallFooterWrapper>
   );
 };

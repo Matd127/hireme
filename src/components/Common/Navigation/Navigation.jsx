@@ -27,7 +27,7 @@ const Navigation = () => {
       </Hamburger>
 
       <NavMenu firstOpen={firstOpen} isOpen={isOpen}>
-        {isOpen && <BsXLg size={40} onClick={openHandler} />}
+        {isOpen && <BsXLg color="#ddd" size={40} onClick={openHandler} />}
         <NavItem to="/">Home</NavItem>
         <NavItem to="/jobs">Jobs</NavItem>
         <NavItem to="/post">Post a job</NavItem>

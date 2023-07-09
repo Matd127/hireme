@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import React from "react";
 import {
   JobActions,
   JobDescription,
@@ -12,33 +14,34 @@ import {
   JobType,
 } from "./FeaturedJobsStyle";
 
-const JobItemLazy = () => {
+const JobItemLazy = React.memo(() => {
+  const jobs = useSelector(state => state.jobs.jobsList)
+  
   return (
-    <JobItem>
-      <JobInfo>
-        <JobItemWrapper>
-          <Logo />
-          <JobDetails>
-            <JobTitle>Test job</JobTitle>
-            <CompantyDetail>Company · City, Country</CompantyDetail>
-            <CompantyDetail>
-              <JobType time="full">Full-Time</JobType> |{" "}
-              <JobType>Category Name</JobType>{" "}
-            </CompantyDetail>
-          </JobDetails>
-        </JobItemWrapper>
-        <JobDescription>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur
-          repudiandae, cumque reiciendis iusto eligendi nobis id, perferendis,
-          officia quae ipsam ad odio dolores commodi accusantium et mollitia
-          corporis tenetur pariatur?
-        </JobDescription>
-      </JobInfo>
-      <JobActions>
-        <ApplyButton>Apply</ApplyButton>
-      </JobActions>
-    </JobItem>
+   jobs.map(job => (
+    <JobItem key={job.id}>
+    <JobInfo>
+      <JobItemWrapper>
+        <Logo />
+        <JobDetails>
+          <JobTitle>{job.title}</JobTitle>
+          <CompantyDetail>{job.companyName} · {job.location}</CompantyDetail>
+          <CompantyDetail>
+            <JobType time="full">{job.jobType}</JobType> |{" "}
+            <JobType>{job.jobCategory}</JobType>{" "}
+          </CompantyDetail>
+        </JobDetails>
+      </JobItemWrapper>
+      <JobDescription>
+        {job.description.substring(0, 255)}...
+      </JobDescription>
+    </JobInfo>
+    <JobActions>
+      <ApplyButton>Apply</ApplyButton>
+    </JobActions>
+  </JobItem>
+   ))
   );
-};
+});
 
 export default JobItemLazy;

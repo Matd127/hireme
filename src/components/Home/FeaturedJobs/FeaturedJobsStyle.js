@@ -1,15 +1,10 @@
 import styled from "styled-components";
 import { DefaultButton } from "../../UI/ButtonStyle";
-import { InnerWrapper } from "../../UI/WrapperStyle";
 import { media } from "../../UI/mediaQueries";
 
-export const FeaturedJobsInnerWrapper = styled(InnerWrapper)`
-  margin-bottom: 30px;
-`;
-
 export const JobItem = styled.div`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   display: grid;
   grid-template-columns: 1fr 200px;
   border-bottom: 1px solid rgba(222, 226, 230, 0.5);
@@ -41,18 +36,18 @@ export const JobItemWrapper = styled.div`
 `;
 
 export const Logo = styled.div`
-  width: 80px;
+  width: 8rem;
   background-color: aqua;
 
   ${media.xsmall`
-    min-height: 80px;
+    min-height: 8rem;
   `}
 `;
 
 export const JobDetails = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 0.5rem;
+  margin-left: 0.8rem;
 
   ${media.xsmall`
     margin: 0.5rem 0 0 0;
@@ -60,17 +55,18 @@ export const JobDetails = styled.div`
 `;
 
 export const JobDescription = styled.div`
-  margin: 1rem 0 0.5rem 0;
+  margin: 1rem 0 1rem 0;
   font-weight: 400;
+  font-size: 1.6rem;
 `;
 
 export const JobTitle = styled.div`
   font-weight: 600;
-  font-size: 20px;
+  font-size: 2.2rem;
 `;
 export const ApplyButton = styled(DefaultButton)`
-  margin: 1rem;
-  padding: 10px;
+  margin: 1.3rem;
+  padding: 1rem;
   width: 100%;
 
   ${media.medium`
@@ -79,17 +75,18 @@ export const ApplyButton = styled(DefaultButton)`
 `;
 
 export const CompantyDetail = styled.div`
-  margin-bottom: 5px;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 `;
 
 export const JobType = styled.div`
   display: inline-block;
-  font-size: 16px;
-  padding: 5px;
+  font-size: 1.6rem;
+  padding: 0.5rem;
   background-color: ${(props) =>
     props.time === "full" ? "#198754" : "#194587"};
   color: #fff;
   border: none;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.6rem;
 `;

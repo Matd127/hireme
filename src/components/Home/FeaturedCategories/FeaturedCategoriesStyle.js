@@ -16,7 +16,7 @@ export const FeaturedCardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(250px, 300px));
   justify-content: center;
-  grid-gap: 2rem;
+  grid-gap: 3.2rem;
 
   ${media.xxlarge`
   grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
@@ -32,7 +32,7 @@ export const FeaturedCardGrid = styled.div`
 `;
 
 export const FeaturedCard = styled.div`
-  padding: 1.5rem;
+  padding: 2.4rem;
   border: 1px solid #dee2e6;
   color: ${(props) => (props.theme === "dark" ? "#ddd" : "#2f2f2f")};
   background-color: ${(props) =>
@@ -52,11 +52,11 @@ export const FeaturedCard = styled.div`
 `;
 
 export const FeaturedCardTitle = styled.h3`
-  font-size: 24px;
+  font-size: 2.4rem;
   text-align: center;
 `;
 
 export const FeaturedCardText = styled.p`
-  font-size: 16px;
+  font-size: 1.6rem;
   text-align: center;
 `;

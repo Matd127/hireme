@@ -2,10 +2,10 @@ import { InnerWrapper } from "../../UI/WrapperStyle";
 import styled from "styled-components";
 
 export const FooterInnerWrapper = styled(InnerWrapper)`
-  padding-top: 50px;
+  padding-top: 0.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 2.4rem;
 `;
 
 export const FooterItem = styled.div`
@@ -13,13 +13,13 @@ export const FooterItem = styled.div`
 `;
 
 export const FooterTitle = styled.h3`
-  font-size: 30px;
+  font-size: 3rem;
 `;
 
 export const FooterDescription = styled.p`
   color: rgba(221, 221, 221, 0.85);
   line-height: 1.7;
-  font-size: 15px;
+  font-size: 1.5rem;
 `;
 
 export const FooterLinks = styled.ul`
@@ -29,7 +29,8 @@ export const FooterLinks = styled.ul`
 `;
 
 export const FooterListItem = styled.li`
-  margin-top: 1rem;
+  margin-top: 1.6rem;
+  font-size: 1.5rem;
 
   &:hover {
     font-weight: bold;

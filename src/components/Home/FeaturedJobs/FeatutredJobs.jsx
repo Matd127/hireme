@@ -13,7 +13,7 @@ const FeatruedJobs = () => {
 
   useEffect(() => {
     if (jobsAreVisible) {
-      setAnimate(true);
+        setAnimate(true);
     }
   }, [jobsAreVisible]);
 
@@ -22,7 +22,8 @@ const FeatruedJobs = () => {
       <SectionTitle theme="dark" ref={jobsRef}>
         Discover Featured Job Opportunites
       </SectionTitle>
-      <Suspense fallback={<Loader />}>{animate && <JobItemLazy />}</Suspense>
+      <Suspense fallback={<Loader />}>
+        {animate && <JobItemLazy />}</Suspense>
     </SectionWrapper>
   );
 };
