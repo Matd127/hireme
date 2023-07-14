@@ -16,7 +16,8 @@ export const HeroSectionWrapper = styled(Wrapper)`
   flex-direction: column;
   justify-content: flex-start;
   text-align: center;
-  min-height: 30rem;
+  min-height: 40rem;
+  padding: 0;
 `;
 
 export const HeroSectionTitle = styled.div`

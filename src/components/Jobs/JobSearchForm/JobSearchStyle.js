@@ -36,6 +36,7 @@ export const AdvancedAction = styled.div`
   cursor: pointer;
   font-size: 1.6rem;
 
+
   svg {
     margin-left: 0.5rem;
   }

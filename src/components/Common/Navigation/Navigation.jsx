@@ -4,6 +4,7 @@ import {
   NavItem,
   NavMenu,
   Hamburger,
+  CloseIcon,
 } from "./NavigationStyles";
 import { BsList } from "react-icons/bs";
 import { BsXLg } from "react-icons/bs";
@@ -27,7 +28,11 @@ const Navigation = () => {
       </Hamburger>
 
       <NavMenu firstOpen={firstOpen} isOpen={isOpen}>
-        {isOpen && <BsXLg color="#ddd" size={40} onClick={openHandler} />}
+        {isOpen && (
+          <CloseIcon onClick={openHandler}>
+            <BsXLg color="#ddd" size={40} />
+          </CloseIcon>
+        )}
         <NavItem to="/">Home</NavItem>
         <NavItem to="/jobs">Jobs</NavItem>
         <NavItem to="/post">Post a job</NavItem>

@@ -6,6 +6,7 @@ import { FormGrid, FormWrapper } from "../../UI/FormStyle";
 
 export const PostingFormWrapper = styled.form`
   ${FormWrapper}
+  padding: 3rem 0;
 `;
 
 export const PostingFormGrid = styled.div`
@@ -23,6 +24,7 @@ export const PostingFormGrid = styled.div`
 export const PostingFormTitle = styled.h2`
   color: rgb(47, 47, 47);
   font-size: 2.4rem;
+  margin-bottom: 2rem;
 `;
 
 export const PostingFormGroup = styled.div`

@@ -52,6 +52,7 @@ export const FeaturedCard = styled.div`
 `;
 
 export const FeaturedCardTitle = styled.h3`
+  margin: 2rem;
   font-size: 2.4rem;
   text-align: center;
 `;
@@ -59,4 +60,5 @@ export const FeaturedCardTitle = styled.h3`
 export const FeaturedCardText = styled.p`
   font-size: 1.6rem;
   text-align: center;
+  margin: 1.6rem;
 `;

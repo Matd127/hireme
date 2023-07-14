@@ -21,7 +21,7 @@ const JobSearchForm = () => {
   return (
     <SectionWrapper>
       <SearchFormWrapper>
-        <JobSearchGrid>
+        <JobSearchGrid showAdvancedMenu = {showAdvancedMenu}>
           <PostingFormGroup>
             <PostingFormLabel>Job Title</PostingFormLabel>
             <FormInput

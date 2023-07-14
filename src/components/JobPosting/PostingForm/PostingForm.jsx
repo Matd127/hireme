@@ -14,15 +14,32 @@ import {
 import { BsXLg } from "react-icons/bs";
 import useTags from "../../../hooks/useTags";
 import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCategories } from "../../../redux/categories-slice";
 
 const PostingForm = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data)
+  };
 
   const skillsTags = useTags();
   const benefitsTags = useTags();
   const keywordsTags = useTags();
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    async function fetchCategories() {
+      dispatch(getCategories());
+    }
+    fetchCategories();
+  }, [dispatch]);
+
+  const { categoriesList, error, loading } = useSelector(
+    (state) => state.categories
+  );
+  
   return (
     <SectionWrapper>
       <PostingFormWrapper onSubmit={handleSubmit(onSubmit)}>
@@ -74,8 +91,11 @@ const PostingForm = () => {
               <option value="" disabled>
                 Select a category
               </option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+              {categoriesList.map((category, i) => (
+                <option key={i} value={category}>
+                  {category}
+                </option>
+              ))}
             </FormSelect>
           </PostingFormGroup>
 
@@ -173,6 +193,15 @@ const PostingForm = () => {
               placeholder="Keywords"
               onBlur={keywordsTags.handleTags}
               onKeyDown={keywordsTags.handleTagsEnter}
+            />
+          </PostingFormGroup>
+
+          <PostingFormGroup>
+            <PostingFormLabel>Apply Link</PostingFormLabel>
+            <FormInput
+              type="text"
+              placeholder="Apply link"
+              {...register("applyLink")}
             />
           </PostingFormGroup>
 

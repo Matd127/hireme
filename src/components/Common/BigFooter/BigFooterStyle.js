@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { InnerWrapper } from "../../UI/WrapperStyle";
 import styled from "styled-components";
 
@@ -14,12 +15,18 @@ export const FooterItem = styled.div`
 
 export const FooterTitle = styled.h3`
   font-size: 3rem;
+  margin: 3rem 0;
 `;
 
 export const FooterDescription = styled.p`
   color: rgba(221, 221, 221, 0.85);
   line-height: 1.7;
   font-size: 1.5rem;
+`;
+
+export const FooterLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
 `;
 
 export const FooterLinks = styled.ul`

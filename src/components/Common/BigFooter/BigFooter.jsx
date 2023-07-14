@@ -6,7 +6,10 @@ import {
   FooterLinks,
   FooterTitle,
   FooterListItem,
+  FooterLink,
 } from "./BigFooterStyle";
+import { AiFillGithub } from "react-icons/ai";
+import { AiFillLinkedin } from "react-icons/ai";
 
 const Footer = () => {
   return (
@@ -20,21 +23,34 @@ const Footer = () => {
             possimus unde perferendis culpa, fugiat tempore in consequuntur quo?
             Ducimus doloribus architecto natus dicta!
           </FooterDescription>
+
+          <FooterLink to="https://github.com/matd127">
+            <AiFillGithub size={35} to={`google.com`} />
+          </FooterLink>
+          <FooterLink to="https://www.linkedin.com/in/mateusz-dziekan-8ab004208/">
+            <AiFillLinkedin size={35} to={`google.com`} />
+          </FooterLink>
         </FooterItem>
 
         <FooterItem>
           <FooterTitle>Job Board</FooterTitle>
           <FooterLinks>
-            <FooterListItem>Job List</FooterListItem>
+            <FooterListItem>
+              <FooterLink to="/jobs">Job List</FooterLink>
+            </FooterListItem>
             <FooterListItem>Browse Categories</FooterListItem>
-            <FooterListItem>Post A New Job</FooterListItem>
+            <FooterListItem>
+              <FooterLink to="/post">Post A New Job</FooterLink>
+            </FooterListItem>
           </FooterLinks>
         </FooterItem>
 
         <FooterItem>
           <FooterTitle>Quick Links</FooterTitle>
           <FooterLinks>
-            <FooterListItem>Home</FooterListItem>
+            <FooterListItem>
+            <FooterLink to="/">Home</FooterLink>
+            </FooterListItem>
             <FooterListItem>About us</FooterListItem>
             <FooterListItem>Contact</FooterListItem>
           </FooterLinks>

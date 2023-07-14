@@ -15,33 +15,31 @@ import {
 } from "./FeaturedJobsStyle";
 
 const JobItemLazy = React.memo(() => {
-  const jobs = useSelector(state => state.jobs.jobsList)
-  
-  return (
-   jobs.map(job => (
-    <JobItem key={job.id}>
-    <JobInfo>
-      <JobItemWrapper>
-        <Logo />
-        <JobDetails>
-          <JobTitle>{job.title}</JobTitle>
-          <CompantyDetail>{job.companyName} · {job.location}</CompantyDetail>
-          <CompantyDetail>
-            <JobType time="full">{job.jobType}</JobType> |{" "}
-            <JobType>{job.jobCategory}</JobType>{" "}
-          </CompantyDetail>
-        </JobDetails>
-      </JobItemWrapper>
-      <JobDescription>
-        {job.description.substring(0, 255)}...
-      </JobDescription>
-    </JobInfo>
-    <JobActions>
-      <ApplyButton>Apply</ApplyButton>
-    </JobActions>
-  </JobItem>
-   ))
-  );
+  const jobs = useSelector((state) => state.jobs.jobsList);
+
+  return jobs.map((job, index) => (
+    <JobItem key={index}>
+      <JobInfo>
+        <JobItemWrapper>
+          <Logo />
+          <JobDetails>
+            <JobTitle>{job.title}</JobTitle>
+            <CompantyDetail>
+              {job.companyName} · {job.location}
+            </CompantyDetail>
+            <CompantyDetail>
+              <JobType time="full">{job.jobType}</JobType> |{" "}
+              <JobType>{job.jobCategory}</JobType>{" "}
+            </CompantyDetail>
+          </JobDetails>
+        </JobItemWrapper>
+        <JobDescription>{job.description.substring(0, 255)}...</JobDescription>
+      </JobInfo>
+      <JobActions>
+        <ApplyButton>Apply</ApplyButton>
+      </JobActions>
+    </JobItem>
+  ));
 });
 
 export default JobItemLazy;

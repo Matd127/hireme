@@ -19,7 +19,7 @@ const FindTalent = () => {
         Join us today and find your next superstar employee!
       </FindTalentText>
       <FindTalentActions>
-        <GetStartedButton>Get started</GetStartedButton>
+        <GetStartedButton to="/post">Get started</GetStartedButton>
       </FindTalentActions>
     </SectionWrapper>
   );

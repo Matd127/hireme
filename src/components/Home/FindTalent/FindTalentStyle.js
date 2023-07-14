@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { DefaultButton } from "../../UI/ButtonStyle";
+import { Link } from "react-router-dom";
 
 export const FindTalentText = styled.p`
   padding: 0 3.5rem 1rem 3.5rem;
@@ -12,7 +13,10 @@ export const FindTalentActions = styled.div`
   justify-content: center;
 `;
 
-export const GetStartedButton  = styled(DefaultButton)`
+export const GetStartedButton  = styled(DefaultButton).attrs(() => ({
+  as: Link
+}))`
   padding: 0.8rem 2.4rem 0.8rem 2.4rem;
   text-align: center;
+  text-decoration: none;
 `;

@@ -6,7 +6,7 @@ export const JobItem = styled.div`
   padding-top: 2rem;
   padding-bottom: 2rem;
   display: grid;
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: 1fr 180px;
   border-bottom: 1px solid rgba(222, 226, 230, 0.5);
   color: rgba(221, 221, 221, 0.85);
 

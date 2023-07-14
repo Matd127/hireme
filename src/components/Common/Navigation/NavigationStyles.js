@@ -85,6 +85,15 @@ export const Hamburger = styled.div`
   color: #ddd;
 
   ${media.large`
-    display: flex;
+    display: block;
+  `}
+`;
+
+export const CloseIcon = styled.div`
+  padding: 1rem;
+  display: none;
+
+  ${media.large`
+    display: block;
   `}
 `;

@@ -10,15 +10,15 @@ import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
 import { useSelector } from "react-redux";
 
 const JobsStats = React.memo(() => {
-  const jobs = useSelector(state => state.jobs.jobsList)
-  
-  const companiesCount = [...new Set(jobs.map(job => job.companyName))].length;
-  const categoriesCount = [...new Set(jobs.map(job => job.jobCategory))].length;
+  const { jobsList } = useSelector(state => state.jobs)
+  const { categoriesList } = useSelector(state => state.categories)
+  const companiesCount = [...new Set(jobsList.map(job => job.companyName))].length;
 
   const [animate, setAnimate] = useState(false);
   const { ref: jobsStatsRef, inView: featuredCategoriesAreVisible } = useInView(
     {
       threshold: 0.1,
+      triggerOnce: true
     }
   );
 
@@ -33,7 +33,7 @@ const JobsStats = React.memo(() => {
       <JobsStatsGrid ref={jobsStatsRef}>
         <IconWrapper>
           <BsFileText color="#4398d4" size={100} />
-          {animate ? <CountAnimation targetCount={jobs.length} /> : <Count>0</Count>}
+          {animate ? <CountAnimation targetCount={jobsList.length} /> : <Count>0</Count>}
           <Type>Jobs posted</Type>
         </IconWrapper>
 
@@ -44,7 +44,7 @@ const JobsStats = React.memo(() => {
         </IconWrapper>
         <IconWrapper>
           <BsGrid color="#4398d4" size={100} />
-          {animate ? <CountAnimation targetCount={categoriesCount} /> : <Count>0</Count>}
+          {animate ? <CountAnimation targetCount={categoriesList.length} /> : <Count>0</Count>}
           <Type>Categories</Type>
         </IconWrapper>
       </JobsStatsGrid>
