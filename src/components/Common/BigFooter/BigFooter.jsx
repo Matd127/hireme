@@ -1,4 +1,4 @@
-import { Wrapper } from "../../UI/WrapperStyle";
+import { Wrapper } from "../../UI/styles/WrapperStyle";
 import {
   FooterDescription,
   FooterInnerWrapper,

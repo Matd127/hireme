@@ -8,4 +8,4 @@ export const backgroundLight = "#fff";
 export const backgroundDark = "rgb(19, 23, 30)";
 
 export const sectionPadding = "3.5rem";
-export const textNormal = "1.6rem";
+export const defaultFontSize = "1.6rem";

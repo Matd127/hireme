@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { media } from "../../UI/mediaQueries";
-import { Wrapper } from "../../UI/WrapperStyle";
+import { Wrapper } from "../../UI/styles/WrapperStyle";
 import { pageColor } from "../../UI/variables";
 
 export const HeroSectionWrapper = styled(Wrapper)`

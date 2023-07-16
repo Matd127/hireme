@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DefaultButton } from "../../UI/ButtonStyle";
+import { DefaultButton } from "../../UI/styles/ButtonStyle";
 import { Link } from "react-router-dom";
 
 export const FindTalentText = styled.p`

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Wrapper } from "../../UI/WrapperStyle";
+import { Wrapper } from "../../UI/styles/WrapperStyle";
 
 export const SmallFooterWrapper = styled(Wrapper)`
   border-top: 1px solid rgba(222, 226, 230, 0.5);

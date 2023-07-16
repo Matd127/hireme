@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { media } from "./mediaQueries";
+import { media } from "../mediaQueries";
 
 export const InputStyle = css`
   border: 1px solid #ddd;
