@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DefaultButton } from "../../UI/ButtonStyle";
+import { DefaultButton } from "../../UI/styles/ButtonStyle";
 import { media } from "../../UI/mediaQueries";
 
 export const JobItem = styled.div`

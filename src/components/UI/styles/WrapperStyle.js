@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { themeLight, themeDark } from "./themes";
-import { media } from "./mediaQueries";
+import { themeLight, themeDark } from "../themes";
+import { media } from "../mediaQueries";
 
 export const Wrapper = styled.div`
   width: 100%;

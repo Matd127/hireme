@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { media } from "../../UI/mediaQueries";
-import { DefaultButton } from "../../UI/ButtonStyle";
+import { DefaultButton } from "../../UI/styles/ButtonStyle";
 
 
 export const HeroFormWrapper = styled.div`
