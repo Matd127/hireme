@@ -1,37 +1,165 @@
 {
   "categories": [
-    "Administration",
-    "Accounting/Finance",
-    "Advertising/Marketing",
-    "Agriculture/Fishing",
-    "Architecture/Engineering",
-    "Arts/Design/Entertainment",
-    "Aviation",
-    "Banking/Finance",
-    "Beauty/Wellness",
-    "Construction/Trades",
-    "Customer Service",
-    "Education/Training",
-    "Energy/Utilities",
-    "Healthcare",
-    "Human Resources",
-    "IT/Software",
-    "Insurance",
-    "Legal",
-    "Manufacturing",
-    "Media/Communication",
-    "Nonprofit/Volunteer",
-    "Project Management",
-    "Real Estate",
-    "Research & Development",
-    "Retail/Sales",
-    "Science/Technology",
-    "Social Services",
-    "Sports/Fitness",
-    "Supply Chain/Logistics",
-    "Telecommunications",
-    "Transportation/Automotive",
-    "Writing/Editing/Content"
+    {
+      "id": 1,
+      "name": "Administration",
+      "description": "Management and coordination of business operations."
+    },
+    {
+      "id": 2,
+      "name": "Accounting/Finance",
+      "description": "Financial record-keeping and money management."
+    },
+    {
+      "id": 3,
+      "name": "Advertising/Marketing",
+      "description": "Promoting products and services to target audiences."
+    },
+    {
+      "id": 4,
+      "name": "Agriculture/Fishing",
+      "description": "Cultivating crops and harvesting aquatic resources."
+    },
+    {
+      "id": 5,
+      "name": "Architecture/Engineering",
+      "description": "Designing and constructing buildings and infrastructure."
+    },
+    {
+      "id": 6,
+      "name": "Arts/Design",
+      "description": "Creating visual and performing arts for entertainment."
+    },
+    {
+      "id": 7,
+      "name": "Aviation",
+      "description": "Operating and maintaining aircraft and air transport."
+    },
+    {
+      "id": 8,
+      "name": "Banking/Finance",
+      "description": "Providing financial services and managing monetary transactions."
+    },
+    {
+      "id": 9,
+      "name": "Beauty/Wellness",
+      "description": "Offering personal care and health-related services."
+    },
+    {
+      "id": 10,
+      "name": "Construction/Trades",
+      "description": "Building and repairing structures and systems."
+    },
+    {
+      "id": 11,
+      "name": "Customer Service",
+      "description": "Assisting and supporting customers with their inquiries and issues."
+    },
+    {
+      "id": 12,
+      "name": "Education/Training",
+      "description": "Imparting knowledge and skills through teaching and instruction."
+    },
+    {
+      "id": 13,
+      "name": "Energy/Utilities",
+      "description": "Producing and distributing energy resources and utilities."
+    },
+    {
+      "id": 14,
+      "name": "Healthcare",
+      "description": "Providing medical and health-related services."
+    },
+    {
+      "id": 15,
+      "name": "Human Resources",
+      "description": "Managing and developing an organization's workforce."
+    },
+    {
+      "id": 16,
+      "name": "IT/Software",
+      "description": "Developing and maintaining computer software and systems."
+    },
+    {
+      "id": 17,
+      "name": "Insurance",
+      "description": "Offering financial protection against potential risks."
+    },
+    {
+      "id": 18,
+      "name": "Legal",
+      "description": "Providing legal advice and representation."
+    },
+    {
+      "id": 19,
+      "name": "Manufacturing",
+      "description": "Producing goods and products through industrial processes."
+    },
+    {
+      "id": 20,
+      "name": "Media/Communication",
+      "description": "Creating and delivering information through various channels."
+    },
+    {
+      "id": 21,
+      "name": "Nonprofit/Volunteer",
+      "description": "Engaging in charitable and community service activities."
+    },
+    {
+      "id": 22,
+      "name": "Project Management",
+      "description": "Planning and executing projects to achieve specific goals."
+    },
+    {
+      "id": 23,
+      "name": "Real Estate",
+      "description": "Dealing with property and land-related transactions."
+    },
+    {
+      "id": 24,
+      "name": "Research & Development",
+      "description": "Conducting research and innovation to create new products and knowledge."
+    },
+    {
+      "id": 25,
+      "name": "Retail/Sales",
+      "description": "Selling goods and services to consumers."
+    },
+    {
+      "id": 26,
+      "name": "Science/Technology",
+      "description": "Exploring, studying, and advancing scientific and technological fields."
+    },
+    {
+      "id": 27,
+      "name": "Social Services",
+      "description": "Providing support and assistance to individuals and communities in need."
+    },
+    {
+      "id": 28,
+      "name": "Sports/Fitness",
+      "description": "Engaging in physical activities and promoting well-being."
+    },
+    {
+      "id": 29,
+      "name": "Supply Chain/Logistics",
+      "description": "Managing the flow of goods and services from production to consumption."
+    },
+    {
+      "id": 30,
+      "name": "Telecommunications",
+      "description": "Communicating information over long distances using technology."
+    },
+    {
+      "id": 31,
+      "name": "Transportation/Automotive",
+      "description": "Moving people and goods using various transportation means."
+    },
+    {
+      "id": 32,
+      "name": "Writing/Editing/Content",
+      "description": "Creating and editing written and multimedia content."
+    }
   ],
   "jobs": [
     {
@@ -46,7 +174,12 @@
       "jobType": "Full-time",
       "requiredSkills": ["Java", "Python", "JavaScript", "Agile Development"],
       "benefits": ["Health insurance", "401(k)", "Flexible working hours"],
-      "keywords": ["Software Development", "Backend", "Frontend", "Web Development"],
+      "keywords": [
+        "Software Development",
+        "Backend",
+        "Frontend",
+        "Web Development"
+      ],
       "logo": "logo_url",
       "addDate": "July 9, 2023",
       "description": "We are seeking a skilled and experienced Software Engineer to join our team. As a Software Engineer, you will be responsible for developing high-quality software solutions and collaborating with cross-functional teams. You should have a strong background in Java, Python, and JavaScript, along with experience in Agile Development methodologies. Join us in shaping the future of technology!"
@@ -89,7 +222,7 @@
       "companyName": "Creative Designs Ltd.",
       "companyWebsite": "www.creativedesigns.com",
       "companyEmail": "jobs@creativedesigns.com",
-      "jobCategory": "Arts/Design/Entertainment",
+      "jobCategory": "Arts/Design",
       "jobType": "Full-time",
       "requiredSkills": [
         "Adobe Creative Suite",
@@ -153,6 +286,57 @@
       "logo": "logo_url",
       "addDate": "June 30, 2023",
       "description": "Embark on an exciting journey in the field of data analysis as a Data Analyst Intern! As an intern, you will gain hands-on experience in analyzing data, creating visualizations, and interpreting statistical findings. Proficiency in Excel, SQL, and data visualization tools is desired. This part-time internship offers a flexible schedule, mentorship opportunities, and the chance to network with industry professionals!"
+    },
+    {
+      "title": "Energy Analyst",
+      "location": "Houston, TX",
+      "salary": 75000,
+      "experience": 2,
+      "companyName": "Energy Solutions Corp.",
+      "companyWebsite": "www.energysolutionscorp.com",
+      "companyEmail": "jobs@energysolutionscorp.com",
+      "jobCategory": "Energy/Utilities",
+      "jobType": "Full-time",
+      "requiredSkills": ["Energy data analysis", "Renewable energy knowledge", "Energy efficiency", "Sustainability"],
+      "benefits": ["Health insurance", "Retirement plan", "Professional development opportunities"],
+      "keywords": ["Energy Consumption Analysis", "Energy Reporting", "Energy Policy"],
+      "logo": "logo_url",
+      "addDate": "July 15, 2023",
+      "description": "Join our team as an Energy Analyst and contribute to creating a sustainable future! As an Energy Analyst, you will be responsible for analyzing energy data, evaluating renewable energy options, and promoting energy efficiency measures. Proficiency in energy data analysis and a solid understanding of renewable energy concepts are essential. We offer competitive benefits and exciting opportunities to contribute to the energy sector's growth!"
+    },
+    {
+      "title": "Social Worker",
+      "location": "Los Angeles, CA",
+      "salary": 60000,
+      "experience": 1,
+      "companyName": "Compassionate Care Services",
+      "companyWebsite": "www.compassionatecareservices.com",
+      "companyEmail": "hr@compassionatecareservices.com",
+      "jobCategory": "Social Services",
+      "jobType": "Full-time",
+      "requiredSkills": ["Case management", "Counseling", "Crisis intervention", "Community outreach"],
+      "benefits": ["Paid time off", "Health and wellness programs", "Professional development support"],
+      "keywords": ["Social Support", "Mental Health Advocacy", "Community Engagement"],
+      "logo": "logo_url",
+      "addDate": "July 12, 2023",
+      "description": "Make a positive impact on individuals and communities as a Social Worker! In this role, you will provide essential support, counseling, and crisis intervention to those in need. Your responsibilities will include case management and community outreach. If you have a passion for helping others and possess skills in counseling and community engagement, we welcome you to join our compassionate team!"
+    },
+    {
+      "title": "Aircraft Maintenance Technician",
+      "location": "Dallas, TX",
+      "salary": 60000,
+      "experience": 2,
+      "companyName": "Skyline Aviation Services",
+      "companyWebsite": "www.skylineaviationservices.com",
+      "companyEmail": "jobs@skylineaviationservices.com",
+      "jobCategory": "Aviation",
+      "jobType": "Full-time",
+      "requiredSkills": ["Aircraft maintenance", "Troubleshooting", "Safety procedures", "Technical knowledge"],
+      "benefits": ["Health insurance", "Retirement plan", "Flight benefits"],
+      "keywords": ["Aircraft Inspection", "Aviation Engineering", "Component Repair"],
+      "logo": "logo_url",
+      "addDate": "July 18, 2023",
+      "description": "Join our team as an Aircraft Maintenance Technician and play a crucial role in ensuring the safety and performance of our aircraft fleet. As an Aircraft Maintenance Technician, you will be responsible for conducting maintenance, troubleshooting, and adhering to safety procedures. Technical knowledge and hands-on experience in aircraft maintenance are essential for this role. We offer competitive benefits and flight benefits to explore the skies!"
     }
   ]
 }

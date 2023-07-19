@@ -5,17 +5,34 @@ import { useInView } from "react-intersection-observer";
 import { lazy, Suspense } from "react";
 import Loader from "../../UI/Loader/Loader";
 import { SectionTitle } from "../../Common/SectionWrapper/SectionWrapperStyle";
+import { useSelector } from "react-redux";
 
 const LazyFeaturedCard = lazy(() => import("./FeaturedCardLazy"));
-//Replace it real data
-const dummyCategory = {
-  title: "Some Category",
-  description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-};
-const categoriesList = new Array(6).fill(dummyCategory);
-///
 
 const FeaturedCategories = () => {
+  const { jobsList } = useSelector((state) => state.jobs);
+  const { categoriesList } = useSelector((state) => state.categories);
+
+  const categoryData = jobsList.reduce((acc, job) => {
+    const jobCategory = job.jobCategory;
+    const categoryIndex = acc.findIndex(
+      (category) => category.name === jobCategory
+    );
+
+    if (categoryIndex !== -1) {
+      acc[categoryIndex].count++;
+    } else {
+      const category = categoriesList.find(
+        (category) => category.name === jobCategory
+      );
+      acc.push({ ...category, count: 1 });
+    }
+
+    return acc.slice(0, 6);
+  }, []);
+
+  console.log(categoryData)
+
   const [animate, setAnimate] = useState(false);
   const { ref: categoriesRef, inView: featuredCategoriesAreVisible } =
     useInView({
@@ -35,7 +52,7 @@ const FeaturedCategories = () => {
       </SectionTitle>
       <Suspense fallback={<Loader />}>
         <FeaturedCardGrid animate={animate}>
-          {categoriesList.map((category, index) => (
+          {categoryData.map((category, index) => (
             <LazyFeaturedCard
               category={category}
               index={index}

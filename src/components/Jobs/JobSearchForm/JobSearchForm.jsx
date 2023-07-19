@@ -43,8 +43,8 @@ const JobSearchForm = () => {
           {showAdvancedMenu && (
             <>
               <PostingFormGroup>
-                <PostingFormLabel>Company Name</PostingFormLabel>
-                <FormInput type="text" placeholder="Company name" />
+                <PostingFormLabel>Salary</PostingFormLabel>
+                <FormInput type="number" placeholder="Enter salary" />
               </PostingFormGroup>
 
               <PostingFormGroup>

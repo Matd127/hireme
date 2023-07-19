@@ -5,6 +5,7 @@ import { FormGrid, FormWrapper } from "../../UI/FormStyle";
 
 export const SearchFormWrapper = styled.form`
   ${FormWrapper}
+  margin: 0;
 `;
 
 export const JobSearchGrid = styled.div`

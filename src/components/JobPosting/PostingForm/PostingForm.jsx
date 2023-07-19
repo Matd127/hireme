@@ -91,9 +91,9 @@ const PostingForm = () => {
               <option value="" disabled>
                 Select a category
               </option>
-              {categoriesList.map((category, i) => (
-                <option key={i} value={category}>
-                  {category}
+              {categoriesList.map((category) => (
+                <option key={category.id} value={category}>
+                  {category.name}
                 </option>
               ))}
             </FormSelect>
