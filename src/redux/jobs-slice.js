@@ -6,7 +6,6 @@ export const getJobs = createAsyncThunk("jobs/getJobs", async () => {
     "https://hireme-9f839-default-rtdb.europe-west1.firebasedatabase.app/jobs.json"
   );
   const data = await response.json();
-  console.log(data)
   return data;
 });
 

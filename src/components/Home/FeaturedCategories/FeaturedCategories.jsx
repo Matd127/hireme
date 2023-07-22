@@ -31,12 +31,11 @@ const FeaturedCategories = () => {
     return acc.slice(0, 6);
   }, []);
 
-  console.log(categoryData)
-
   const [animate, setAnimate] = useState(false);
   const { ref: categoriesRef, inView: featuredCategoriesAreVisible } =
     useInView({
       threshold: 0.25,
+      triggerOnce: true,
     });
 
   useEffect(() => {

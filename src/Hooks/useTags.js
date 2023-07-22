@@ -9,7 +9,7 @@ const useTags = (initialTags = []) => {
       value: e.target.value,
     };
 
-    if (tag.value.trim().length === 0) {
+    if (tag.value.trim().length < 3) {
       return;
     }
 

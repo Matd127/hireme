@@ -10,6 +10,7 @@ import {
   FormSelect,
   PostingFormGrid,
   DescriptionArea,
+  FormError,
 } from "./PostingFormStyle";
 import { BsXLg } from "react-icons/bs";
 import useTags from "../../../hooks/useTags";
@@ -19,15 +20,6 @@ import { useEffect } from "react";
 import { getCategories } from "../../../redux/categories-slice";
 
 const PostingForm = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data)
-  };
-
-  const skillsTags = useTags();
-  const benefitsTags = useTags();
-  const keywordsTags = useTags();
-
   const dispatch = useDispatch();
   useEffect(() => {
     async function fetchCategories() {
@@ -36,72 +28,176 @@ const PostingForm = () => {
     fetchCategories();
   }, [dispatch]);
 
-  const { categoriesList, error, loading } = useSelector(
-    (state) => state.categories
-  );
-  
+  const skillsTags = useTags();
+  const benefitsTags = useTags();
+  const keywordsTags = useTags();
+
+  // const { categoriesList, error, loading } = useSelector(
+  const { categoriesList } = useSelector((state) => state.categories);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log({
+      ...data,
+      skills: skillsTags.tags,
+      benefits: benefitsTags.tags,
+      keywords: keywordsTags.tags,
+    });
+  };
+
+  const isValidUrl = (url) =>
+    /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/.test(
+      url
+    );
+
+  const isValidEmail = (email) =>
+    // eslint-disable-next-line no-useless-escape
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      email
+    );
+
   return (
     <SectionWrapper>
-      <PostingFormWrapper onSubmit={handleSubmit(onSubmit)}>
+      <PostingFormWrapper
+        onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        {/* Title */}
         <PostingFormTitle>Provide Job Details</PostingFormTitle>
         <PostingFormGrid>
           <PostingFormGroup>
-            <PostingFormLabel>Title*</PostingFormLabel>
+            <PostingFormLabel htmlFor="title">Title*</PostingFormLabel>
             <FormInput
+              id="title"
               type="text"
+              aria-invalid={errors.title ? "true" : "false"}
               placeholder="Job title or keyword"
-              {...register("title")}
+              {...register("title", {
+                required: true,
+                minLength: 3,
+                maxLength: 75,
+              })}
             />
+            {errors.title && errors.title.type === "required" && (
+              <FormError role="alert">Title is required</FormError>
+            )}
           </PostingFormGroup>
 
+          {/* Company Name */}
           <PostingFormGroup>
-            <PostingFormLabel>Company Name*</PostingFormLabel>
+            <PostingFormLabel htmlFor="companyName">
+              Company Name*
+            </PostingFormLabel>
             <FormInput
+              id="companyName"
               type="text"
+              aria-invalid={errors.companyName ? "true" : "false"}
               placeholder="Company name"
-              {...register("companyName")}
+              {...register("companyName", {
+                required: true,
+                minLength: 3,
+                maxLength: 75,
+              })}
             />
+            {errors.companyName && errors.companyName.type === "required" && (
+              <FormError role="alert">Company name is required</FormError>
+            )}
           </PostingFormGroup>
 
+          {/* Company Website */}
           <PostingFormGroup>
-            <PostingFormLabel>Company Website</PostingFormLabel>
+            <PostingFormLabel htmlFor="companyWebsite">
+              Company Website
+            </PostingFormLabel>
             <FormInput
+              id="companyWebsite"
               type="text"
               placeholder="Company website"
-              {...register("companyWebsite")}
+              aria-invalid={errors.companyWebsite ? "true" : "false"}
+              {...register("companyWebsite", {
+                validate: (value) => {
+                  if (value) {
+                    return isValidUrl(value);
+                  }
+                  return true;
+                },
+              })}
             />
+            {errors.companyWebsite && (
+              <FormError role="alert">Company website is incorrect</FormError>
+            )}
           </PostingFormGroup>
 
+          {/* Company E-mail */}
           <PostingFormGroup>
-            <PostingFormLabel>Company E-mail*</PostingFormLabel>
+            <PostingFormLabel htmlFor="companyEmail">
+              Company E-mail*
+            </PostingFormLabel>
             <FormInput
+              id="companyEmail"
+              aria-invalid={errors.companyEmail ? "true" : "false"}
               type="text"
-              placeholder="Company email"
-              {...register("companyEmail")}
+              placeholder="Company e-mail"
+              {...register("companyEmail", {
+                required: true,
+                maxLength: 35,
+                validate: (value) => {
+                  if (value) {
+                    return isValidEmail(value);
+                  }
+                  return true;
+                },
+              })}
             />
+            {errors.companyEmail && (
+              <FormError role="alert">Company e-mail is incorrect</FormError>
+            )}
           </PostingFormGroup>
 
+          {/* Company Category */}
           <PostingFormGroup>
-            <PostingFormLabel>Job Category*</PostingFormLabel>
+            <PostingFormLabel htmlFor="jobCategory">
+              Job Category*
+            </PostingFormLabel>
             <FormSelect
               type="text"
-              {...register("jobCategory")}
+              aria-invalid={errors.companyEmail ? "true" : "false"}
+              id="jobCategory"
+              {...register("jobCategory", {
+                required: true,
+              })}
               defaultValue=""
             >
               <option value="" disabled>
                 Select a category
               </option>
               {categoriesList.map((category) => (
-                <option key={category.id} value={category}>
+                <option key={category.id} value={category.name}>
                   {category.name}
                 </option>
               ))}
             </FormSelect>
+            {errors.jobCategory && (
+              <FormError role="alert">Select category</FormError>
+            )}
           </PostingFormGroup>
 
           <PostingFormGroup>
-            <PostingFormLabel>Job Type*</PostingFormLabel>
-            <FormSelect type="text" {...register("jobType")} defaultValue="">
+            <PostingFormLabel htmlFor="jobType">Job Type*</PostingFormLabel>
+            <FormSelect
+              type="text"
+              aria-invalid={errors.jobType ? "true" : "false"}
+              {...register("jobType", {
+                required: true,
+              })}
+              defaultValue=""
+              id="jobType"
+            >
               <option value="" disabled>
                 Select a type
               </option>
@@ -110,37 +206,79 @@ const PostingForm = () => {
               <option value="Internship">Internship</option>
               <option value="Contract">Contract</option>
             </FormSelect>
+
+            {errors.jobCategory && (
+              <FormError role="alert">Select job type </FormError>
+            )}
           </PostingFormGroup>
 
+          {/* Job Location */}
           <PostingFormGroup>
-            <PostingFormLabel>Location*</PostingFormLabel>
+            <PostingFormLabel htmlFor="location">Location*</PostingFormLabel>
             <FormInput
               type="text"
+              aria-invalid={errors.location ? "true" : "false"}
+              id="location"
               placeholder="Job location"
-              {...register("location")}
+              {...register("location", {
+                required: true,
+                minLength: 3,
+                maxLength: 50,
+              })}
             />
+            {errors.location && (
+              <FormError role="alert">Location is required</FormError>
+            )}
           </PostingFormGroup>
 
           <PostingFormGroup>
-            <PostingFormLabel>Salary ($)*</PostingFormLabel>
+            <PostingFormLabel htmlFor="salary">Salary ($)*</PostingFormLabel>
             <FormInput
               type="number"
+              id="salary"
+              aria-invalid={errors.salary ? "true" : "false"}
               placeholder="Salary"
-              {...register("salary")}
+              {...register("salary", {
+                required: true,
+                validate: {
+                  positive: (sal) => parseInt(sal) > 0,
+                },
+              })}
             />
+            {errors.salary && (
+              <FormError role="alert">Incorrect salary</FormError>
+            )}
           </PostingFormGroup>
 
           <PostingFormGroup>
-            <PostingFormLabel>Experience (Years)</PostingFormLabel>
+            <PostingFormLabel htmlFor="experience">
+              Experience (Years)
+            </PostingFormLabel>
             <FormInput
+              id="experience"
+              aria-invalid={errors.experience ? "true" : "false"}
               type="number"
               placeholder="Experience"
-              {...register("experience")}
+              {...register("experience", {
+                validate: {
+                  validate: (value) => {
+                    if (value) {
+                      return parseInt(value) >= 0;
+                    }
+                    return true;
+                  },
+                },
+              })}
             />
+            {errors.experience && (
+              <FormError role="alert">Incorrect experience years</FormError>
+            )}
           </PostingFormGroup>
 
           <PostingFormGroup>
-            <PostingFormLabel>Required Skills</PostingFormLabel>
+            <PostingFormLabel htmlFor="skills">
+              Required Skills
+            </PostingFormLabel>
             {skillsTags.tags.map((tag) => (
               <span key={tag.id}>
                 {tag.value}
@@ -151,6 +289,7 @@ const PostingForm = () => {
               </span>
             ))}
             <FormInput
+              id="skills"
               type="text"
               placeholder="Required Skills"
               onBlur={skillsTags.handleTags}
@@ -159,7 +298,7 @@ const PostingForm = () => {
           </PostingFormGroup>
 
           <PostingFormGroup>
-            <PostingFormLabel>Benefits</PostingFormLabel>
+            <PostingFormLabel htmlFor="benefits">Benefits</PostingFormLabel>
             {benefitsTags.tags.map((tag) => (
               <span key={tag.id}>
                 {tag.value}
@@ -170,6 +309,7 @@ const PostingForm = () => {
               </span>
             ))}
             <FormInput
+              id="benefits"
               type="text"
               placeholder="Benefits"
               onBlur={benefitsTags.handleTags}
@@ -178,7 +318,7 @@ const PostingForm = () => {
           </PostingFormGroup>
 
           <PostingFormGroup>
-            <PostingFormLabel>Keywords</PostingFormLabel>
+            <PostingFormLabel htmlFor="keywords">Keywords</PostingFormLabel>
             {keywordsTags.tags.map((tag) => (
               <span key={tag.id}>
                 {tag.value}
@@ -190,6 +330,7 @@ const PostingForm = () => {
             ))}
             <FormInput
               type="text"
+              id="keywords"
               placeholder="Keywords"
               onBlur={keywordsTags.handleTags}
               onKeyDown={keywordsTags.handleTagsEnter}
@@ -197,23 +338,30 @@ const PostingForm = () => {
           </PostingFormGroup>
 
           <PostingFormGroup>
-            <PostingFormLabel>Apply Link</PostingFormLabel>
+            <PostingFormLabel htmlFor="applyLink">Apply Link</PostingFormLabel>
             <FormInput
               type="text"
+              id="applyLink"
               placeholder="Apply link"
               {...register("applyLink")}
             />
           </PostingFormGroup>
 
           <PostingFormGroup>
-            <PostingFormLabel>Logo</PostingFormLabel>
-            <FormInput type="file" placeholder="Logo" {...register("logo")} />
+            <PostingFormLabel htmlFor="logo">Logo</PostingFormLabel>
+            <FormInput
+              type="file"
+              placeholder="Logo"
+              {...register("logo")}
+              id="logo"
+            />
           </PostingFormGroup>
         </PostingFormGrid>
 
         <PostingFormGroup>
-          <PostingFormLabel>Description</PostingFormLabel>
+          <PostingFormLabel htmlFor="description">Description*</PostingFormLabel>
           <DescriptionArea
+            id="description"
             rows={6}
             type="text"
             placeholder="Description"

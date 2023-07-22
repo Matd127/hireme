@@ -12,8 +12,8 @@ const HeroSearchForm = () => {
     <HeroFormWrapper>
       <HeroForm>
         <InputsWrapper>
-          <JobInput placeholder="Enter job title, position or keyword"></JobInput>
-          <LocationInput placeholder="Enter a location"></LocationInput>
+          <JobInput id="jobTitle" placeholder="Enter job title, position or keyword"></JobInput>
+          <LocationInput id="location" placeholder="Enter a location"></LocationInput>
         </InputsWrapper>
       </HeroForm>
       <HeroButton>Search</HeroButton>

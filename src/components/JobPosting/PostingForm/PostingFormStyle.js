@@ -7,6 +7,7 @@ import { FormGrid, FormWrapper } from "../../UI/styles/FormStyle";
 export const PostingFormWrapper = styled.form`
   ${FormWrapper}
   padding: 3rem 0;
+  margin: 0;
 `;
 
 export const PostingFormGrid = styled.div`
@@ -47,6 +48,11 @@ export const FormInput = styled.input`
 
 export const FormSelect = styled.select`
   ${InputStyle};
+`;
+
+export const FormError = styled.span`
+  margin-top: 0.5rem;
+  color: rgb(191, 61, 52);
 `;
 
 export const FormAction = styled.div`
