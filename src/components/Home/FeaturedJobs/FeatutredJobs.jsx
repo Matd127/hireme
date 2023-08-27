@@ -23,7 +23,7 @@ const FeatruedJobs = () => {
         Discover Featured Job Opportunites
       </SectionTitle>
       <Suspense fallback={<Loader />}>
-        {animate && <JobItemLazy />}</Suspense>
+        {animate && <JobItemLazy items = {6} />}</Suspense>
     </SectionWrapper>
   );
 };

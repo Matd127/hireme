@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { IconWrapper, JobsStatsGrid, Type } from "./JobsStatsStyle";
-import { BsFillBriefcaseFill } from "react-icons/bs";
-import { BsGrid } from "react-icons/bs";
-import { BsFileText } from "react-icons/bs";
+import { BsFillBriefcaseFill, BsFileText, BsGrid } from "react-icons/bs";
 import { Count } from "./JobsStatsStyle";
 import { useInView } from "react-intersection-observer";
 import CountAnimation from "./CountAnimation";

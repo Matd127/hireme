@@ -13,33 +13,43 @@ import {
   CompantyDetail,
   JobType,
 } from "./FeaturedJobsStyle";
+import { Link } from "react-router-dom";
+import placeholderImg from "../../../assets/placeholder.png";
 
-const JobItemLazy = React.memo(() => {
+const JobItemLazy = React.memo(({ items }) => {
   const jobs = useSelector((state) => state.jobs.jobsList);
 
-  return jobs.map((job, index) => (
-    <JobItem key={index}>
-      <JobInfo>
-        <JobItemWrapper>
-          <Logo />
-          <JobDetails>
-            <JobTitle>{job.title}</JobTitle>
-            <CompantyDetail>
-              {job.companyName} · {job.location}
-            </CompantyDetail>
-            <CompantyDetail>
-              <JobType time="full">{job.jobType}</JobType> |{" "}
-              <JobType>{job.jobCategory}</JobType>{" "}
-            </CompantyDetail>
-          </JobDetails>
-        </JobItemWrapper>
-        <JobDescription>{job.description.substring(0, 255)}...</JobDescription>
-      </JobInfo>
-      <JobActions>
-        <ApplyButton>Apply</ApplyButton>
-      </JobActions>
-    </JobItem>
-  ));
+  return jobs
+    .map((job) => (
+      <JobItem key={job.id}>
+        <JobInfo>
+          <JobItemWrapper>
+            <Logo>
+              <img src={job.logo ? job.logo : placeholderImg} alt="job" />
+            </Logo>
+            <JobDetails>
+              <JobTitle>{job.title}</JobTitle>
+              <CompantyDetail>
+                {job.companyName} · {job.location}
+              </CompantyDetail>
+              <CompantyDetail>
+                <JobType time="full">{job.jobType}</JobType> |{" "}
+                <JobType>{job.jobCategory}</JobType>{" "}
+              </CompantyDetail>
+            </JobDetails>
+          </JobItemWrapper>
+          <JobDescription>
+            {job.description.substring(0, 255)}...
+          </JobDescription>
+        </JobInfo>
+        <JobActions>
+          <ApplyButton>
+            <Link to={`/job/${job.id}/${job.title}`}>Apply</Link>
+          </ApplyButton>
+        </JobActions>
+      </JobItem>
+    ))
+    .slice(0, items);
 });
 
 export default JobItemLazy;

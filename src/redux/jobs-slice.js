@@ -1,10 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import { DUMMY_JOBS } from "./DUMMY_JOBS";
+import { set, ref } from "firebase/database";
+import { db } from "../firebase/config";
+
+const url =
+  "https://hireme-9f839-default-rtdb.europe-west1.firebasedatabase.app/jobs.json";
 
 export const getJobs = createAsyncThunk("jobs/getJobs", async () => {
-  const response = await fetch(
-    "https://hireme-9f839-default-rtdb.europe-west1.firebasedatabase.app/jobs.json"
-  );
+  const response = await fetch(url);
   const data = await response.json();
   return data;
 });
@@ -18,7 +20,16 @@ const initialJobsState = {
 const jobsSlice = createSlice({
   name: "jobs",
   initialState: initialJobsState,
-  reducers: {},
+  reducers: {
+    postJob: (_, action) => {
+      const data = action.payload;
+      try {
+        set(ref(db, "jobs/" + data.id), data);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
 
   extraReducers: (builder) => {
     builder.addCase(getJobs.pending, (state) => {

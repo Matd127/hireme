@@ -8,7 +8,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   ${props => (props.theme === "dark" ? themeDark : themeLight )}
-  /* padding-bottom: 30px; */
   padding: 5rem 0;
 
   font-size: 1.6rem;

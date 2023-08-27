@@ -163,6 +163,7 @@
   ],
   "jobs": [
     {
+      "id": 1,
       "title": "Software Engineer",
       "location": "Silicon Valley, CA",
       "salary": 90000,
@@ -185,6 +186,7 @@
       "description": "We are seeking a skilled and experienced Software Engineer to join our team. As a Software Engineer, you will be responsible for developing high-quality software solutions and collaborating with cross-functional teams. You should have a strong background in Java, Python, and JavaScript, along with experience in Agile Development methodologies. Join us in shaping the future of technology!"
     },
     {
+      "id": 2,
       "title": "Marketing Coordinator",
       "location": "New York, NY",
       "salary": 55000,
@@ -215,6 +217,7 @@
       "description": "We are looking for a talented Marketing Coordinator to join our dynamic marketing team. As a Marketing Coordinator, you will be responsible for executing marketing campaigns, managing social media platforms, creating engaging content, and analyzing marketing data. If you have a passion for marketing and possess skills in social media management, SEO, and content creation, we would love to hear from you!"
     },
     {
+      "id": 3,
       "title": "Graphic Designer (Remote)",
       "location": "Remote",
       "salary": 50000,
@@ -237,6 +240,7 @@
       "description": "Join our team as a Graphic Designer and showcase your creativity! As a Graphic Designer, you will be responsible for creating visually appealing designs for various platforms, including digital and print media. Proficiency in Adobe Creative Suite, UI/UX Design principles, branding, and illustration is essential. This is a remote position that offers a flexible schedule and great benefits!"
     },
     {
+      "id": 4,
       "title": "Sales Representative",
       "location": "Chicago, IL",
       "salary": 0,
@@ -262,6 +266,7 @@
       "description": "Are you a passionate and driven individual looking to kick-start your career in sales? Join our team as a Sales Representative! In this role, you will engage with potential clients, build relationships, and drive sales for our products/services. While prior experience is not required, excellent communication skills and a strong desire to succeed are essential. Enjoy uncapped earning potential, a comprehensive sales training program, and exciting travel opportunities!"
     },
     {
+      "id": 5,
       "title": "Data Analyst Intern",
       "location": "San Francisco, CA",
       "salary": 0,
@@ -288,6 +293,7 @@
       "description": "Embark on an exciting journey in the field of data analysis as a Data Analyst Intern! As an intern, you will gain hands-on experience in analyzing data, creating visualizations, and interpreting statistical findings. Proficiency in Excel, SQL, and data visualization tools is desired. This part-time internship offers a flexible schedule, mentorship opportunities, and the chance to network with industry professionals!"
     },
     {
+      "id": 6,
       "title": "Energy Analyst",
       "location": "Houston, TX",
       "salary": 75000,
@@ -297,14 +303,28 @@
       "companyEmail": "jobs@energysolutionscorp.com",
       "jobCategory": "Energy/Utilities",
       "jobType": "Full-time",
-      "requiredSkills": ["Energy data analysis", "Renewable energy knowledge", "Energy efficiency", "Sustainability"],
-      "benefits": ["Health insurance", "Retirement plan", "Professional development opportunities"],
-      "keywords": ["Energy Consumption Analysis", "Energy Reporting", "Energy Policy"],
+      "requiredSkills": [
+        "Energy data analysis",
+        "Renewable energy knowledge",
+        "Energy efficiency",
+        "Sustainability"
+      ],
+      "benefits": [
+        "Health insurance",
+        "Retirement plan",
+        "Professional development opportunities"
+      ],
+      "keywords": [
+        "Energy Consumption Analysis",
+        "Energy Reporting",
+        "Energy Policy"
+      ],
       "logo": "logo_url",
       "addDate": "July 15, 2023",
       "description": "Join our team as an Energy Analyst and contribute to creating a sustainable future! As an Energy Analyst, you will be responsible for analyzing energy data, evaluating renewable energy options, and promoting energy efficiency measures. Proficiency in energy data analysis and a solid understanding of renewable energy concepts are essential. We offer competitive benefits and exciting opportunities to contribute to the energy sector's growth!"
     },
     {
+      "id": 7,
       "title": "Social Worker",
       "location": "Los Angeles, CA",
       "salary": 60000,
@@ -314,14 +334,28 @@
       "companyEmail": "hr@compassionatecareservices.com",
       "jobCategory": "Social Services",
       "jobType": "Full-time",
-      "requiredSkills": ["Case management", "Counseling", "Crisis intervention", "Community outreach"],
-      "benefits": ["Paid time off", "Health and wellness programs", "Professional development support"],
-      "keywords": ["Social Support", "Mental Health Advocacy", "Community Engagement"],
+      "requiredSkills": [
+        "Case management",
+        "Counseling",
+        "Crisis intervention",
+        "Community outreach"
+      ],
+      "benefits": [
+        "Paid time off",
+        "Health and wellness programs",
+        "Professional development support"
+      ],
+      "keywords": [
+        "Social Support",
+        "Mental Health Advocacy",
+        "Community Engagement"
+      ],
       "logo": "logo_url",
       "addDate": "July 12, 2023",
       "description": "Make a positive impact on individuals and communities as a Social Worker! In this role, you will provide essential support, counseling, and crisis intervention to those in need. Your responsibilities will include case management and community outreach. If you have a passion for helping others and possess skills in counseling and community engagement, we welcome you to join our compassionate team!"
     },
     {
+      "id": 8,
       "title": "Aircraft Maintenance Technician",
       "location": "Dallas, TX",
       "salary": 60000,
@@ -331,9 +365,18 @@
       "companyEmail": "jobs@skylineaviationservices.com",
       "jobCategory": "Aviation",
       "jobType": "Full-time",
-      "requiredSkills": ["Aircraft maintenance", "Troubleshooting", "Safety procedures", "Technical knowledge"],
+      "requiredSkills": [
+        "Aircraft maintenance",
+        "Troubleshooting",
+        "Safety procedures",
+        "Technical knowledge"
+      ],
       "benefits": ["Health insurance", "Retirement plan", "Flight benefits"],
-      "keywords": ["Aircraft Inspection", "Aviation Engineering", "Component Repair"],
+      "keywords": [
+        "Aircraft Inspection",
+        "Aviation Engineering",
+        "Component Repair"
+      ],
       "logo": "logo_url",
       "addDate": "July 18, 2023",
       "description": "Join our team as an Aircraft Maintenance Technician and play a crucial role in ensuring the safety and performance of our aircraft fleet. As an Aircraft Maintenance Technician, you will be responsible for conducting maintenance, troubleshooting, and adhering to safety procedures. Technical knowledge and hands-on experience in aircraft maintenance are essential for this role. We offer competitive benefits and flight benefits to explore the skies!"

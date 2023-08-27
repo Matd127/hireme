@@ -37,11 +37,15 @@ export const JobItemWrapper = styled.div`
 
 export const Logo = styled.div`
   width: 8rem;
-  background-color: aqua;
 
   ${media.xsmall`
     min-height: 8rem;
   `}
+
+  img {
+    width: 100%;
+    height: 100%
+  }
 `;
 
 export const JobDetails = styled.div`

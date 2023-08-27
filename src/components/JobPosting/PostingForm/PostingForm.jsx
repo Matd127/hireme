@@ -18,12 +18,18 @@ import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCategories } from "../../../redux/categories-slice";
+import { getJobs, jobsActions } from "../../../redux/jobs-slice";
+import { useState } from "react";
+import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
+import { storage } from "../../../firebase/config";
+import { isValidEmail, isValidUrl } from "./customValidation";
 
 const PostingForm = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     async function fetchCategories() {
       dispatch(getCategories());
+      dispatch(getJobs())
     }
     fetchCategories();
   }, [dispatch]);
@@ -34,6 +40,19 @@ const PostingForm = () => {
 
   // const { categoriesList, error, loading } = useSelector(
   const { categoriesList } = useSelector((state) => state.categories);
+  const { jobsList } = useSelector(state => state.jobs)
+  
+  //File uploading:
+
+  const [progrss, setProgrss] = useState(0);
+  const [isLoading, setIsLoading] = useState();
+  const [file, setFile] = useState();
+  const [url, setUrl] = useState();
+
+  const onFileChange = (e) => {
+    setFile(e.target.files[0]);
+    e.preventDefault();
+  };
 
   const {
     register,
@@ -42,24 +61,42 @@ const PostingForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log({
-      ...data,
-      skills: skillsTags.tags,
-      benefits: benefitsTags.tags,
-      keywords: keywordsTags.tags,
-    });
+    if (!file) return;
+    setIsLoading(true);
+    const storageRef = ref(storage, `/files/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        let progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgrss(progress);
+      },
+      (err) => {
+        console.log(err);
+        setIsLoading(false);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          setUrl(url);
+          setIsLoading(false);
+
+          dispatch(
+            jobsActions.postJob({
+              ...data,
+              logo: url,
+              id: jobsList.length,
+              skills: skillsTags.tags,
+              benefits: benefitsTags.tags,
+              keywords: keywordsTags.tags,
+            })
+          );
+        });
+      }
+    );
   };
-
-  const isValidUrl = (url) =>
-    /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/.test(
-      url
-    );
-
-  const isValidEmail = (email) =>
-    // eslint-disable-next-line no-useless-escape
-    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      email
-    );
 
   return (
     <SectionWrapper>
@@ -67,7 +104,6 @@ const PostingForm = () => {
         onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
         onSubmit={handleSubmit(onSubmit)}
       >
-        {/* Title */}
         <PostingFormTitle>Provide Job Details</PostingFormTitle>
         <PostingFormGrid>
           <PostingFormGroup>
@@ -88,7 +124,6 @@ const PostingForm = () => {
             )}
           </PostingFormGroup>
 
-          {/* Company Name */}
           <PostingFormGroup>
             <PostingFormLabel htmlFor="companyName">
               Company Name*
@@ -109,7 +144,6 @@ const PostingForm = () => {
             )}
           </PostingFormGroup>
 
-          {/* Company Website */}
           <PostingFormGroup>
             <PostingFormLabel htmlFor="companyWebsite">
               Company Website
@@ -133,7 +167,6 @@ const PostingForm = () => {
             )}
           </PostingFormGroup>
 
-          {/* Company E-mail */}
           <PostingFormGroup>
             <PostingFormLabel htmlFor="companyEmail">
               Company E-mail*
@@ -159,7 +192,6 @@ const PostingForm = () => {
             )}
           </PostingFormGroup>
 
-          {/* Company Category */}
           <PostingFormGroup>
             <PostingFormLabel htmlFor="jobCategory">
               Job Category*
@@ -212,7 +244,6 @@ const PostingForm = () => {
             )}
           </PostingFormGroup>
 
-          {/* Job Location */}
           <PostingFormGroup>
             <PostingFormLabel htmlFor="location">Location*</PostingFormLabel>
             <FormInput
@@ -351,22 +382,32 @@ const PostingForm = () => {
             <PostingFormLabel htmlFor="logo">Logo</PostingFormLabel>
             <FormInput
               type="file"
+              onChange={onFileChange}
               placeholder="Logo"
-              {...register("logo")}
               id="logo"
             />
           </PostingFormGroup>
         </PostingFormGrid>
 
         <PostingFormGroup>
-          <PostingFormLabel htmlFor="description">Description*</PostingFormLabel>
+          <PostingFormLabel htmlFor="description">
+            Description*
+          </PostingFormLabel>
           <DescriptionArea
             id="description"
             rows={6}
             type="text"
+            aria-invalid={errors.title ? "true" : "false"}
             placeholder="Description"
-            {...register("description")}
+            {...register("description", {
+              required: true,
+              minLength: 25,
+              maxLength: 255,
+            })}
           />
+          {errors.title && (
+            <FormError role="alert">Description is required</FormError>
+          )}
         </PostingFormGroup>
 
         <FormAction>
