@@ -4,7 +4,7 @@ import { DefaultButton } from "../../UI/styles/ButtonStyle";
 
 
 export const HeroFormWrapper = styled.div`
-  margin-top: 3.2rem;
+  margin: 3.2rem 0 10rem 0;
   display: grid;
   grid-template-columns: 1fr 150px;
 

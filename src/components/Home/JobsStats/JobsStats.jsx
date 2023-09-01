@@ -10,7 +10,8 @@ import { useSelector } from "react-redux";
 const JobsStats = React.memo(() => {
   const { jobsList } = useSelector(state => state.jobs)
   const { categoriesList } = useSelector(state => state.categories)
-  const companiesCount = [...new Set(jobsList.map(job => job.companyName))].length;
+  console.log(jobsList)
+  const companiesCount = jobsList && [...new Set(jobsList.map(job => job.companyName))].length;
 
   const [animate, setAnimate] = useState(false);
   const { ref: jobsStatsRef, inView: featuredCategoriesAreVisible } = useInView(
@@ -31,7 +32,7 @@ const JobsStats = React.memo(() => {
       <JobsStatsGrid ref={jobsStatsRef}>
         <IconWrapper>
           <BsFileText color="#4398d4" size={100} />
-          {animate ? <CountAnimation targetCount={jobsList.length} /> : <Count>0</Count>}
+          {animate ? <CountAnimation targetCount={jobsList?.length} /> : <Count>0</Count>}
           <Type>Jobs posted</Type>
         </IconWrapper>
 
@@ -42,7 +43,7 @@ const JobsStats = React.memo(() => {
         </IconWrapper>
         <IconWrapper>
           <BsGrid color="#4398d4" size={100} />
-          {animate ? <CountAnimation targetCount={categoriesList.length} /> : <Count>0</Count>}
+          {animate ? <CountAnimation targetCount={categoriesList?.length} /> : <Count>0</Count>}
           <Type>Categories</Type>
         </IconWrapper>
       </JobsStatsGrid>

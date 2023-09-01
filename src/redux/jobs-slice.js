@@ -13,6 +13,7 @@ export const getJobs = createAsyncThunk("jobs/getJobs", async () => {
 
 const initialJobsState = {
   jobsList: [],
+  filteredJobs: [],
   error: null,
   loading: false,
 };
@@ -29,6 +30,9 @@ const jobsSlice = createSlice({
         console.log(err);
       }
     },
+    setFilteredJobs: (state, action) => {
+      state.filteredJobs = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -40,6 +44,7 @@ const jobsSlice = createSlice({
       state.jobsList = action.payload;
     });
     builder.addCase(getJobs.rejected, (state, action) => {
+      console.log(state.error);
       state.loading = false;
       state.error = action.error.message;
     });

@@ -1,36 +1,33 @@
 import { Link } from "react-router-dom";
 import { FullDetailsGrid, DetailName, DetailInfo } from "./JobDetailsStyle";
 
-const FullDetails = (props) => {
-  const checkValidUrl = (url) => {
-    if (url && !url.includes("https://")) {
-      return "https://" + url;
-    }
-    return url;
+const FullDetails = ({ job }) => {
+  const createValidUrl = (url) => {
+    return url && !url.includes("https://") ? `https://${url}` : url;
   };
 
   return (
     <FullDetailsGrid>
       <DetailInfo>
-        <DetailName>Company:</DetailName> {props.job.companyName}
+        <DetailName>Company:</DetailName> {job.companyName}
       </DetailInfo>
       <DetailInfo>
-        <DetailName>Min-Experience:</DetailName> {props.job.experience}{" "}
-        {props.job.experience === 1 ? " Year" : " Years"}
+        <DetailName>Min-Experience:</DetailName> {job.experience}{" "}
+        {job.experience === 1 ? " Year" : " Years"}
       </DetailInfo>
       <DetailInfo>
-        <DetailName>Job Type:</DetailName> {props.job.jobType}
+        <DetailName>Job Type:</DetailName> {job.jobType}
       </DetailInfo>
       <DetailInfo>
-        <DetailName>Salary:</DetailName> {"$" + props.job.salary}
+        <DetailName>Salary:</DetailName> ${job.salary}
       </DetailInfo>
       <DetailInfo>
-        <DetailName>Email:</DetailName> {props.job.companyEmail}
+        <DetailName>Email:</DetailName> {job.companyEmail}
       </DetailInfo>
       <DetailInfo>
         <DetailName>Website:</DetailName>{" "}
-        <Link to={checkValidUrl(props.job.companyWebsite)}>
-          {props.job.companyWebsite}
+        <Link to={createValidUrl(job.companyWebsite)}>
+          {job.companyWebsite}
         </Link>
       </DetailInfo>
     </FullDetailsGrid>

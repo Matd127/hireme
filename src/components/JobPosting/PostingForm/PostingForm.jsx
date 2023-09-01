@@ -222,7 +222,6 @@ const PostingForm = () => {
           <PostingFormGroup>
             <PostingFormLabel htmlFor="jobType">Job Type*</PostingFormLabel>
             <FormSelect
-              type="text"
               aria-invalid={errors.jobType ? "true" : "false"}
               {...register("jobType", {
                 required: true,

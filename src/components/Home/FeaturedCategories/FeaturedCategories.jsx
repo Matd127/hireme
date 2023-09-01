@@ -13,7 +13,7 @@ const FeaturedCategories = () => {
   const { jobsList } = useSelector((state) => state.jobs);
   const { categoriesList } = useSelector((state) => state.categories);
 
-  const categoryData = jobsList.reduce((acc, job) => {
+  const categoryData = jobsList?.reduce((acc, job) => {
     const jobCategory = job.jobCategory;
     const categoryIndex = acc.findIndex(
       (category) => category.name === jobCategory
@@ -51,7 +51,7 @@ const FeaturedCategories = () => {
       </SectionTitle>
       <Suspense fallback={<Loader />}>
         <FeaturedCardGrid animate={animate}>
-          {categoryData.map((category, index) => (
+          {categoryData?.map((category, index) => (
             <LazyFeaturedCard
               category={category}
               index={index}

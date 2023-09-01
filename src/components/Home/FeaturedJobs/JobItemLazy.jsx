@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+
 import React from "react";
 import {
   JobActions,
@@ -16,11 +16,9 @@ import {
 import { Link } from "react-router-dom";
 import placeholderImg from "../../../assets/placeholder.png";
 
-const JobItemLazy = React.memo(({ items }) => {
-  const jobs = useSelector((state) => state.jobs.jobsList);
-
-  return jobs
-    .map((job) => (
+const JobItemLazy = React.memo(({jobs}) => {
+ 
+  return jobs?.map((job) => (
       <JobItem key={job.id}>
         <JobInfo>
           <JobItemWrapper>
@@ -49,7 +47,6 @@ const JobItemLazy = React.memo(({ items }) => {
         </JobActions>
       </JobItem>
     ))
-    .slice(0, items);
 });
 
 export default JobItemLazy;

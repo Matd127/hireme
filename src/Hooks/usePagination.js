@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
 
 const usePagination = (initialPage, data) => {
-  const recordsPerPage = 10;
+  const recordsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(initialPage);
-  const [, setSearchParams] = useSearchParams({ page: currentPage });
 
   const indexOfLastElement = currentPage * recordsPerPage;
   const indexOfFirstElement = indexOfLastElement - recordsPerPage;
@@ -15,21 +13,18 @@ const usePagination = (initialPage, data) => {
   const nextPage = () => {
     if (currentPage !== noOfPages && noOfPages > 0) {
       setCurrentPage(currentPage + 1);
-      setSearchParams({ page: currentPage + 1 });
     }
   };
 
   const prevPage = () => {
     if (currentPage !== 1 && noOfPages > 0) {
       setCurrentPage(currentPage - 1);
-      setSearchParams({ page: currentPage - 1 });
     }
   };
 
   const setPage = (page) => {
     if (page !== currentPage && page > 0 && page <= noOfPages) {
       setCurrentPage(page);
-      setSearchParams({ page });
     }
   };
 
@@ -41,7 +36,7 @@ const usePagination = (initialPage, data) => {
     prevPage,
     setPage,
     pageNumbers,
-    records
+    records,
   };
 };
 

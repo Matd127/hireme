@@ -9,13 +9,14 @@ import { useEffect } from "react";
 import { getJobs } from "../redux/jobs-slice";
 import { getCategories } from "../redux/categories-slice";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const JobsPage = () => {
-  const dispatch = useDispatch();
-  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {
@@ -25,10 +26,14 @@ const JobsPage = () => {
     fetchData();
   }, [dispatch]);
 
+  const { loading, error } = useSelector((state) => state.jobs);
+  
   return (
     <>
       <HeroSection bg={bg} title="Browse jobs" />
-      <JobSearchForm />
+      <JobSearchForm/>
+      {loading && <p>Loading...</p>}
+      {error && <p>Could not load jobs...</p>}
       <JobList />
       <JobSubscription />
       <BigFooter />

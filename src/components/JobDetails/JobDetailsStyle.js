@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { media } from "../UI/mediaQueries";
+import { DefaultButton } from "../UI/styles/ButtonStyle";
 
 export const DetailsGrid = styled.div`
   display: grid;
@@ -105,12 +106,18 @@ export const DetailName = styled.span`
   font-weight: 600;
 `;
 
-export const AdditionalInformation = styled.div`
-  display: grid;
+export const AdditionalInformationWrapper = styled.div`
   text-align: center;
   ${media.large`
   margin-top: 5rem;
   `}
+`;
+
+export const AdditionalTitle = styled.h2`
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: rgb(51, 51, 51);
+  margin: 1rem;
 `;
 
 export const LocationMapPlaceholder = styled.div`
@@ -119,4 +126,37 @@ export const LocationMapPlaceholder = styled.div`
   width: 100%;
 
   background-color: aquamarine;
+`;
+
+export const KeywordsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #dee2e6;
+  text-align: center;
+  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1),
+    0 0.2rem 0.4rem rgba(0, 0, 0, 0.06);
+  border-radius: 0.3rem;
+  color: #333;
+  padding: 1rem;
+`;
+
+export const KeywordsList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+export const Keyword = styled.div`
+  margin: 0.5rem 1rem;
+  padding: 1rem;
+  border: 1px dashed rgba(51, 51, 51, 0.35);
+`;
+
+export const ApplyButton = styled(DefaultButton)`
+  margin-top: 2rem;
+  padding: 1rem;
+  max-width: 25rem;
+
+  ${media.small`
+max-width: 100%
+`}
 `;

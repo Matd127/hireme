@@ -22,7 +22,6 @@ const JobDetailsPage = () => {
   return (
     <>
       <HeroSection bg={bg} title={title}>
-        {" "}
       </HeroSection>
       <JobDetails></JobDetails>
       <BigFooter />
