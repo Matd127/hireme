@@ -8,8 +8,8 @@ export const InputStyle = css`
   line-height: 1.5;
   background-color: #fff;
   background-clip: padding-box;
-  border-radius: 5px;
-  padding: 10px 20px;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
   color: rgb(51, 51, 51);
 
   &:focus {

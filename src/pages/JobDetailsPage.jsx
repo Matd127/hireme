@@ -23,7 +23,7 @@ const JobDetailsPage = () => {
     <>
       <HeroSection bg={bg} title={title}>
       </HeroSection>
-      <JobDetails></JobDetails>
+      <JobDetails />
       <BigFooter />
       <SmallFooter />
     </>

@@ -44,10 +44,10 @@ const PostingForm = () => {
   
   //File uploading:
 
-  const [progrss, setProgrss] = useState(0);
-  const [isLoading, setIsLoading] = useState();
+  const [, setProgrss] = useState(0);
+  const [, setIsLoading] = useState();
   const [file, setFile] = useState();
-  const [url, setUrl] = useState();
+  const [, setUrl] = useState();
 
   const onFileChange = (e) => {
     setFile(e.target.files[0]);
