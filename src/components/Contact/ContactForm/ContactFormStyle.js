@@ -8,12 +8,13 @@ import { media } from "../../UI/mediaQueries";
 export const ContactFormWrapper = styled.form`
   ${FormWrapper}
   display: grid;
-  margin: 0 12.5%;
+  /* margin: 0 12.5%; */
   padding: 0 2rem;
 `;
 
 export const ContactFormLabel = styled.label`
   ${Label}
+  font-weight: 500;
 `;
 
 export const ContactFormInput = styled.input`
@@ -21,7 +22,7 @@ export const ContactFormInput = styled.input`
 `;
 
 export const ContactFormTitle = styled.h2`
-  font-size: 2.4rem;
+  font-size: 3rem;
   margin: 2.5rem 0;
 `;
 
