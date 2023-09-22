@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const usePagination = (initialPage, data) => {
-  const recordsPerPage = 5;
+const usePagination = (initialPage, data, maxVisiblePages = 6) => {
+  const recordsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(initialPage);
 
   const indexOfLastElement = currentPage * recordsPerPage;
@@ -28,14 +28,31 @@ const usePagination = (initialPage, data) => {
     }
   };
 
-  const pageNumbers = [...Array(noOfPages + 1).keys()].slice(1);
+  const visiblePageNumbers = (() => {
+    if (noOfPages <= maxVisiblePages) {
+      return [...Array(noOfPages).keys()].map((i) => i + 1);
+    } else {
+      const halfMax = Math.floor(maxVisiblePages / 2);
+      let start = currentPage - halfMax;
+      let end = currentPage + halfMax;
+
+      if (start < 1) {
+        start = 1;
+        end = maxVisiblePages;
+      } else if (end > noOfPages) {
+        end = noOfPages;
+        start = noOfPages - maxVisiblePages + 1;
+      }
+      return [...Array(end - start + 1).keys()].map((i) => start + i);
+    }
+  })();
 
   return {
     currentPage,
     nextPage,
     prevPage,
     setPage,
-    pageNumbers,
+    pageNumbers: visiblePageNumbers,
     records,
   };
 };

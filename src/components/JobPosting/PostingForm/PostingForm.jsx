@@ -7,52 +7,47 @@ import {
   FormInput,
   FormAction,
   SubmitButton,
-  FormSelect,
   PostingFormGrid,
-  DescriptionArea,
-  FormError,
 } from "./PostingFormStyle";
-import { BsXLg } from "react-icons/bs";
 import useTags from "../../../hooks/useTags";
 import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getCategories } from "../../../redux/categories-slice";
-import { getJobs, jobsActions } from "../../../redux/jobs-slice";
-import { useState } from "react";
-import { ref, uploadBytesResumable, getDownloadURL } from "@firebase/storage";
-import { storage } from "../../../firebase/config";
-import { isValidEmail, isValidUrl } from "./customValidation";
+import {
+  descriptionValidation,
+  emailValidation,
+  namesValidation,
+  numbersValidation,
+  optionsValidation,
+  urlValidation,
+} from "./validations";
+import PostingInput from "./PostingInput";
+import PostingSelect from "./PostingSelect";
+import PostingTag from "./PostingTag";
+import PostingArea from "./PostingArea";
+import { upload } from "./upload";
+import PostingMessage from "../PostingMessage/PostingMessage";
 
 const PostingForm = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     async function fetchCategories() {
       dispatch(getCategories());
-      dispatch(getJobs())
     }
     fetchCategories();
   }, [dispatch]);
 
+  const [file, setFile] = useState();
+  const [isSent, setIsSent] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
   const skillsTags = useTags();
   const benefitsTags = useTags();
   const keywordsTags = useTags();
-
-  // const { categoriesList, error, loading } = useSelector(
   const { categoriesList } = useSelector((state) => state.categories);
-  const { jobsList } = useSelector(state => state.jobs)
-  
-  //File uploading:
-
-  const [, setProgrss] = useState(0);
-  const [, setIsLoading] = useState();
-  const [file, setFile] = useState();
-  const [, setUrl] = useState();
-
-  const onFileChange = (e) => {
-    setFile(e.target.files[0]);
-    e.preventDefault();
-  };
+  const { jobsList } = useSelector((state) => state.jobs);
 
   const {
     register,
@@ -60,359 +55,190 @@ const PostingForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    if (!file) return;
-    setIsLoading(true);
-    const storageRef = ref(storage, `/files/${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        let progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgrss(progress);
-      },
-      (err) => {
-        console.log(err);
-        setIsLoading(false);
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          setUrl(url);
-          setIsLoading(false);
-
-          dispatch(
-            jobsActions.postJob({
-              ...data,
-              logo: url,
-              id: jobsList.length,
-              skills: skillsTags.tags,
-              benefits: benefitsTags.tags,
-              keywords: keywordsTags.tags,
-            })
-          );
-        });
-      }
-    );
+  const onFileChange = (e) => {
+    const inputFile = e.target.files[0];
+    if (inputFile.fize > 1024 * 1024) return;
+    setFile(e.target.files[0]);
+    e.preventDefault();
   };
 
+  const onSubmit = (data) => {
+    upload(
+      file,
+      dispatch,
+      data,
+      jobsList.length,
+      skillsTags.tags,
+      benefitsTags.tags,
+      keywordsTags.tags,
+      setIsSuccess
+    );
+    setIsSent(true);
+  };
   return (
     <SectionWrapper>
-      <PostingFormWrapper
-        onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <PostingFormTitle>Provide Job Details</PostingFormTitle>
-        <PostingFormGrid>
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="title">Title*</PostingFormLabel>
-            <FormInput
+      {!isSent && (
+        <PostingFormWrapper
+          onKeyDown={(e) => e.key === "Enter" && e.preventDefault()}
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <PostingFormTitle>Provide Job Details</PostingFormTitle>
+          <PostingFormGrid>
+            <PostingInput
               id="title"
               type="text"
-              aria-invalid={errors.title ? "true" : "false"}
+              labelTitle="Job Title"
+              errors={errors.title}
               placeholder="Job title or keyword"
-              {...register("title", {
-                required: true,
-                minLength: 3,
-                maxLength: 75,
-              })}
-            />
-            {errors.title && errors.title.type === "required" && (
-              <FormError role="alert">Title is required</FormError>
-            )}
-          </PostingFormGroup>
+              isRequired={namesValidation.required}
+              {...register("title", namesValidation)}
+            ></PostingInput>
 
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="companyName">
-              Company Name*
-            </PostingFormLabel>
-            <FormInput
+            <PostingInput
+              id="location"
+              type="text"
+              labelTitle="Location"
+              errors={errors.location}
+              placeholder="Job location"
+              isRequired={namesValidation.required}
+              {...register("location", namesValidation)}
+            ></PostingInput>
+
+            <PostingInput
               id="companyName"
               type="text"
-              aria-invalid={errors.companyName ? "true" : "false"}
+              labelTitle="Company Name"
+              errors={errors.companyName}
               placeholder="Company name"
-              {...register("companyName", {
-                required: true,
-                minLength: 3,
-                maxLength: 75,
-              })}
-            />
-            {errors.companyName && errors.companyName.type === "required" && (
-              <FormError role="alert">Company name is required</FormError>
-            )}
-          </PostingFormGroup>
+              isRequired={namesValidation.required}
+              {...register("companyName", namesValidation)}
+            ></PostingInput>
 
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="companyWebsite">
-              Company Website
-            </PostingFormLabel>
-            <FormInput
+            <PostingInput
+              labelTitle="Company Website"
               id="companyWebsite"
               type="text"
+              errors={errors.companyWebsite}
               placeholder="Company website"
-              aria-invalid={errors.companyWebsite ? "true" : "false"}
-              {...register("companyWebsite", {
-                validate: (value) => {
-                  if (value) {
-                    return isValidUrl(value);
-                  }
-                  return true;
-                },
-              })}
-            />
-            {errors.companyWebsite && (
-              <FormError role="alert">Company website is incorrect</FormError>
-            )}
-          </PostingFormGroup>
+              isRequired={urlValidation.required}
+              {...register("companyWebsite", urlValidation)}
+            ></PostingInput>
 
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="companyEmail">
-              Company E-mail*
-            </PostingFormLabel>
-            <FormInput
+            <PostingInput
+              labelTitle="Company E-mail"
               id="companyEmail"
-              aria-invalid={errors.companyEmail ? "true" : "false"}
               type="text"
+              errors={errors.companyEmail}
               placeholder="Company e-mail"
-              {...register("companyEmail", {
-                required: true,
-                maxLength: 35,
-                validate: (value) => {
-                  if (value) {
-                    return isValidEmail(value);
-                  }
-                  return true;
-                },
-              })}
-            />
-            {errors.companyEmail && (
-              <FormError role="alert">Company e-mail is incorrect</FormError>
-            )}
-          </PostingFormGroup>
+              isRequired={emailValidation.required}
+              {...register("companyEmail", emailValidation)}
+            ></PostingInput>
 
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="jobCategory">
-              Job Category*
-            </PostingFormLabel>
-            <FormSelect
-              type="text"
-              aria-invalid={errors.companyEmail ? "true" : "false"}
+            <PostingSelect
               id="jobCategory"
-              {...register("jobCategory", {
-                required: true,
-              })}
               defaultValue=""
-            >
-              <option value="" disabled>
-                Select a category
-              </option>
-              {categoriesList.map((category) => (
-                <option key={category.id} value={category.name}>
-                  {category.name}
-                </option>
-              ))}
-            </FormSelect>
-            {errors.jobCategory && (
-              <FormError role="alert">Select category</FormError>
-            )}
-          </PostingFormGroup>
+              labelTitle="Job Category"
+              data={categoriesList}
+              errors={errors.jobCategory}
+              isRequired={optionsValidation.required}
+              {...register("jobCategory", optionsValidation)}
+            ></PostingSelect>
 
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="jobType">Job Type*</PostingFormLabel>
-            <FormSelect
-              aria-invalid={errors.jobType ? "true" : "false"}
-              {...register("jobType", {
-                required: true,
-              })}
-              defaultValue=""
+            <PostingSelect
               id="jobType"
-            >
-              <option value="" disabled>
-                Select a type
-              </option>
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
-              <option value="Internship">Internship</option>
-              <option value="Contract">Contract</option>
-            </FormSelect>
+              defaultValue=""
+              labelTitle="Job Type"
+              data={["Full-time", "Part-time", "Internship", "Contract"]}
+              errors={errors.jobType}
+              isRequired={optionsValidation.required}
+              {...register("jobType", optionsValidation)}
+            ></PostingSelect>
 
-            {errors.jobCategory && (
-              <FormError role="alert">Select job type </FormError>
-            )}
-          </PostingFormGroup>
-
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="location">Location*</PostingFormLabel>
-            <FormInput
-              type="text"
-              aria-invalid={errors.location ? "true" : "false"}
-              id="location"
-              placeholder="Job location"
-              {...register("location", {
-                required: true,
-                minLength: 3,
-                maxLength: 50,
-              })}
-            />
-            {errors.location && (
-              <FormError role="alert">Location is required</FormError>
-            )}
-          </PostingFormGroup>
-
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="salary">Salary ($)*</PostingFormLabel>
-            <FormInput
-              type="number"
+            <PostingInput
               id="salary"
-              aria-invalid={errors.salary ? "true" : "false"}
-              placeholder="Salary"
-              {...register("salary", {
-                required: true,
-                validate: {
-                  positive: (sal) => parseInt(sal) > 0,
-                },
-              })}
-            />
-            {errors.salary && (
-              <FormError role="alert">Incorrect salary</FormError>
-            )}
-          </PostingFormGroup>
-
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="experience">
-              Experience (Years)
-            </PostingFormLabel>
-            <FormInput
-              id="experience"
-              aria-invalid={errors.experience ? "true" : "false"}
               type="number"
+              labelTitle="Salary ($)"
+              errors={errors.salary}
+              placeholder="Salary"
+              isRequired={numbersValidation.required}
+              {...register("salary", numbersValidation)}
+            ></PostingInput>
+
+            <PostingInput
+              id="experience"
+              type="number"
+              labelTitle="Experience (Years)"
+              errors={errors.experience}
               placeholder="Experience"
-              {...register("experience", {
-                validate: {
-                  validate: (value) => {
-                    if (value) {
-                      return parseInt(value) >= 0;
-                    }
-                    return true;
-                  },
-                },
-              })}
-            />
-            {errors.experience && (
-              <FormError role="alert">Incorrect experience years</FormError>
-            )}
-          </PostingFormGroup>
+              isRequired={numbersValidation.required}
+              {...register("experience", numbersValidation)}
+            ></PostingInput>
 
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="skills">
-              Required Skills
-            </PostingFormLabel>
-            {skillsTags.tags.map((tag) => (
-              <span key={tag.id}>
-                {tag.value}
-                <BsXLg
-                  size={15}
-                  onClick={() => skillsTags.handleDeleteTag(tag.id)}
-                />
-              </span>
-            ))}
-            <FormInput
+            <PostingTag
               id="skills"
-              type="text"
+              tags={skillsTags.tags}
+              errors={skillsTags.errors}
               placeholder="Required Skills"
-              onBlur={skillsTags.handleTags}
+              onChange={skillsTags.handleTags}
+              onClick={skillsTags.handleDeleteTag}
               onKeyDown={skillsTags.handleTagsEnter}
-            />
-          </PostingFormGroup>
+            ></PostingTag>
 
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="benefits">Benefits</PostingFormLabel>
-            {benefitsTags.tags.map((tag) => (
-              <span key={tag.id}>
-                {tag.value}
-                <BsXLg
-                  size={15}
-                  onClick={() => benefitsTags.handleDeleteTag(tag.id)}
-                />
-              </span>
-            ))}
-            <FormInput
+            <PostingTag
               id="benefits"
-              type="text"
+              tags={benefitsTags.tags}
               placeholder="Benefits"
-              onBlur={benefitsTags.handleTags}
+              onChange={benefitsTags.handleTags}
+              onClick={benefitsTags.handleDeleteTag}
               onKeyDown={benefitsTags.handleTagsEnter}
-            />
-          </PostingFormGroup>
+            ></PostingTag>
 
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="keywords">Keywords</PostingFormLabel>
-            {keywordsTags.tags.map((tag) => (
-              <span key={tag.id}>
-                {tag.value}
-                <BsXLg
-                  size={15}
-                  onClick={() => keywordsTags.handleDeleteTag(tag.id)}
-                />
-              </span>
-            ))}
-            <FormInput
-              type="text"
+            <PostingTag
               id="keywords"
+              tags={keywordsTags.tags}
               placeholder="Keywords"
-              onBlur={keywordsTags.handleTags}
+              onChange={keywordsTags.handleTags}
+              onClick={keywordsTags.handleDeleteTag}
               onKeyDown={keywordsTags.handleTagsEnter}
-            />
-          </PostingFormGroup>
+            ></PostingTag>
 
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="applyLink">Apply Link</PostingFormLabel>
-            <FormInput
+            <PostingInput
               type="text"
               id="applyLink"
               placeholder="Apply link"
-              {...register("applyLink")}
+              labelTitle="Apply Link"
+              errors={errors.applyLink}
+              isRequired={urlValidation.required}
+              {...register("applyLink", urlValidation)}
             />
-          </PostingFormGroup>
 
-          <PostingFormGroup>
-            <PostingFormLabel htmlFor="logo">Logo</PostingFormLabel>
-            <FormInput
-              type="file"
-              onChange={onFileChange}
-              placeholder="Logo"
-              id="logo"
-            />
-          </PostingFormGroup>
-        </PostingFormGrid>
+            <PostingFormGroup>
+              <PostingFormLabel htmlFor="logo">Logo</PostingFormLabel>
+              <FormInput
+                type="file"
+                onChange={onFileChange}
+                placeholder="Logo"
+                id="logo"
+              />
+            </PostingFormGroup>
+          </PostingFormGrid>
 
-        <PostingFormGroup>
-          <PostingFormLabel htmlFor="description">
-            Description*
-          </PostingFormLabel>
-          <DescriptionArea
+          <PostingArea
             id="description"
             rows={6}
-            type="text"
-            aria-invalid={errors.title ? "true" : "false"}
             placeholder="Description"
-            {...register("description", {
-              required: true,
-              minLength: 25,
-              maxLength: 255,
-            })}
+            errors={errors.description}
+            isRequired={descriptionValidation.required}
+            {...register("description", descriptionValidation)}
           />
-          {errors.title && (
-            <FormError role="alert">Description is required</FormError>
-          )}
-        </PostingFormGroup>
 
-        <FormAction>
-          <SubmitButton>Submit</SubmitButton>
-        </FormAction>
-      </PostingFormWrapper>
+          <FormAction>
+            <SubmitButton>Submit</SubmitButton>
+          </FormAction>
+        </PostingFormWrapper>
+      )}
+
+      {isSent && <PostingMessage isSuccess={isSuccess} />}
     </SectionWrapper>
   );
 };

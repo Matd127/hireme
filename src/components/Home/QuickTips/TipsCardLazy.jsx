@@ -8,7 +8,7 @@ import {
 const TipsCardLazy = ({ tip }) => {
   return (
     <TipsCard>
-      <TipsCardImage background={tip.image} />
+      <TipsCardImage src={tip.image} loading="lazy"/>
       <TipsCardTitle>{tip.title}</TipsCardTitle>
       <TipsCardText>{tip.description}</TipsCardText>
     </TipsCard>

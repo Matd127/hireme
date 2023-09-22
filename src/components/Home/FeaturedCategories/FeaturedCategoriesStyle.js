@@ -45,6 +45,7 @@ export const FeaturedCard = styled.div`
   border-radius: 3px;
 
   &:hover {
+    cursor: pointer;
     transition: 0.3s;
     transform: translateY(-10px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.08);
@@ -62,3 +63,7 @@ export const FeaturedCardText = styled.p`
   text-align: center;
   margin: 1.6rem;
 `;
+
+export const ErrorMessage = styled.p`
+  text-align: center;
+`

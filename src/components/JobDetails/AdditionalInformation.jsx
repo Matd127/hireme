@@ -12,7 +12,7 @@ const AdditionalInformation = ({ keywords }) => {
       <KeywordsWrapper>
         <AdditionalTitle>Keywords</AdditionalTitle>
         <KeywordsList>
-          {keywords.map((keyword, index) => (
+          {keywords && keywords.map((keyword, index) => (
             <Keyword key={index}>{keyword}</Keyword>
           ))}
         </KeywordsList>

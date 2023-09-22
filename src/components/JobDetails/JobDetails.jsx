@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import AdditionalInformation from "./AdditionalInformation";
 import JobReqirements from "./JobReqirements";
+import JobBenefits from "./JobBenefits";
 
 const JobDetails = () => {
   const jobParams = useParams();
@@ -21,24 +22,22 @@ const JobDetails = () => {
 
   return (
     <SectionWrapper>
-      {!selectedJob && <div>Loading...</div>}
       {selectedJob && (
         <DetailsGrid>
           <RoleOverview>
             <RoleCard job={selectedJob} />
             <DetailsTitle>Description</DetailsTitle>
             <DetailsDescription>{selectedJob.description}</DetailsDescription>
-
             <DetailsTitle>Requirements</DetailsTitle>
             <JobReqirements job={selectedJob}></JobReqirements>
-
+            <DetailsTitle>Benefits</DetailsTitle>
+            <JobBenefits benefits={selectedJob.benefits}></JobBenefits>
             <DetailsTitle>Job Details</DetailsTitle>
             <FullDetails job={selectedJob} />
-
             <ApplyButton>Apply</ApplyButton>
           </RoleOverview>
 
-          <AdditionalInformation keywords={selectedJob.keywords}/>
+          <AdditionalInformation keywords={selectedJob.keywords} />
         </DetailsGrid>
       )}
     </SectionWrapper>

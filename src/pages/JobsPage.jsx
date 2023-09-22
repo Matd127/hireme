@@ -33,7 +33,7 @@ const JobsPage = () => {
       <HeroSection bg={bg} title="Browse jobs" />
       <JobSearchForm/>
       {loading && <p>Loading...</p>}
-      {error && <p>Could not load jobs...</p>}
+      {error && <p>Could not load jobs.</p>}
       <JobList />
       <JobSubscription />
       <BigFooter />

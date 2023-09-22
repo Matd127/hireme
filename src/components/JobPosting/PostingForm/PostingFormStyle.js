@@ -37,7 +37,7 @@ export const PostingFormGroup = styled.div`
 
 export const PostingFormLabel = styled.label`
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 500;
   color: rgb(52, 52, 52);
   margin-bottom: 10px;
 `;
@@ -48,6 +48,8 @@ export const FormInput = styled.input`
 
 export const FormSelect = styled.select`
   ${InputStyle};
+  appearance: none;
+  -webkit-appearance: none;
 `;
 
 export const FormError = styled.span`
@@ -65,9 +67,18 @@ export const SubmitButton = styled(DefaultButton)`
   padding: 10px 25px;
 `;
 
+export const PostingFormDescription = styled.div`
+  margin: 0 1rem 1rem 1rem;
+  padding: 0 1rem;
+`;
+
 export const DescriptionArea = styled.textarea`
   ${InputStyle};
   resize: vertical;
   font-family: inherit;
   font-size: 1.6rem;
+`;
+
+export const RequiredField = styled.span`
+  color: rgb(191, 61, 52);
 `;

@@ -7,8 +7,7 @@ import { media } from "../../UI/mediaQueries";
 
 export const ContactFormWrapper = styled.form`
   ${FormWrapper}
-  display: grid;
-  /* margin: 0 12.5%; */
+  margin: 0 12.5%;
   padding: 0 2rem;
 `;
 
@@ -38,7 +37,7 @@ export const ContactFormGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
 
   ${media.large`
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(1, 100%);
   `}
 `;
 
@@ -55,4 +54,10 @@ export const SubmitButton = styled(DefaultButton)`
 
 export const ContactFormMessage = styled.textarea`
   ${InputStyle}
+  font-family: inherit;
+`;
+
+export const ContactFormError = styled.span`
+  margin-top: 0.5rem;
+  color: rgb(191, 61, 52);
 `;

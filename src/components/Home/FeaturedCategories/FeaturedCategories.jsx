@@ -1,5 +1,5 @@
 import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
-import { FeaturedCardGrid } from "./FeaturedCategoriesStyle";
+import { ErrorMessage, FeaturedCardGrid } from "./FeaturedCategoriesStyle";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { lazy, Suspense } from "react";
@@ -11,9 +11,9 @@ const LazyFeaturedCard = lazy(() => import("./FeaturedCardLazy"));
 
 const FeaturedCategories = () => {
   const { jobsList } = useSelector((state) => state.jobs);
-  const { categoriesList } = useSelector((state) => state.categories);
+  const { categoriesList, error } = useSelector((state) => state.categories);
 
-  const categoryData = jobsList?.reduce((acc, job) => {
+  const categoryData = jobsList && jobsList?.reduce((acc, job) => {
     const jobCategory = job.jobCategory;
     const categoryIndex = acc.findIndex(
       (category) => category.name === jobCategory
@@ -22,7 +22,7 @@ const FeaturedCategories = () => {
     if (categoryIndex !== -1) {
       acc[categoryIndex].count++;
     } else {
-      const category = categoriesList.find(
+      const category = categoriesList?.find(
         (category) => category.name === jobCategory
       );
       acc.push({ ...category, count: 1 });
@@ -50,14 +50,20 @@ const FeaturedCategories = () => {
         Browse Some Featured Categories
       </SectionTitle>
       <Suspense fallback={<Loader />}>
+        {error && (
+          <ErrorMessage>
+            The categories were not loaded due to an error.
+          </ErrorMessage>
+        )}
         <FeaturedCardGrid animate={animate}>
-          {categoryData?.map((category, index) => (
-            <LazyFeaturedCard
-              category={category}
-              index={index}
-              key={index}
-            ></LazyFeaturedCard>
-          ))}
+          {categoryData &&
+            categoryData.map((category, index) => (
+              <LazyFeaturedCard
+                category={category}
+                index={index}
+                key={index}
+              ></LazyFeaturedCard>
+            ))}
         </FeaturedCardGrid>
       </Suspense>
     </SectionWrapper>

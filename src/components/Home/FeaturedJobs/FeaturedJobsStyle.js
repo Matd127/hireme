@@ -44,7 +44,7 @@ export const Logo = styled.div`
 
   img {
     width: 100%;
-    height: 100%
+    height: 100%;
   }
 `;
 
@@ -93,4 +93,8 @@ export const JobType = styled.div`
   border: none;
   font-weight: 400;
   font-size: 1.6rem;
+`;
+
+export const ErrorMessage = styled.p`
+  text-align: center;
 `;

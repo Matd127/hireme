@@ -1,5 +1,6 @@
 import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
 import { SectionTitle } from "../../Common/SectionWrapper/SectionWrapperStyle";
+import SubscriptionForm from "../SubscriptionForm/SubscriptionForm";
 import { JobSubscriptionText } from "./JobSubscriptionStyle";
 
 const JobSubscription = () => {
@@ -11,8 +12,7 @@ const JobSubscription = () => {
         latest job openings that match your preferences. Stay ahead in your job
         search!
       </JobSubscriptionText>
-
-      {/* Finish in the future */}
+      <SubscriptionForm />
     </SectionWrapper>
   );
 };

@@ -8,7 +8,7 @@ const url =
 export const getJobs = createAsyncThunk("jobs/getJobs", async () => {
   const response = await fetch(url);
   const data = await response.json();
-  return data;
+  return data.reverse();
 });
 
 const initialJobsState = {

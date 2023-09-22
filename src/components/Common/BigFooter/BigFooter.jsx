@@ -49,10 +49,12 @@ const Footer = () => {
           <FooterTitle>Quick Links</FooterTitle>
           <FooterLinks>
             <FooterListItem>
-            <FooterLink to="/">Home</FooterLink>
+              <FooterLink to="/">Home</FooterLink>
             </FooterListItem>
             <FooterListItem>About us</FooterListItem>
-            <FooterListItem>Contact</FooterListItem>
+            <FooterListItem >
+              <FooterLink to="/contact">Contact</FooterLink>
+            </FooterListItem>
           </FooterLinks>
         </FooterItem>
 

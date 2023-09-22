@@ -18,38 +18,56 @@ import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
 import { useSelector, useDispatch } from "react-redux";
 import { jobsActions } from "../../../redux/jobs-slice";
 import { useLocation } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const JobSearchForm = () => {
   const dispatch = useDispatch();
-  const dataFromHomepage = useLocation();
-  const { state } = dataFromHomepage;
-
-  const [title, setTitle] = useState(state?.title || "");
-  const [location, setLocation] = useState(state?.location || "");
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedJobType, setSelectedJobType] = useState("");
-  const [minimumSalary, setMinimumSalary] = useState("");
-  const [minimumExperience, setMinimumExperience] = useState("");
-
+  const dataFromPreviousPage = useLocation();
+  const { state } = dataFromPreviousPage;
   const { jobsList } = useSelector((state) => state.jobs);
-
-  const [showAdvancedMenu, setShowAdvancedMenu] = useState(false);
   const { categoriesList } = useSelector((state) => state.categories);
 
-  const filterJobs = (e) => {
-    e.preventDefault();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      title: state?.title || "",
+      location: state?.location || "",
+      category: state?.categoryName,
+      minimumSalary: 0,
+      minimumExperience: 0,
+    },
+  });
 
+  const onLoadSubmit = (data) => {
+    const filteredJobs = jobsList
+      .filter((job) => job.title.toLowerCase().includes(data.title))
+      .filter((job) => job.location.toLowerCase().includes(data.location));
+
+    const filteredByCategory = data.category
+      ? filteredJobs.filter((job) => job.jobCategory === data.category)
+      : filteredJobs;
+
+    dispatch(jobsActions.setFilteredJobs(filteredByCategory));
+  };
+
+  useEffect(() => {
+    handleSubmit(onLoadSubmit)();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handleSubmit]);
+
+
+  const [showAdvancedMenu, setShowAdvancedMenu] = useState(false);
+
+  const filterJobs = (data) => {
     const filteredJobs = jobsList.filter((job) => {
-      const titleMatch = job.title.toLowerCase().includes(title);
-      const locationMatch = job.location.toLowerCase().includes(location);
+      const titleMatch = job.title.toLowerCase().includes(data.title);
+      const locationMatch = job.location.toLowerCase().includes(data.location);
       const categoryMatch =
-        selectedCategory === "" || job.jobCategory === selectedCategory;
-      const jobTypeMatch =
-        selectedJobType === "" || job.jobType === selectedJobType;
-      const salaryMatch = minimumSalary === "" || job.salary >= +minimumSalary;
-      const experienceMatch =
-        minimumExperience === "" || job.experience >= +minimumExperience;
+        data.category === "" || job.jobCategory === data.category;
+      const jobTypeMatch = data.jobType === "" || job.jobType === data.jobType;
 
+      const salaryMatch = job.salary >= +data.minimumSalary;
+      const experienceMatch = job.experience >= +data.minimumExperience;
+      
       return (
         titleMatch &&
         locationMatch &&
@@ -59,36 +77,20 @@ const JobSearchForm = () => {
         experienceMatch
       );
     });
-
+    console.log(filteredJobs, jobsList);
     dispatch(jobsActions.setFilteredJobs(filteredJobs));
   };
 
-  useEffect(() => {
-    if (state) {
-      const filteredJobs = jobsList.filter((job) => {
-        const titleMatch = job.title.toLowerCase().includes(state.title);
-        const locationMatch = job.location.toLowerCase().includes(state.location);
-
-        return titleMatch && locationMatch;
-      });
-
-      dispatch(jobsActions.setFilteredJobs(filteredJobs));
-    }
-  }, [dispatch, jobsList, state]);
-
-
-
   return (
     <SectionWrapper>
-      <SearchFormWrapper onSubmit={filterJobs}>
+      <SearchFormWrapper onSubmit={handleSubmit(filterJobs)}>
         <JobSearchGrid showAdvancedMenu={showAdvancedMenu}>
           <PostingFormGroup>
             <PostingFormLabel>Job Title</PostingFormLabel>
             <FormInput
               type="text"
               placeholder="Enter job title, position or keyword"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              {...register("title")}
             />
           </PostingFormGroup>
 
@@ -97,8 +99,7 @@ const JobSearchForm = () => {
             <FormInput
               type="text"
               placeholder="Enter job location"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              {...register("location")}
             />
           </PostingFormGroup>
 
@@ -107,9 +108,9 @@ const JobSearchForm = () => {
             <FormSelect
               defaultValue=""
               id="jobCategory"
-              onChange={(e) => setSelectedCategory(e.target.value)}
+              {...register("category")}
             >
-              <option value={selectedCategory} disabled>
+              <option value="" disabled>
                 Select a category
               </option>
               {categoriesList.map((category) => (
@@ -127,9 +128,9 @@ const JobSearchForm = () => {
                 <FormSelect
                   defaultValue=""
                   id="jobType"
-                  onChange={(e) => setSelectedJobType(e.target.value)}
+                  {...register("jobType")}
                 >
-                  <option value={selectedJobType} disabled>
+                  <option value="" disabled>
                     Select a type
                   </option>
                   <option value="Full-time">Full-time</option>
@@ -144,8 +145,7 @@ const JobSearchForm = () => {
                 <FormInput
                   type="number"
                   placeholder="Enter salary"
-                  value={minimumSalary}
-                  onChange={(e) => setMinimumSalary(e.target.value)}
+                  {...register("minimumSalary")}
                 />
               </PostingFormGroup>
 
@@ -153,9 +153,8 @@ const JobSearchForm = () => {
                 <PostingFormLabel>Minimum Experience</PostingFormLabel>
                 <FormInput
                   type="number"
-                  value={minimumExperience}
                   placeholder="Enter years of exp"
-                  onChange={(e) => setMinimumExperience(e.target.value)}
+                  {...register("minimumExperience")}
                 />
               </PostingFormGroup>
             </>

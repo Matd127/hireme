@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 const JobsStats = React.memo(() => {
   const { jobsList } = useSelector(state => state.jobs)
   const { categoriesList } = useSelector(state => state.categories)
-  console.log(jobsList)
   const companiesCount = jobsList && [...new Set(jobsList.map(job => job.companyName))].length;
 
   const [animate, setAnimate] = useState(false);

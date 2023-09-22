@@ -10,6 +10,7 @@ import placeholderImg from "../../assets/placeholder.png";
 import { BsGeoAlt, BsGrid, BsFillBriefcaseFill } from "react-icons/bs";
 
 const RoleCard = (props) => {
+  console.log(props.job)
   return (
     <RoleCardWrapper>
       <LogoWrapper>

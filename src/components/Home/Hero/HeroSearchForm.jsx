@@ -14,7 +14,7 @@ const HeroSearchForm = () => {
   const [location, setLocation] = useState("");
   const navigate = useNavigate();
 
-  const submitHandler = () => {
+  const submitFrom = () => {
     navigate('/jobs', {state: {title, location}})
   };
   return (
@@ -35,7 +35,7 @@ const HeroSearchForm = () => {
           ></LocationInput>
         </InputsWrapper>
       </HeroForm>
-      <HeroButton onClick={submitHandler}>Search</HeroButton>
+      <HeroButton onClick={submitFrom}>Search</HeroButton>
     </HeroFormWrapper>
   );
 };

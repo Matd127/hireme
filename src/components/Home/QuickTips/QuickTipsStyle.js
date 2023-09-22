@@ -19,11 +19,7 @@ export const TipsCard = styled.div`
   color: #333;
 `;
 
-export const TipsCardImage = styled.div`
-  background-image: url(${(props) => props.background});
-  background-size: cover !important;
-  background-position: center;
-  background-repeat: no-repeat;
+export const TipsCardImage = styled.img`
   min-height: 30rem;
   width: 100%;
 `;

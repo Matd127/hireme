@@ -5,11 +5,12 @@ import { useInView } from "react-intersection-observer";
 import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
 import { SectionTitle } from "../../Common/SectionWrapper/SectionWrapperStyle";
 import { useSelector } from "react-redux";
+import { ErrorMessage } from "./FeaturedJobsStyle";
 
 const FeatruedJobs = () => {
   const [animate, setAnimate] = useState(false);
 
-  const { jobsList } = useSelector((state) => state.jobs);
+  const { jobsList, error } = useSelector((state) => state.jobs);
 
   const { ref: jobsRef, inView: jobsAreVisible } = useInView({
     threshold: 0.25,
@@ -27,7 +28,8 @@ const FeatruedJobs = () => {
         Discover Featured Job Opportunites
       </SectionTitle>
       <Suspense fallback={<Loader />}>
-        {animate && <JobItemLazy jobs={jobsList.slice(0, 6)} />}
+        {error && <ErrorMessage>Jobs were not loaded due to an error.</ErrorMessage>}
+        {animate && jobsList && <JobItemLazy jobs={jobsList.slice(0, 6)} />}
       </Suspense>
     </SectionWrapper>
   );

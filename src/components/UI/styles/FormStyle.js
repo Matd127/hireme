@@ -10,8 +10,8 @@ export const FormWrapper = css`
 `;
 
 export const FormGrid = css`
-  padding: 1rem;
-  margin: 1rem;
+  padding: 0 1rem;
+  margin: 1rem 1rem 0 1rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
 `

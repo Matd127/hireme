@@ -5,9 +5,10 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import JobsPagination from "../JobPagination/JobPagination";
 import usePagination from "../../../hooks/usePagination";
+import { ErrorMessage } from "../../Home/FeaturedJobs/FeaturedJobsStyle";
 
 const JobList = () => {
-  const { jobsList, filteredJobs } = useSelector((state) => state.jobs);
+  const { jobsList, filteredJobs, error } = useSelector((state) => state.jobs);
   const [jobsToDisplay, setJobsToDisplay] = useState([]);
 
   useEffect(() => {
@@ -22,15 +23,20 @@ const JobList = () => {
       <SectionTitle theme="dark">
         The following job offers have been found:
       </SectionTitle>
-      <JobItemLazy jobs={records}></JobItemLazy>
-      <JobsPagination
-        jobs={jobsToDisplay}
-        prevPage={prevPage}
-        pageNumbers={pageNumbers}
-        setPage={setPage}
-        nextPage={nextPage}
-        currentPage={currentPage}
-      />
+      {<JobItemLazy jobs={records}></JobItemLazy>}
+      {error && (
+        <ErrorMessage>Jobs were not loaded due to an error.</ErrorMessage>
+      )}
+      {!error && (
+        <JobsPagination
+          jobs={jobsToDisplay}
+          prevPage={prevPage}
+          pageNumbers={pageNumbers}
+          setPage={setPage}
+          nextPage={nextPage}
+          currentPage={currentPage}
+        />
+      )}
     </SectionWrapper>
   );
 };

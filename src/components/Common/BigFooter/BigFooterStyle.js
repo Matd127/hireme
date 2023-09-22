@@ -25,7 +25,6 @@ export const FooterDescription = styled.p`
 `;
 
 export const FooterLink = styled(Link)`
-  color: inherit;
   text-decoration: none;
 `;
 

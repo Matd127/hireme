@@ -2,19 +2,21 @@ import {
   ContactFormInput,
   ContactFormLabel,
   ContactFromGroup,
+  ContactFormError
 } from "../ContactForm/ContactFormStyle";
 import React from "react";
 
 const ContactInput = React.forwardRef((props, ref) => {
   return (
     <ContactFromGroup>
-      <ContactFormLabel htmlFor={props.id}>{props.name}</ContactFormLabel>
+      <ContactFormLabel htmlFor={props.id}>{props.labelName}</ContactFormLabel>
       <ContactFormInput
         id={props.id}
         type={props.type}
         {...props}
         ref={ref}
       ></ContactFormInput>
+      {props.errors && <ContactFormError>Field is required!</ContactFormError>}
     </ContactFromGroup>
   );
 });

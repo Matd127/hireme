@@ -12,21 +12,34 @@ import {
   ActionWrapper,
   SubmitButton,
 } from "./ContactFormStyle";
-
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { BsEnvelope } from "react-icons/bs";
 import { BsGeoAlt } from "react-icons/bs";
-
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { contactActions } from "../../../redux/contact-slice";
+import ContactMessage from "../ContactMessage/ContactMessage";
+import {
+  mailValidation,
+  messageValidation,
+  namesValidation,
+  subjectValidation,
+} from "./validations";
 
 const ContactForm = () => {
+  const dispatch = useDispatch();
+  const { sent, success } = useSelector((state) => state.contact);
+  const notSend = !sent && !success;
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    dispatch(contactActions.sendMessage(data));
+  };
 
   return (
     <SectionWrapper>
@@ -48,61 +61,55 @@ const ContactForm = () => {
         />
       </ContactCardList>
 
-      <ContactFormWrapper onSubmit={handleSubmit(onSubmit)}>
-        <ContactFormTitle>Don't hesitate to contact us</ContactFormTitle>
+      {sent && <ContactMessage isSuccess={success} />}
+      {notSend && (
+        <ContactFormWrapper onSubmit={handleSubmit(onSubmit)}>
+          <ContactFormTitle>Don't hesitate to contact us</ContactFormTitle>
+          <ContactFormGrid>
+            <ContactInput
+              labelName="First Name"
+              type="text"
+              id="first_name"
+              {...register("firstName", namesValidation)}
+              errors={errors.firstName}
+            />
+            <ContactInput
+              labelName="Second Name"
+              type="text"
+              id="second_name"
+              {...register("secondName", namesValidation)}
+              errors={errors.secondName}
+            />
+            <ContactInput
+              labelName="Email"
+              type="email"
+              id="email"
+              {...register("email", mailValidation)}
+              errors={errors.email}
+            />
+            <ContactInput
+              labelName="Subject"
+              type="text"
+              id="subject"
+              {...register("subject", subjectValidation)}
+              errors={errors.subject}
+            />
+          </ContactFormGrid>
 
-        <ContactFormGrid>
-          <ContactInput
-            type="text"
-            id="first_name"
-            {...register("firstName", {
-              required: true,
-              minLength: 2,
-              pattern: /^[A-Za-z]+$/i,
-            })}
-          />
-          <ContactInput
-            type="text"
-            id="second_name"
-            {...register("secondName", {
-              required: true,
-              minLength: 2,
-              pattern: /^[A-Za-z]+$/i,
-            })}
-          />
-          <ContactInput
-            type="email"
-            id="email"
-            {...register("email", { required: true, minLength: 8 })}
-          />
-          <ContactInput
-            type="text"
-            id="subject"
-            {...register("subject", {
-              required: true,
-              minLength: 5,
-              maxLength: 80,
-            })}
-          />
-        </ContactFormGrid>
+          <ContactFromGroup>
+            <ContactFormLabel htmlFor="message">Message</ContactFormLabel>
+            <ContactFormMessage
+              id="message"
+              rows={8}
+              {...register("message", messageValidation)}
+            ></ContactFormMessage>
+          </ContactFromGroup>
 
-        <ContactFromGroup>
-          <ContactFormLabel htmlFor="message">Message</ContactFormLabel>
-          <ContactFormMessage
-            id="message"
-            rows={8}
-            {...register("message", {
-              required: true,
-              minLength: 10,
-              max: 255,
-            })}
-          ></ContactFormMessage>
-        </ContactFromGroup>
-
-        <ActionWrapper>
-          <SubmitButton>Send Message</SubmitButton>
-        </ActionWrapper>
-      </ContactFormWrapper>
+          <ActionWrapper>
+            <SubmitButton>Send Message</SubmitButton>
+          </ActionWrapper>
+        </ContactFormWrapper>
+      )}
     </SectionWrapper>
   );
 };
