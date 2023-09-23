@@ -25,7 +25,7 @@ const jobsSlice = createSlice({
     postJob: (_, action) => {
       const data = action.payload;
       try {
-        set(ref(db, "jobs/" + data.id), data);
+        set(ref(db, "jobs/" + (data.id - 1)), data);
       } catch (err) {
         console.log(err);
       }

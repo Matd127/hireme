@@ -5,7 +5,7 @@ export const DefaultButton = styled.button`
   color: #fff;
   border: none;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 18px !important;
 
   &:hover {
     background-color: #4398d4;

@@ -32,6 +32,7 @@ const JobSearchForm = () => {
       title: state?.title || "",
       location: state?.location || "",
       category: state?.categoryName,
+      type: "",
       minimumSalary: 0,
       minimumExperience: 0,
     },
@@ -54,7 +55,6 @@ const JobSearchForm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handleSubmit]);
 
-
   const [showAdvancedMenu, setShowAdvancedMenu] = useState(false);
 
   const filterJobs = (data) => {
@@ -63,21 +63,20 @@ const JobSearchForm = () => {
       const locationMatch = job.location.toLowerCase().includes(data.location);
       const categoryMatch =
         data.category === "" || job.jobCategory === data.category;
-      const jobTypeMatch = data.jobType === "" || job.jobType === data.jobType;
+      const typeMatch = data.type === "" || job.jobType === data.type;
 
       const salaryMatch = job.salary >= +data.minimumSalary;
       const experienceMatch = job.experience >= +data.minimumExperience;
-      
+
       return (
         titleMatch &&
         locationMatch &&
         categoryMatch &&
-        jobTypeMatch &&
+        typeMatch &&
         salaryMatch &&
         experienceMatch
       );
     });
-    console.log(filteredJobs, jobsList);
     dispatch(jobsActions.setFilteredJobs(filteredJobs));
   };
 
@@ -86,8 +85,9 @@ const JobSearchForm = () => {
       <SearchFormWrapper onSubmit={handleSubmit(filterJobs)}>
         <JobSearchGrid showAdvancedMenu={showAdvancedMenu}>
           <PostingFormGroup>
-            <PostingFormLabel>Job Title</PostingFormLabel>
+            <PostingFormLabel htmlFor="title">Job Title</PostingFormLabel>
             <FormInput
+              id="title"
               type="text"
               placeholder="Enter job title, position or keyword"
               {...register("title")}
@@ -95,8 +95,9 @@ const JobSearchForm = () => {
           </PostingFormGroup>
 
           <PostingFormGroup>
-            <PostingFormLabel>Location</PostingFormLabel>
+            <PostingFormLabel htmlFor="location">Location</PostingFormLabel>
             <FormInput
+              id="location"
               type="text"
               placeholder="Enter job location"
               {...register("location")}
@@ -104,12 +105,8 @@ const JobSearchForm = () => {
           </PostingFormGroup>
 
           <PostingFormGroup>
-            <PostingFormLabel>Categories</PostingFormLabel>
-            <FormSelect
-              defaultValue=""
-              id="jobCategory"
-              {...register("category")}
-            >
+            <PostingFormLabel htmlFor="category">Categories</PostingFormLabel>
+            <FormSelect defaultValue="" id="category" {...register("category")}>
               <option value="" disabled>
                 Select a category
               </option>
@@ -124,12 +121,8 @@ const JobSearchForm = () => {
           {showAdvancedMenu && (
             <>
               <PostingFormGroup>
-                <PostingFormLabel>Job Type</PostingFormLabel>
-                <FormSelect
-                  defaultValue=""
-                  id="jobType"
-                  {...register("jobType")}
-                >
+                <PostingFormLabel htmlFor="type">Job Type</PostingFormLabel>
+                <FormSelect defaultValue="" id="type" {...register("type")}>
                   <option value="" disabled>
                     Select a type
                   </option>

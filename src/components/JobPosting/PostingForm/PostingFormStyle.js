@@ -82,3 +82,10 @@ export const DescriptionArea = styled.textarea`
 export const RequiredField = styled.span`
   color: rgb(191, 61, 52);
 `;
+
+export const PostingFormInfo = styled.p`
+  font-size: 1.8rem;
+  text-align: left;
+  margin-left: 1rem;
+  padding-left: 2rem;
+`;

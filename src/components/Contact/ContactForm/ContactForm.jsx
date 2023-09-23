@@ -4,13 +4,11 @@ import { ContactCardList } from "../ContactCard/ContactCardStyle";
 import ContactInput from "../ContactInput/ContactInput";
 import {
   ContactFormGrid,
-  ContactFormLabel,
-  ContactFormMessage,
   ContactFormTitle,
   ContactFormWrapper,
-  ContactFromGroup,
   ActionWrapper,
   SubmitButton,
+  ContactFormInfo,
 } from "./ContactFormStyle";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { BsEnvelope } from "react-icons/bs";
@@ -20,11 +18,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { contactActions } from "../../../redux/contact-slice";
 import ContactMessage from "../ContactMessage/ContactMessage";
 import {
-  mailValidation,
+  emailValidation,
   messageValidation,
   namesValidation,
   subjectValidation,
 } from "./validations";
+import ContactFormMessage from "./ContactFormMessage/ContactFormMessage";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -84,7 +83,7 @@ const ContactForm = () => {
               labelName="Email"
               type="email"
               id="email"
-              {...register("email", mailValidation)}
+              {...register("email", emailValidation)}
               errors={errors.email}
             />
             <ContactInput
@@ -96,14 +95,15 @@ const ContactForm = () => {
             />
           </ContactFormGrid>
 
-          <ContactFromGroup>
-            <ContactFormLabel htmlFor="message">Message</ContactFormLabel>
-            <ContactFormMessage
-              id="message"
-              rows={8}
-              {...register("message", messageValidation)}
-            ></ContactFormMessage>
-          </ContactFromGroup>
+          <ContactFormMessage
+            rows={8}
+            labelName="Message"
+            id="message"
+            {...register("message", messageValidation)}
+            errors={errors.message}
+          />
+
+          <ContactFormInfo>All fields are required</ContactFormInfo>
 
           <ActionWrapper>
             <SubmitButton>Send Message</SubmitButton>

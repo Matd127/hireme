@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useEffect } from "react";
 
 const usePagination = (initialPage, data, maxVisiblePages = 6) => {
   const recordsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(initialPage);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [data]);
 
   const indexOfLastElement = currentPage * recordsPerPage;
   const indexOfFirstElement = indexOfLastElement - recordsPerPage;

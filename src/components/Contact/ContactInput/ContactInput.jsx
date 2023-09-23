@@ -16,7 +16,7 @@ const ContactInput = React.forwardRef((props, ref) => {
         {...props}
         ref={ref}
       ></ContactFormInput>
-      {props.errors && <ContactFormError>Field is required!</ContactFormError>}
+      {props.errors && <ContactFormError>{props.errors.message}</ContactFormError>}
     </ContactFromGroup>
   );
 });

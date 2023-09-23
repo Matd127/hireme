@@ -16,7 +16,7 @@ export const upload = function (
     dispatch(
       jobsActions.postJob({
         ...data,
-        id: id,
+        id: id + 1,
         skills: skills,
         benefits: benefits,
         keywords: keywords,
@@ -42,7 +42,7 @@ export const upload = function (
             jobsActions.postJob({
               ...data,
               logo: url,
-              id: id,
+              id: id + 1,
               requiredSkills: skills,
               benefits: benefits,
               keywords: keywords,

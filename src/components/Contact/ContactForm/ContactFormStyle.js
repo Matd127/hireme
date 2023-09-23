@@ -52,7 +52,7 @@ export const SubmitButton = styled(DefaultButton)`
   padding: 1rem 2.5rem;
 `;
 
-export const ContactFormMessage = styled.textarea`
+export const ContactFormArea = styled.textarea`
   ${InputStyle}
   font-family: inherit;
 `;
@@ -60,4 +60,10 @@ export const ContactFormMessage = styled.textarea`
 export const ContactFormError = styled.span`
   margin-top: 0.5rem;
   color: rgb(191, 61, 52);
+`;
+
+export const ContactFormInfo = styled.p`
+  font-size: 1.6rem;
+  text-align: left;
+  padding-left: 1rem;
 `;

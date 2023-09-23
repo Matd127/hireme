@@ -7,7 +7,12 @@ import {
 const SubscriptionForm = () => {
   return (
     <SubscriptionFormWrapper>
-      <SubscriptionInput type="text" placeholder="Enter Email Address"/>{" "}
+      <SubscriptionInput
+        id="email"
+        type="text"
+        placeholder="Enter Email Address"
+        autocomplete="off"
+      />{" "}
       <SubscriptionSubmit>Subscribe</SubscriptionSubmit>
     </SubscriptionFormWrapper>
   );

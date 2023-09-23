@@ -8,6 +8,8 @@ import {
   FormAction,
   SubmitButton,
   PostingFormGrid,
+  PostingFormInfo,
+  RequiredField
 } from "./PostingFormStyle";
 import useTags from "../../../hooks/useTags";
 import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
@@ -232,12 +234,15 @@ const PostingForm = () => {
             {...register("description", descriptionValidation)}
           />
 
+          <PostingFormInfo>
+            <RequiredField>*</RequiredField> - Field is required.
+          </PostingFormInfo>
+
           <FormAction>
             <SubmitButton>Submit</SubmitButton>
           </FormAction>
         </PostingFormWrapper>
       )}
-
       {isSent && <PostingMessage isSuccess={isSuccess} />}
     </SectionWrapper>
   );

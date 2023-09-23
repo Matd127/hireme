@@ -72,6 +72,7 @@ export const ApplyButton = styled(DefaultButton)`
   margin: 1.3rem;
   padding: 1rem;
   width: 100%;
+  text-align: center;
 
   ${media.medium`
     margin: 0;
