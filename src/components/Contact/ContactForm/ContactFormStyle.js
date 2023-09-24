@@ -9,6 +9,10 @@ export const ContactFormWrapper = styled.form`
   ${FormWrapper}
   margin: 0 12.5%;
   padding: 0 2rem;
+
+  ${media.large`
+    margin: 0;
+  `}
 `;
 
 export const ContactFormLabel = styled.label`

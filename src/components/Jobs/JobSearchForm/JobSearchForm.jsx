@@ -40,8 +40,12 @@ const JobSearchForm = () => {
 
   const onLoadSubmit = (data) => {
     const filteredJobs = jobsList
-      .filter((job) => job.title.toLowerCase().includes(data.title))
-      .filter((job) => job.location.toLowerCase().includes(data.location));
+      .filter((job) =>
+        job.title.toLowerCase().includes(data.title.toLowerCase())
+      )
+      .filter((job) =>
+        job.location.toLowerCase().includes(data.location.toLowerCase())
+      );
 
     const filteredByCategory = data.category
       ? filteredJobs.filter((job) => job.jobCategory === data.category)
@@ -59,8 +63,12 @@ const JobSearchForm = () => {
 
   const filterJobs = (data) => {
     const filteredJobs = jobsList.filter((job) => {
-      const titleMatch = job.title.toLowerCase().includes(data.title);
-      const locationMatch = job.location.toLowerCase().includes(data.location);
+      const titleMatch = job.title
+        .toLowerCase()
+        .includes(data.title.toLowerCase());
+      const locationMatch = job.location
+        .toLowerCase()
+        .includes(data.location.toLowerCase());
       const categoryMatch =
         data.category === "" || job.jobCategory === data.category;
       const typeMatch = data.type === "" || job.jobType === data.type;
