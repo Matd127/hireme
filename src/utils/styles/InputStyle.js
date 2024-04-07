@@ -12,7 +12,6 @@ export const InputStyle = css`
   padding: 1rem 2rem;
   color: rgb(51, 51, 51);
 
-
   &:focus {
     outline: none;
   }

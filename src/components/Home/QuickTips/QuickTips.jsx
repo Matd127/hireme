@@ -1,7 +1,7 @@
 import { TipsCardGrid } from "./QuickTipsStyle";
 import Tips from "./Tips";
 import { lazy, Suspense, useState, useEffect } from "react";
-import Loader from "../../UI/Loader/Loader";
+import Loader from "../../Loader/Loader";
 import { useInView } from "react-intersection-observer";
 import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
 import { SectionTitle } from "../../Common/SectionWrapper/SectionWrapperStyle";
@@ -23,13 +23,13 @@ const QuickTips = () => {
   return (
     <SectionWrapper>
       <SectionTitle ref={tipsRef}>Quick tips before an internview</SectionTitle>
-        <Suspense fallback={<Loader />}>
-          <TipsCardGrid>
-            {Tips.map(
-              (tip) => animate && <LazyTipsCard key={tip.id} tip={tip} />
-            )}
-          </TipsCardGrid>
-        </Suspense>
+      <Suspense fallback={<Loader />}>
+        <TipsCardGrid>
+          {Tips.map(
+            (tip) => animate && <LazyTipsCard key={tip.id} tip={tip} />
+          )}
+        </TipsCardGrid>
+      </Suspense>
     </SectionWrapper>
   );
 };

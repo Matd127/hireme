@@ -1,5 +1,5 @@
 import Navigation from "../Navigation/Navigation";
-import { InnerWrapper } from "../../UI/styles/WrapperStyle";
+import { InnerWrapper } from "../../utils/styles/WrapperStyle";
 import { HeroSectionTitle, HeroSectionWrapper } from "./HeroSectionStyles";
 
 const HeroSection = (props) => {

@@ -3,7 +3,7 @@ import { ErrorMessage, FeaturedCardGrid } from "./FeaturedCategoriesStyle";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { lazy, Suspense } from "react";
-import Loader from "../../UI/Loader/Loader";
+import Loader from '../../Loader/Loader'
 import { SectionTitle } from "../../Common/SectionWrapper/SectionWrapperStyle";
 import { useSelector } from "react-redux";
 
@@ -27,7 +27,6 @@ const FeaturedCategories = () => {
       );
       acc.push({ ...category, count: 1 });
     }
-
     return acc.slice(0, 6);
   }, []);
 

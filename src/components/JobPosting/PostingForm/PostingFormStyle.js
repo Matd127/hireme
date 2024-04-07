@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { media } from "../../UI/mediaQueries";
-import { DefaultButton } from "../../UI/styles/ButtonStyle";
-import { InputStyle } from "../../UI/styles/InputStyle";
-import { FormGrid, FormWrapper } from "../../UI/styles/FormStyle";
+import { media } from "../../../utils/mediaQueries";
+import { DefaultButton } from "../../../utils/styles/ButtonStyle";
+import { InputStyle } from "../../../utils/styles/InputStyle";
+import { FormGrid, FormWrapper } from "../../../utils/styles/FormStyle";
 
 export const PostingFormWrapper = styled.form`
   ${FormWrapper}

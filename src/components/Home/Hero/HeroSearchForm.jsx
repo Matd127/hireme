@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useRef } from "react";
 import {
-  HeroButton,
   HeroForm,
   HeroFormWrapper,
   InputsWrapper,
@@ -8,15 +7,22 @@ import {
   LocationInput,
 } from "./HeroFormStyles";
 import { useNavigate } from "react-router-dom";
+import Button from "../../Common/Button/Button";
 
-const HeroSearchForm = () => {
-  const [title, setTitle] = useState("");
-  const [location, setLocation] = useState("");
+export default function HeroSearchForm() {
+  const titleRef = useRef("");
+  const locationRef = useRef("");
   const navigate = useNavigate();
 
-  const submitFrom = () => {
-    navigate('/jobs', {state: {title, location}})
+  const submitForm = () => {
+    navigate("/jobs", {
+      state: {
+        title: titleRef.current.value,
+        location: locationRef.current.value,
+      },
+    });
   };
+
   return (
     <HeroFormWrapper>
       <HeroForm>
@@ -24,20 +30,16 @@ const HeroSearchForm = () => {
           <JobInput
             id="jobTitle"
             placeholder="Enter job title, position or keyword"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          ></JobInput>
+            ref={titleRef}
+          />
           <LocationInput
             id="location"
             placeholder="Enter a location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          ></LocationInput>
+            ref={locationRef}
+          />
         </InputsWrapper>
       </HeroForm>
-      <HeroButton onClick={submitFrom}>Search</HeroButton>
+      <Button onClick={submitForm}>Search</Button>
     </HeroFormWrapper>
   );
-};
-
-export default HeroSearchForm;
+}

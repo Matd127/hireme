@@ -6,11 +6,10 @@ import {
   Hamburger,
   CloseIcon,
 } from "./NavigationStyles";
-import { BsList } from "react-icons/bs";
-import { BsXLg } from "react-icons/bs";
+import { BsList, BsXLg } from "react-icons/bs";
 import { useState } from "react";
 
-const Navigation = () => {
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [firstOpen, setFirstOpen] = useState(false);
 
@@ -40,6 +39,4 @@ const Navigation = () => {
       </NavMenu>
     </NavWrapper>
   );
-};
-
-export default Navigation;
+}

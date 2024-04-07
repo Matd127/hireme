@@ -1,10 +1,8 @@
 import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
-import {
-  FindTalentText,
-  FindTalentActions,
-  GetStartedButton,
-} from "./FindTalentStyle";
+import { FindTalentText, FindTalentActions } from "./FindTalentStyle";
 import { SectionTitle } from "../../Common/SectionWrapper/SectionWrapperStyle";
+import Button from "../../Common/Button/Button";
+import { Link } from "react-router-dom";
 
 const FindTalent = () => {
   return (
@@ -19,7 +17,9 @@ const FindTalent = () => {
         Join us today and find your next superstar employee!
       </FindTalentText>
       <FindTalentActions>
-        <GetStartedButton to="/post">Get started</GetStartedButton>
+        <Link to="/post">
+          <Button padding="1rem 2rem">Get started</Button>
+        </Link>
       </FindTalentActions>
     </SectionWrapper>
   );

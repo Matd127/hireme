@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import { InnerWrapper } from "../../UI/styles/WrapperStyle";
 import styled, { css } from "styled-components";
-import { media } from "../../UI/mediaQueries";
+import { media } from "../../utils/mediaQueries";
 import { menuAniamtion, closeAnimation } from "./NavigationAnimations";
 
 const MobileMenu = css`
@@ -21,7 +20,8 @@ const MobileMenu = css`
   z-index: 1;
 `;
 
-export const NavWrapper = styled(InnerWrapper)`
+export const NavWrapper = styled.nav`
+  width: 75%;
   background-color: transparent;
   padding: 3.2rem;
   display: flex;
@@ -31,6 +31,7 @@ export const NavWrapper = styled(InnerWrapper)`
 
   ${media.xsmall`
     padding: 2rem;
+    width: 85%;
   `}
 `;
 

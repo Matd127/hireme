@@ -1,12 +1,12 @@
-import HeroSection from "../components/Common/HeroSection/HeroSection";
+import HeroSection from "../layout/HeroSection/HeroSection";
 import JobDetails from "../components/JobDetails/JobDetails";
 import { useEffect } from "react";
 import { getJobs } from "../redux/jobs-slice";
 import { getCategories } from "../redux/categories-slice";
 import { useDispatch } from "react-redux";
 import bg from "../assets/details.jpg";
-import SmallFooter from "../components/Common/SmallFooter/SmallFooter";
-import BigFooter from "../components/Common/BigFooter/BigFooter";
+import SmallFooter from "../layout/SmallFooter/SmallFooter";
+import BigFooter from "../layout/BigFooter/BigFooter";
 
 const JobDetailsPage = () => {
   const dispatch = useDispatch();
@@ -21,8 +21,7 @@ const JobDetailsPage = () => {
   const title = "Job Details";
   return (
     <>
-      <HeroSection bg={bg} title={title}>
-      </HeroSection>
+      <HeroSection bg={bg} title={title}></HeroSection>
       <JobDetails />
       <BigFooter />
       <SmallFooter />

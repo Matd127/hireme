@@ -12,7 +12,7 @@ const SubscriptionForm = () => {
         type="text"
         placeholder="Enter Email Address"
         autocomplete="off"
-      />{" "}
+      />
       <SubscriptionSubmit>Subscribe</SubscriptionSubmit>
     </SubscriptionFormWrapper>
   );

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../UI/mediaQueries";
+import { media } from "../../../utils/mediaQueries";
 
 export const SectionTitle = styled.h2`
   color: ${props => (props.theme === "dark" ? "#ddd" : "#333333")};

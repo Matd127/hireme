@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { DefaultButton } from "../../UI/styles/ButtonStyle";
-import { InputStyle } from "../../UI/styles/InputStyle";
-import { media } from "../../UI/mediaQueries";
+import { DefaultButton } from "../../../utils/styles/ButtonStyle";
+import { InputStyle } from "../../../utils/styles/InputStyle";
+import { media } from "../../../utils/mediaQueries";
 
 export const SubscriptionFormWrapper = styled.div`
   display: flex;

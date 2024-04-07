@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../UI/mediaQueries";
-import { DefaultButton } from "../../UI/styles/ButtonStyle";
-
+import { media } from "../../../utils/mediaQueries";
 
 export const HeroFormWrapper = styled.div`
   margin: 3.2rem 0 10rem 0;
@@ -40,8 +38,7 @@ export const JobInput = styled.input`
   ${media.large`
     padding: 2.4rem;
   `}
-
-`
+`;
 export const LocationInput = styled(JobInput)`
   border-left: 1px solid #ddd;
 
@@ -49,10 +46,4 @@ export const LocationInput = styled(JobInput)`
     border: none;
     border-top: 1px solid #ddd;
   `}
-`
-
-export const HeroButton = styled(DefaultButton)`
-  ${media.large`
-    padding: 1.6rem;
-  `}
-`
+`;

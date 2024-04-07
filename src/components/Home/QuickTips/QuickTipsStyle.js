@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { media } from "../../UI/mediaQueries";
+import { media } from "../../../utils/mediaQueries";
 
 export const TipsCardGrid = styled.div`
   display: grid;

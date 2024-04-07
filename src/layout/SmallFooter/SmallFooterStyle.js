@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { Wrapper } from "../../UI/styles/WrapperStyle";
 
-export const SmallFooterWrapper = styled(Wrapper)`
+export const SmallFooterWrapper = styled.footer`
+  width: 100%;
   border-top: 1px solid rgba(222, 226, 230, 0.5);
+  background-color: rgb(19, 23, 30);
   text-align: center;
-  padding: 0;
 `;
 
 export const SmallFooterTitle = styled.p`

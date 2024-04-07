@@ -1,4 +1,4 @@
-import { InnerWrapper, Wrapper } from "../../UI/styles/WrapperStyle";
+import { Wrapper, InnerWrapper } from "../../../utils/styles/WrapperStyle";
 
 const SectionWrapper = (props) => {
   return (

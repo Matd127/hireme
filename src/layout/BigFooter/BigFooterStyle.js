@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { InnerWrapper } from "../../UI/styles/WrapperStyle";
+import { InnerWrapper } from "../../utils/styles/WrapperStyle";
 import styled from "styled-components";
 
 export const FooterInnerWrapper = styled(InnerWrapper)`

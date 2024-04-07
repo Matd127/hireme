@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { media } from "../../UI/mediaQueries";
-import { Wrapper } from "../../UI/styles/WrapperStyle";
-import { pageColor } from "../../UI/variables";
+import { media } from "../../utils/mediaQueries";
+import { pageColor } from "../../utils/variables";
 
-export const HeroSectionWrapper = styled(Wrapper)`
+export const HeroSectionWrapper = styled.header`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -15,6 +14,7 @@ export const HeroSectionWrapper = styled(Wrapper)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   text-align: center;
   min-height: 40rem;
   padding: 0;

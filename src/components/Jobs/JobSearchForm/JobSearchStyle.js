@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { DefaultButton } from "../../UI/styles/ButtonStyle";
-import { media } from "../../UI/mediaQueries";
-import { FormGrid, FormWrapper } from "../../UI/styles/FormStyle";
+import { DefaultButton } from "../../../utils/styles/ButtonStyle";
+import { media } from "../../../utils/mediaQueries";
+import { FormGrid, FormWrapper } from "../../../utils/styles/FormStyle";
 
 export const SearchFormWrapper = styled.form`
   ${FormWrapper}

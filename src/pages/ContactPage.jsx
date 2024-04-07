@@ -1,6 +1,6 @@
-import HeroSection from "../components/Common/HeroSection/HeroSection";
-import BigFooter from "../components/Common/BigFooter/BigFooter";
-import SmallFooter from "../components/Common/SmallFooter/SmallFooter";
+import HeroSection from "../layout/HeroSection/HeroSection";
+import BigFooter from "../layout/BigFooter/BigFooter"
+import SmallFooter from "../layout/SmallFooter/SmallFooter";
 import bg from "../assets/contact.jpg";
 import ContactForm from "../components/Contact/ContactForm/ContactForm";
 import { useEffect } from "react";

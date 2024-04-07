@@ -1,4 +1,4 @@
-import { media } from "../../UI/mediaQueries";
+import { media } from "../../../utils/mediaQueries";
 import styled, { keyframes, css } from "styled-components";
 
 const fadeIn = keyframes`

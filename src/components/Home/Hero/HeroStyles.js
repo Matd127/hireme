@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { pageSubColor } from "../../UI/variables";
+import { pageSubColor } from "../../../utils/variables";
 
 export const HeroSubTitle = styled.div`
   font-size: 3rem;

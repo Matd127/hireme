@@ -10,6 +10,8 @@ import {
 const PostingInput = React.forwardRef((props, ref) => {
   return (
     <PostingFormGroup>
+
+
       <PostingFormLabel htmlFor={props.id}>
         {props.labelTitle}
         {props.isRequired && <RequiredField>*</RequiredField>}
@@ -25,6 +27,8 @@ const PostingInput = React.forwardRef((props, ref) => {
       {props.errors && (
         <FormError role="alert">{props.errors.message}</FormError>
       )}
+
+      
     </PostingFormGroup>
   );
 });

@@ -1,7 +1,7 @@
 import PostingForm from "../components/JobPosting/PostingForm/PostingForm";
-import BigFooter from "../components/Common/BigFooter/BigFooter";
-import SmallFooter from "../components/Common/SmallFooter/SmallFooter";
-import HeroSection from "../components/Common/HeroSection/HeroSection";
+import BigFooter from "../layout/BigFooter/BigFooter";
+import SmallFooter from "../layout/SmallFooter/SmallFooter";
+import HeroSection from "../layout/HeroSection/HeroSection";
 import bg from "../assets/posting.jpg";
 import { useEffect } from "react";
 

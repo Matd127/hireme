@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { FormWrapper } from "../../UI/styles/FormStyle";
-import { InputStyle } from "../../UI/styles/InputStyle";
-import { Label } from "../../UI/styles/LabelStyle";
-import { DefaultButton } from "../../UI/styles/ButtonStyle";
-import { media } from "../../UI/mediaQueries";
+import { FormWrapper } from "../../../utils/styles/FormStyle"
+import { InputStyle } from "../../../utils/styles/InputStyle"
+import { Label } from "../../../utils/styles/LabelStyle";
+import { DefaultButton } from "../../../utils/styles/ButtonStyle";
+import { media } from "../../../utils/mediaQueries";
 
 export const ContactFormWrapper = styled.form`
   ${FormWrapper}

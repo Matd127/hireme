@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { media } from "../UI/mediaQueries";
-import { DefaultButton } from "../UI/styles/ButtonStyle";
+import { media } from "../../utils/mediaQueries";
+import { DefaultButton } from "../../utils/styles/ButtonStyle";
 
 export const DetailsGrid = styled.div`
   display: grid;

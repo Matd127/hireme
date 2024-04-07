@@ -1,4 +1,4 @@
-import { Wrapper } from "../../UI/styles/WrapperStyle";
+import { Wrapper } from "../../utils/styles/WrapperStyle";
 import {
   FooterDescription,
   FooterInnerWrapper,
@@ -8,10 +8,10 @@ import {
   FooterListItem,
   FooterLink,
 } from "./BigFooterStyle";
-import { AiFillGithub } from "react-icons/ai";
-import { AiFillLinkedin } from "react-icons/ai";
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { FOOTER_BOARD, FOOTER_INFO, FOOTER_QLINKS } from "./footerData";
 
-const Footer = () => {
+export default function Footer() {
   return (
     <Wrapper theme="dark">
       <FooterInnerWrapper>
@@ -35,42 +35,34 @@ const Footer = () => {
         <FooterItem>
           <FooterTitle>Job Board</FooterTitle>
           <FooterLinks>
-            <FooterListItem>
-              <FooterLink to="/jobs">Job List</FooterLink>
-            </FooterListItem>
-            <FooterListItem>Browse Categories</FooterListItem>
-            <FooterListItem>
-              <FooterLink to="/post">Post A New Job</FooterLink>
-            </FooterListItem>
+            {FOOTER_BOARD.map((item) => (
+              <FooterListItem key={item.id}>
+                <FooterLink to={item.link}>{item.name}</FooterLink>
+              </FooterListItem>
+            ))}
           </FooterLinks>
         </FooterItem>
 
         <FooterItem>
           <FooterTitle>Quick Links</FooterTitle>
           <FooterLinks>
-            <FooterListItem>
-              <FooterLink to="/">Home</FooterLink>
-            </FooterListItem>
-            <FooterListItem>About us</FooterListItem>
-            <FooterListItem >
-              <FooterLink to="/contact">Contact</FooterLink>
-            </FooterListItem>
+            {FOOTER_QLINKS.map((item) => (
+              <FooterListItem key={item.id}>
+                <FooterLink to={item.link}>{item.name}</FooterLink>
+              </FooterListItem>
+            ))}
           </FooterLinks>
         </FooterItem>
 
         <FooterItem>
           <FooterTitle>Information</FooterTitle>
           <FooterLinks>
-            <FooterListItem>Phone +00 000 000 000</FooterListItem>
-            <FooterListItem>Email: email@email.com</FooterListItem>
-            <FooterListItem>
-              Address: Random Street 93, Location, Country
-            </FooterListItem>
+            {FOOTER_INFO.map((item) => (
+              <FooterListItem key={item.id}>{item.name}</FooterListItem>
+            ))}
           </FooterLinks>
         </FooterItem>
       </FooterInnerWrapper>
     </Wrapper>
   );
-};
-
-export default Footer;
+}

@@ -1,6 +1,6 @@
 import { Suspense, useState, useEffect } from "react";
 import JobItemLazy from "./JobItemLazy";
-import Loader from "../../UI/Loader/Loader";
+import Loader from "../../Loader/Loader";
 import { useInView } from "react-intersection-observer";
 import SectionWrapper from "../../Common/SectionWrapper/SectionWrapper";
 import { SectionTitle } from "../../Common/SectionWrapper/SectionWrapperStyle";

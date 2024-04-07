@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultFontSize } from "../../UI/variables";
+import { defaultFontSize } from "../../../utils/variables";
 
 export const JobSubscriptionText = styled.p`
   color: rgb(47, 47, 47);
